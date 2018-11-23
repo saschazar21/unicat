@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "styleguide": "styleguidist serve",
+    "styleguide:build": "styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +27,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-docgen-typescript": "^1.12.2",
+    "react-styleguidist": "^8.0.6"
+  }
 }
