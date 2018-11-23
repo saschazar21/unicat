@@ -29,6 +29,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "node-sass": "^4.10.0",
     "react-docgen-typescript": "^1.12.2",
     "react-styleguidist": "^8.0.6"
   }
