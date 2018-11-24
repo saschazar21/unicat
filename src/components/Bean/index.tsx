@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { isHexColor } from '../../_models/colors/color';
-import './index.scss';
 
 export interface IBeanProps {
   readonly column?: boolean;
@@ -21,6 +21,43 @@ export default class Bean extends Component<IBeanProps> {
     return `row${this.props.reverse ? '-reverse' : ''}`;
   }
 
+  get Container(): any {
+    return styled.div`
+      align-items: center;
+      color: inherit;
+      display: flex;
+      flex-direction: ${this.props.column ? this.column : this.row};
+      margin: 0 1rem;
+      text-align: ${this.props.column ? 'center' : 'left'};
+    `;
+  }
+
+  get Figure(): any {
+    const size = this.props.size ? `${this.props.size}px` : '64px';
+    return styled.figure`
+      background-color: ${this.props.hex || '#FFF'};
+      border-radius: 9999px;
+      height: ${size};
+      margin: 0.5rem 1rem;
+      min-height: ${size};
+      min-width: ${size};
+      overflow: hidden;
+      position: relative;
+      width: ${size};
+    `;
+  }
+
+  get Image(): any {
+    return styled.img`
+      position: absolute;
+      height: auto;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+    `;
+  }
+
   constructor(props: IBeanProps) {
     super(props);
 
@@ -32,44 +69,22 @@ export default class Bean extends Component<IBeanProps> {
   }
 
   public render() {
-    let beanStyle: React.CSSProperties = {
-      backgroundColor: this.props.hex || '#FFF',
-    };
-    beanStyle = this.props.size
-      ? {
-          ...beanStyle,
-          height: this.props.size,
-          minHeight: this.props.size,
-          minWidth: this.props.size,
-          width: this.props.size,
-        }
-      : beanStyle;
     return (
-      <div
-        vocab="http://schema.org/"
-        typeof="Thing"
-        className="bean"
-        style={{
-          flexDirection: this.props.column ? this.column : this.row,
-          textAlign: this.props.column ? 'center' : 'left',
-        }}
-      >
-        <figure
-          property="image"
-          typeof="ImageObject"
-          className="bean__figure"
-          style={beanStyle}
-        >
+      <this.Container vocab="http://schema.org/" typeof="Thing">
+        <this.Figure property="image" typeof="ImageObject">
           {this.props.image && this.props.image.length > 0 ? (
-            <img
+            <this.Image
               property="contentUrl"
-              className="bean__image"
               src={this.props.image}
               alt={`Image of ${this.props.name}`}
             />
           ) : null}
-        </figure>
-        <p>
+        </this.Figure>
+        <p
+          style={{
+            margin: 0,
+          }}
+        >
           <strong property="name">{this.props.name}</strong>
           <br />
           {this.props.description || this.props.hex ? (
@@ -78,7 +93,7 @@ export default class Bean extends Component<IBeanProps> {
             </span>
           ) : null}
         </p>
-      </div>
+      </this.Container>
     );
   }
 }
