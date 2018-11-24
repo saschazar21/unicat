@@ -3,24 +3,40 @@ import styled from 'styled-components';
 import { isHexColor } from '../../_models/colors/color';
 
 export interface IBeanProps {
+  /** Render it as column (vertically aligned), otherwise as row (horizontally aligned) */
   readonly column?: boolean;
+  /** The description */
   readonly description?: string;
+  /** The color property as hex-code (used as background-color) */
   readonly hex?: string;
+  /** The image, rendered in the round bean */
   readonly image?: string;
+  /** The name */
   readonly name: string;
+  /** Render text before bean */
   readonly reverse?: boolean;
+  /** The size of the round bean */
   readonly size?: number | string;
 }
 
 export default class Bean extends Component<IBeanProps> {
+  /**
+   * Get the correct column styling (forward or reverse)
+   */
   get column(): any {
     return `column${this.props.reverse ? '-reverse' : ''}`;
   }
 
+  /**
+   * Get the correct row styling (forward or reverse)
+   */
   get row(): any {
     return `row${this.props.reverse ? '-reverse' : ''}`;
   }
 
+  /**
+   * The wrapping container as styled component
+   */
   get Container(): any {
     return styled.div`
       align-items: center;
@@ -32,6 +48,9 @@ export default class Bean extends Component<IBeanProps> {
     `;
   }
 
+  /**
+   * The image wrapper as styled component
+   */
   get Figure(): any {
     const size = this.props.size ? `${this.props.size}px` : '64px';
     return styled.figure`
@@ -47,6 +66,9 @@ export default class Bean extends Component<IBeanProps> {
     `;
   }
 
+  /**
+   * The image as styled component.
+   */
   get Image(): any {
     return styled.img`
       position: absolute;
@@ -58,16 +80,23 @@ export default class Bean extends Component<IBeanProps> {
     `;
   }
 
+  /**
+   * The constructor, tests for invalid hex-codes and throws error, if necessary
+   * @param props - The necessary props
+   */
   constructor(props: IBeanProps) {
     super(props);
 
     if (this.props.hex && !isHexColor.test(this.props.hex)) {
       throw Error(
-        `ERROR: Wrong HEX-code format for 'hex' prop given: ${this.props.hex}`,
+        `ERROR: Wrong hex-code format for 'hex' prop given: ${this.props.hex}`,
       );
     }
   }
 
+  /**
+   * The render function
+   */
   public render() {
     return (
       <this.Container vocab="http://schema.org/" typeof="Thing">
