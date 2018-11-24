@@ -35,15 +35,23 @@ export default class Bean extends Component<IBeanProps> {
       : beanStyle;
     return (
       <div
+        vocab="http://schema.org/"
+        typeof="Thing"
         className="bean"
         style={{
           flexDirection: this.props.column ? this.column : this.row,
           textAlign: this.props.column ? 'center' : 'left',
         }}
       >
-        <figure className="bean__figure" style={beanStyle}>
+        <figure
+          property="image"
+          typeof="ImageObject"
+          className="bean__figure"
+          style={beanStyle}
+        >
           {this.props.image && this.props.image.length > 0 ? (
             <img
+              property="contentUrl"
               className="bean__image"
               src={this.props.image}
               alt={`Image of ${this.props.name}`}
@@ -51,10 +59,12 @@ export default class Bean extends Component<IBeanProps> {
           ) : null}
         </figure>
         <p>
-          <strong>{this.props.name}</strong>
+          <strong property="name">{this.props.name}</strong>
           <br />
           {this.props.description || this.props.hex ? (
-            <span>{this.props.description || this.props.hex}</span>
+            <span property="description">
+              {this.props.description || this.props.hex}
+            </span>
           ) : null}
         </p>
       </div>

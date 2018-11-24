@@ -33,6 +33,17 @@ A more reduced example (without any description) would look like this:
 />
 ```
 
+Or to reverse the fun, go ahead:
+
+```jsx
+<Bean
+  name="Sascha Zarhuber"
+  image="https://avatars0.githubusercontent.com/u/9016897"
+  reverse={true}
+  size={48}
+/>
+```
+
 ## Vertically aligned Bean
 
 ```jsx
