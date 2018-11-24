@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "tslint -p ./",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },

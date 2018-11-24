@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-
-import IColor from '../../_models/colors/color';
+import { isHexColor } from '../../_models/colors/color';
 import './index.scss';
 
-export interface IBeanProps extends IColor {
+export interface IBeanProps {
   readonly column?: boolean;
   readonly description?: string;
+  readonly hex?: string;
   readonly image?: string;
+  readonly name: string;
   readonly reverse?: boolean;
   readonly size?: number | string;
 }
@@ -18,6 +19,16 @@ export default class Bean extends Component<IBeanProps> {
 
   get row(): any {
     return `row${this.props.reverse ? '-reverse' : ''}`;
+  }
+
+  constructor(props: IBeanProps) {
+    super(props);
+
+    if (this.props.hex && !isHexColor.test(this.props.hex)) {
+      throw Error(
+        `ERROR: Wrong HEX-code format for 'hex' prop given: ${this.props.hex}`,
+      );
+    }
   }
 
   public render() {
