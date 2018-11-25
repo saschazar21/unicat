@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { isHexColor } from '../../_models/colors/color';
+import ImageContainer from '../ImageContainer';
 
 export interface IBeanProps {
   /** Render it as column (vertically aligned), otherwise as row (horizontally aligned) */
@@ -16,7 +17,7 @@ export interface IBeanProps {
   /** Render text before bean */
   readonly reverse?: boolean;
   /** The size of the round bean */
-  readonly size?: number | string;
+  readonly size?: string;
 }
 
 export default class Bean extends Component<IBeanProps> {
@@ -49,66 +50,20 @@ export default class Bean extends Component<IBeanProps> {
   }
 
   /**
-   * The image wrapper as styled component
-   */
-  get Figure(): any {
-    const size = this.props.size ? `${this.props.size}px` : '64px';
-    return styled.figure`
-      background-color: ${this.props.hex || '#FFF'};
-      border-radius: 9999px;
-      height: ${size};
-      margin: 0.5rem 1rem;
-      min-height: ${size};
-      min-width: ${size};
-      overflow: hidden;
-      position: relative;
-      width: ${size};
-    `;
-  }
-
-  /**
-   * The image as styled component.
-   */
-  get Image(): any {
-    return styled.img`
-      position: absolute;
-      height: auto;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      width: 100%;
-    `;
-  }
-
-  /**
-   * The constructor, tests for invalid hex-codes and throws error, if necessary
-   * @param props - The necessary props
-   */
-  constructor(props: IBeanProps) {
-    super(props);
-
-    if (this.props.hex && !isHexColor.test(this.props.hex)) {
-      throw Error(
-        `ERROR: Wrong hex-code format for 'hex' prop given: ${this.props.hex}`,
-      );
-    }
-  }
-
-  /**
    * The render function
    */
   public render() {
+    const size = this.props.size ? this.props.size.toString() : '64px';
     return (
       <this.Container vocab="http://schema.org/" typeof="Thing">
-        <this.Figure property="image" typeof="ImageObject">
-          {this.props.image && this.props.image.length > 0 ? (
-            <this.Image
-              property="contentUrl"
-              src={this.props.image}
-              alt={`Image of ${this.props.name}`}
-            />
-          ) : null}
-        </this.Figure>
+        <ImageContainer
+          caption={this.props.description || `Image of ${this.props.name}`}
+          height={size}
+          hex={this.props.hex}
+          radius={9999}
+          src={this.props.image || ''}
+          width={size}
+        />
         <p
           style={{
             margin: 0,

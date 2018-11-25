@@ -6,7 +6,7 @@ A simple title construct with a short description underneath, combined with a ro
 <Bean
   name="Sascha Zarhuber"
   description="Frontend Web Developer"
-  image="https://avatars0.githubusercontent.com/u/9016897"
+  image="//avatars0.githubusercontent.com/u/9016897"
 />
 ```
 
@@ -17,20 +17,25 @@ Furthermore, it is also possible to alter the image size on the Bean:
   name="Sascha Zarhuber"
   description="Frontend Web Developer"
   image="//placehold.it/64/64"
-  size={32}
+  size={'32px'}
 />
 ```
 
 A more reduced example (without any description) would look like this:
 
 ```jsx
-<Bean name="Previous Page" image="//placehold.it/64/64" size={48} />
+<Bean name="Previous Page" image="//placehold.it/64/64" size={'48px'} />
 ```
 
 Or to reverse the fun, go ahead:
 
 ```jsx
-<Bean name="Next Page" image="//placehold.it/64/64" reverse={true} size={48} />
+<Bean
+  name="Next Page"
+  image="//placehold.it/64/64"
+  reverse={true}
+  size={'48px'}
+/>
 ```
 
 ### Vertically aligned Bean
@@ -39,7 +44,7 @@ Or to reverse the fun, go ahead:
 <Bean
   name="Sascha Zarhuber"
   description="Frontend Web Developer"
-  image="https://avatars0.githubusercontent.com/u/9016897"
+  image="//avatars0.githubusercontent.com/u/9016897"
   column={true}
 />
 ```
@@ -52,6 +57,6 @@ Also you may enhance the image size for special occasions:
   description="Frontend Web Developer"
   image="//placehold.it/64/64"
   column={true}
-  size={128}
+  size={'128px'}
 />
 ```
