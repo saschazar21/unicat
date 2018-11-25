@@ -1,21 +1,33 @@
+A simple image container supporting a srcset and a caption.
+
 ```jsx
 <ImageContainer
   caption="Various images from unsplash.com"
   height="480px"
-  image="https://images.unsplash.com/photo-1543126705-599ab38c7ccf"
+  image="//placehold.it/800x480/BDBF09"
   srcset={[
     {
-      src: 'https://images.unsplash.com/photo-1543126705-599ab38c7ccf',
+      src: '//placehold.it/320x180/BDBF09',
       width: 320,
     },
     {
-      src: 'https://images.unsplash.com/photo-1480444423787-9ea7b1509c54',
+      src: '//placehold.it/480x240/BDBF09',
       width: 480,
     },
     {
-      src: 'https://images.unsplash.com/photo-1458668383970-8ddd3927deed',
+      src: '//placehold.it/940x520/BDBF09',
       width: 940,
     },
   ]}
+/>
+```
+
+Also, a border radius value is supported for rounded corners:
+
+```jsx
+<ImageContainer
+  caption="Various images from unsplash.com"
+  image="//placehold.it/800x480/BDBF09"
+  radius="12px"
 />
 ```

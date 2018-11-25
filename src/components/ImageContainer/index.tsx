@@ -47,9 +47,7 @@ export default class ImageContainer extends Component<IImageContainerProps> {
     const width = this.props.width || '100%';
     return styled.figure`
       background-color: ${this.props.hex || '#FFF'};
-      border-radius: ${this.props.radius
-        ? this.props.radius
-        : 'inherit'};
+      border-radius: ${this.props.radius ? this.props.radius : 'inherit'};
       height: ${height};
       margin: 0;
       min-height: ${height};
@@ -61,11 +59,21 @@ export default class ImageContainer extends Component<IImageContainerProps> {
   }
 
   /**
-   * The image as styled component.
+   * The image as styled component. Whenever a fixed height is given as prop, the image is set to position: absolute.
    */
   get Image(): any {
+    if (!this.props.height) {
+      return styled.img`
+        height: auto;
+        width: 100%;
+      `;
+    }
     return styled.img`
       height: auto;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
       width: 100%;
     `;
   }
