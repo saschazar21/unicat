@@ -4,17 +4,28 @@ import { isHexColor } from '../../_models/colors/color';
 import ISrcSet from '../../_models/media/srcset';
 
 export interface IImageContainerProps {
+  /** The image caption, used as figcaption & alt */
   readonly caption: string;
+  /** the height attribute, used for fixed height */
   readonly height?: string;
+  /** The background color of the container */
   readonly hex?: string;
-  readonly radius?: number;
-  readonly src: string;
+  /** The image URL */
+  readonly image: string;
+  /** The border radius value */
+  readonly radius?: string;
+  /** The image srcset for responsive image sizes */
   readonly srcset?: ISrcSet[];
+  /** Show the caption in the DOM, or make it available only for screen readers */
   readonly visibleCaption?: boolean; // TODO: Add figcaption to render()
+  /** THe width attribute, for fixed width */
   readonly width?: string;
 }
 
 export default class ImageContainer extends Component<IImageContainerProps> {
+  /**
+   * Creates a <source> tag with a srcset attribute
+   */
   get srcset(): JSX.Element | null {
     if (!this.props.srcset || this.props.srcset.length < 1) {
       return null;
@@ -37,10 +48,10 @@ export default class ImageContainer extends Component<IImageContainerProps> {
     return styled.figure`
       background-color: ${this.props.hex || '#FFF'};
       border-radius: ${this.props.radius
-        ? `${this.props.radius}px`
+        ? this.props.radius
         : 'inherit'};
       height: ${height};
-      margin: 0.5rem;
+      margin: 0;
       min-height: ${height};
       min-width: ${width};
       overflow: hidden;
@@ -73,17 +84,20 @@ export default class ImageContainer extends Component<IImageContainerProps> {
     }
   }
 
+  /**
+   * The render function, returns JSX
+   */
   public render() {
     const srcset = this.srcset;
     return (
       <this.Figure property="image" typeof="ImageObject">
-        {this.props.src && (
+        {this.props.image && (
           <picture>
             {srcset}
             <this.Image
               alt={this.props.caption}
               property="contentUrl"
-              src={this.props.src}
+              src={this.props.image}
             />
           </picture>
         )}

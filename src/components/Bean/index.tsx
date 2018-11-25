@@ -46,6 +46,10 @@ export default class Bean extends Component<IBeanProps> {
       flex-direction: ${this.props.column ? this.column : this.row};
       margin: 0 1rem;
       text-align: ${this.props.column ? 'center' : 'left'};
+
+      > figure {
+        margin: 0.5rem;
+      }
     `;
   }
 
@@ -60,8 +64,8 @@ export default class Bean extends Component<IBeanProps> {
           caption={this.props.description || `Image of ${this.props.name}`}
           height={size}
           hex={this.props.hex}
-          radius={9999}
-          src={this.props.image || ''}
+          radius="9999px"
+          image={this.props.image || ''}
           width={size}
         />
         <p
