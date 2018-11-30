@@ -1,5 +1,6 @@
+import { percent } from 'csx';
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { style } from 'typestyle';
 import { isHexColor } from '../../_models/colors/color';
 import ISrcSet from '../../_models/media/srcset';
 
@@ -40,42 +41,42 @@ export default class ImageContainer extends Component<IImageContainerProps> {
   }
 
   /**
-   * The image wrapper as styled component
+   * The image wrapper styles
    */
-  get Figure(): any {
+  get figure(): string {
     const height = this.props.height || 'auto';
     const width = this.props.width || '100%';
-    return styled.figure`
-      background-color: ${this.props.hex || '#FFF'};
-      border-radius: ${this.props.radius ? this.props.radius : 'inherit'};
-      height: ${height};
-      margin: 0;
-      min-height: ${height};
-      min-width: ${width};
-      overflow: hidden;
-      position: relative;
-      width: ${width};
-    `;
+    return style({
+      backgroundColor: this.props.hex || '#FFF',
+      borderRadius: this.props.radius ? this.props.radius : 'inherit',
+      height,
+      margin: 0,
+      minHeight: height,
+      minWidth: width,
+      overflow: 'hidden',
+      position: 'relative',
+      width,
+    });
   }
 
   /**
    * The image as styled component. Whenever a fixed height is given as prop, the image is set to position: absolute.
    */
-  get Image(): any {
+  get image(): string {
     if (!this.props.height) {
-      return styled.img`
-        height: auto;
-        width: 100%;
-      `;
+      return style({
+        height: 'auto',
+        width: percent(100),
+      });
     }
-    return styled.img`
-      height: auto;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      width: 100%;
-    `;
+    return style({
+      height: 'auto',
+      left: percent(50),
+      position: 'absolute',
+      top: percent(50),
+      transform: 'translateX(-50%) translateY(-50%)',
+      width: percent(100),
+    });
   }
 
   /**
@@ -98,18 +99,19 @@ export default class ImageContainer extends Component<IImageContainerProps> {
   public render() {
     const srcset = this.srcset;
     return (
-      <this.Figure property="image" typeof="ImageObject">
+      <figure className={this.figure} property="image" typeof="ImageObject">
         {this.props.image && (
           <picture>
             {srcset}
-            <this.Image
+            <img
+              className={this.image}
               alt={this.props.caption}
               property="contentUrl"
               src={this.props.image}
             />
           </picture>
         )}
-      </this.Figure>
+      </figure>
     );
   }
 }

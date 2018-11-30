@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { isHexColor } from '../../_models/colors/color';
+import { style } from 'typestyle';
 import ImageContainer from '../ImageContainer';
 
 export interface IBeanProps {
@@ -36,21 +35,31 @@ export default class Bean extends Component<IBeanProps> {
   }
 
   /**
-   * The wrapping container as styled component
+   * Apply correct styles for the div container
    */
-  get Container(): any {
-    return styled.div`
-      align-items: center;
-      color: inherit;
-      display: flex;
-      flex-direction: ${this.props.column ? this.column : this.row};
-      margin: 0 1rem;
-      text-align: ${this.props.column ? 'center' : 'left'};
+  get div(): string {
+    return style({
+      $nest: {
+        '> figure': {
+          margin: '0.5rem',
+        },
+      },
+      alignItems: 'center',
+      color: 'inherit',
+      display: 'flex',
+      flexDirection: this.props.column ? this.column : this.row,
+      margin: '0 1rem',
+      textAlign: this.props.column ? 'center' : 'left',
+    });
+  }
 
-      > figure {
-        margin: 0.5rem;
-      }
-    `;
+  /**
+   * Apply styles for the paragraph containing the name & description
+   */
+  get p(): string {
+    return style({
+      margin: 0,
+    });
   }
 
   /**
@@ -59,7 +68,7 @@ export default class Bean extends Component<IBeanProps> {
   public render() {
     const size = this.props.size ? this.props.size.toString() : '64px';
     return (
-      <this.Container vocab="http://schema.org/" typeof="Thing">
+      <div className={this.div} vocab="http://schema.org/" typeof="Thing">
         <ImageContainer
           caption={this.props.description || `Image of ${this.props.name}`}
           height={size}
@@ -69,9 +78,7 @@ export default class Bean extends Component<IBeanProps> {
           width={size}
         />
         <p
-          style={{
-            margin: 0,
-          }}
+          className={this.p}
         >
           <strong property="name">{this.props.name}</strong>
           <br />
@@ -81,7 +88,7 @@ export default class Bean extends Component<IBeanProps> {
             </span>
           ) : null}
         </p>
-      </this.Container>
+      </div>
     );
   }
 }
