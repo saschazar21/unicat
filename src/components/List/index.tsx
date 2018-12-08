@@ -1,5 +1,6 @@
 import React, { Component, ReactChild } from 'react';
 import { style } from 'typestyle';
+import generateId from '../../_lib/generateId';
 
 export interface IListProps {
   /** A list consists of children, so the <List> tag should always act as wrapper */
@@ -21,9 +22,7 @@ export default class List extends Component<IListProps> {
    */
   get id(): string {
     if (this.ID.length < 1) {
-      const base = 'abcdef0123456789';
-      const arr = [0, 1, 2, 3, 4].map((n: number) => base.charAt(Math.floor(Math.random() * base.length)));
-      this.ID = arr.join('');
+      this.ID = generateId('list');
     }
     return this.ID;
   }
