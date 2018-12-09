@@ -1,3 +1,4 @@
+import { GithubIcon } from '@saschazar/unicat-icons';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Bean from '.';
@@ -21,4 +22,9 @@ it('should fail, when wrong hex prop format is given', () => {
   expect(() => {
     ReactDOM.render(<Bean name="Demo Bean" hex="#zfa" />, div);
   }).toThrowError();
+});
+
+it('should render an Icon as image', () => {
+  ReactDOM.render(<Bean image={<GithubIcon />} name="A test name" />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
