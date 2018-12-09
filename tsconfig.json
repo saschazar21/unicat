@@ -5,10 +5,13 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2015"],
-    "module": "es2015",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "dist",
     "resolveJsonModule": true,
@@ -16,7 +19,10 @@
     "skipLibCheck": false,
     "sourceMap": true,
     "strict": true,
-    "target": "es6"
+    "target": "es6",
+    "noEmit": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
