@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 import { style } from 'typestyle';
+import IconContainer from '../IconContainer';
 import ImageContainer from '../ImageContainer';
 
 export interface IBeanProps {
@@ -10,7 +11,7 @@ export interface IBeanProps {
   /** The color property as hex-code (used as background-color) */
   readonly hex?: string;
   /** The image, rendered in the round bean */
-  readonly image?: string;
+  readonly image?: ReactElement<SVGElement> | string;
   /** The name */
   readonly name: string;
   /** Render text before bean */
@@ -54,6 +55,15 @@ export default class Bean extends Component<IBeanProps> {
   }
 
   /**
+   * Override default styles for IconContainer in Bean
+   */
+  get icon(): string {
+    return style({
+      padding: 0,
+    });
+  }
+
+  /**
    * Apply styles for the paragraph containing the name & description
    */
   get p(): string {
@@ -66,17 +76,9 @@ export default class Bean extends Component<IBeanProps> {
    * The render function
    */
   public render() {
-    const size = this.props.size ? this.props.size.toString() : '64px';
     return (
       <div className={this.div} vocab="http://schema.org/" typeof="Thing">
-        <ImageContainer
-          caption={this.props.description || `Image of ${this.props.name}`}
-          height={size}
-          hex={this.props.hex}
-          radius="9999px"
-          image={this.props.image || ''}
-          width={size}
-        />
+        {this.renderImage()}
         <p
           className={this.p}
         >
@@ -89,6 +91,33 @@ export default class Bean extends Component<IBeanProps> {
           ) : null}
         </p>
       </div>
+    );
+  }
+
+  private renderImage(): JSX.Element {
+    const size = this.props.size ? this.props.size.toString() : '64px';
+    if (!this.props.image || typeof this.props.image === 'string') {
+      return (
+        <ImageContainer
+          caption={this.props.description || `Image of ${this.props.name}`}
+          height={size}
+          hex={this.props.hex}
+          radius="9999px"
+          image={this.props.image || ''}
+          width={size}
+        />
+      );
+    }
+    return (
+      <IconContainer
+        className={this.icon}
+        fill={this.props.hex}
+        height={size}
+        radius="9999px"
+        width={size}
+      >
+        {this.props.image}
+      </IconContainer>
     );
   }
 }

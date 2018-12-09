@@ -1,4 +1,4 @@
-import React, { Component, ReactChild } from 'react';
+import React, { Component, ReactChild, ReactElement } from 'react';
 import { style } from 'typestyle';
 import generateId from '../../_lib/generateId';
 

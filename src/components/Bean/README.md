@@ -60,3 +60,18 @@ Also you may enhance the image size for special occasions:
   size={'128px'}
 />
 ```
+
+### Bean containing an icon
+
+You also may include an SVG icon instead of an image:
+
+```jsx
+const { GithubIcon } = require('@saschazar/unicat-icons');
+const { success } = require('../../_data/colors');
+<Bean
+  name="Sascha Zarhuber"
+  description="Frontend Web Developer"
+  image={<GithubIcon style={{ fill: success.hex }} />}
+  column={true}
+/>
+```
