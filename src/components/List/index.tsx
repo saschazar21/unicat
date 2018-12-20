@@ -1,4 +1,4 @@
-import React, { Component, ReactChild, ReactElement } from 'react';
+import React, { Component, ReactChild } from 'react';
 import { style } from 'typestyle';
 import generateId from '../../_lib/generateId';
 
@@ -62,9 +62,13 @@ export default class List extends Component<IListProps> {
    */
   public render(): JSX.Element {
     const { children} = this.props;
+    const childrenProps = Array.isArray(children) ? children : [ children ];
+
     return (
       <ul className={this.list}>
-        {children.map((child: ReactChild, index: number) => <li key={`${this.id}-${index}`}>{child}</li>)}
+        {childrenProps.map((child: ReactChild, index: number) => (
+          <li key={`${this.id}-${index}`}>{child}</li>
+        ))}
       </ul>
     );
   }
