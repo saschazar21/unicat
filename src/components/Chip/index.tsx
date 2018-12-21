@@ -13,6 +13,9 @@ export interface IChipProps {
 }
 
 export default class Chip extends Component<IChipProps> {
+  /**
+   * Getter for the styling of the Chip
+   */
   get style(): string {
     const { color } = this.props;
     return style({
@@ -24,6 +27,9 @@ export default class Chip extends Component<IChipProps> {
     });
   }
 
+  /**
+   * The render function, renders either a normal span, or a ComboText, if an icon was given
+   */
   public render() {
     const { children, icon } = this.props;
     const Element = icon ? ComboText : 'span';
