@@ -27,6 +27,7 @@ export const colorScheme: IColor[] = [
   },
 ];
 
+export const alert: IColor = colorScheme[colorScheme.length - 3];
 export const background: IColor = colorScheme[0];
 export const muted: IColor = colorScheme[colorScheme.length - 2];
 export const primary: IColor = colorScheme[colorScheme.length - 1];

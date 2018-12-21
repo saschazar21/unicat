@@ -4,6 +4,8 @@ import { style } from 'typestyle';
 export interface IComboTextProps {
   /** The children, should only contain a string, which gets wrapped in a span */
   readonly children: string;
+  /** The class name, inherited from parent */
+  readonly className?: string;
   /** The fill value for the icon, inherits the text color by default */
   readonly fill?: string;
   /** The tag name in which to wrap the ComboText component, span by default */
@@ -50,10 +52,16 @@ export default class ComboText extends Component<IComboTextProps> {
    * The render function, renders an icon with a span text in a given container
    */
   public render(): JSX.Element {
-    const { children, icon, tag } = this.props;
+    const { children, className, icon, tag } = this.props;
     const Element = tag || 'span';
+
+    const classes = [
+      className,
+      this.style,
+    ];
+
     return (
-      <Element className={this.style}>
+      <Element className={classes.join(' ')}>
         {icon}
         <span>{children}</span>
       </Element>
