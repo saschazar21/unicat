@@ -1,44 +1,70 @@
 {
-  "name": "unicat",
+  "name": "unicat-ts",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "23.3.9",
-    "@types/node": "10.12.10",
-    "@types/react": "16.7.7",
-    "@types/react-dom": "16.0.10",
-    "csx": "^9.0.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "typescript": "3.1.6",
-    "typestyle": "^2.0.1"
-  },
+  "main": "dist/index.js",
+  "umd:main": "dist/unicat-ts.umd.production.js",
+  "module": "dist/unicat-ts.es.production.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run build:app && npm run build:components",
-    "build:components": "tsc",
-    "build:app": "react-scripts build",
-    "lint": "tslint -p ./",
-    "test": "react-scripts test --coverage",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "style": "npm run styleguide:watch",
+    "styleguide:watch": "styleguidist server",
+    "styleguidist:build": "styleguidist build",
+    "test": "tsdx test --env=jsdom"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "browserslist": [
-    ">0.2%",
+    ">2%",
     "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "last 2 versions",
+    "firefox esr",
+    "not ie 11",
+    "not ie 10",
+    "not op_mini all",
+    "not ie_mob 11",
+    "not ie_mob 10"
   ],
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "devDependencies": {
-    "node-sass": "^4.10.0",
-    "prettier-tslint": "^0.4.0",
-    "react-docgen-typescript": "^1.12.2",
-    "react-styleguidist": "^8.0.6",
-    "tslint": "^5.11.0",
-    "tslint-react": "^3.6.0"
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@types/jest": "^24.0.12",
+    "@types/react": "^16.8.15",
+    "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.14",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-styled-components": "^1.10.0",
+    "core-js": "^3.0.1",
+    "husky": "^2.1.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
+    "react": "^16.8.6",
+    "react-docgen-typescript": "^1.12.4",
+    "react-dom": "^16.8.6",
+    "react-styleguidist": "^9.0.9",
+    "styled-components": "^4.2.0",
+    "ts-loader": "^5.4.5",
+    "tsdx": "^0.5.4",
+    "typescript": "^3.4.5",
+    "webpack": "^4.30.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   }
 }
