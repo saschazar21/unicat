@@ -2,7 +2,13 @@ import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { fonts, fontSizes } from '../__styles__/fonts';
-import { Heading as Tag, FontFamily } from '../__data__/definitions';
+import { mediaQueryString, spacings } from '../__styles__/sizes';
+import {
+  Heading as Tag,
+  FontFamily,
+  Resolution,
+  Spacing,
+} from '../__data__/definitions';
 
 export interface HeadingProps {
   children: ReactNode[] | string;
@@ -27,10 +33,15 @@ class Element extends Component<HeadingProps> {
 
 export default styled(Element)<HeadingProps>`
   display: block;
-  color: inherit;
-  font-family: ${fonts[FontFamily.Heading].name}, sans-serif;
+  font-family: var(--font-heading);
   font-size: ${(props: HeadingProps) =>
-    props.level < 6 ? fontSizes[props.level - 1] : fontSizes[Tag['h5']]};
+    props.level < 5 ? fontSizes[props.level] : fontSizes[Tag['h5']]};
   font-weight: ${fonts[FontFamily.Heading].weights.pop()};
   margin-top: 0;
+  margin-bottom: ${spacings[Spacing.XS]};
+
+  ${mediaQueryString(Resolution.Desktop)} {
+    font-size: ${(props: HeadingProps) =>
+      props.level < 6 ? fontSizes[props.level - 1] : fontSizes[Tag['h5']]};
+  }
 `;

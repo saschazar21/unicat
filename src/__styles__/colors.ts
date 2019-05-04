@@ -1,4 +1,5 @@
 export interface Color {
+  complimentary: string;
   hex: string;
   name: string;
   variant: string;
@@ -6,28 +7,33 @@ export interface Color {
 
 export const colors: Color[] = [
   {
-    hex: '#121619',
-    name: 'Eerie Black',
+    complimentary: '#f7f8ee',
+    hex: '#1e1e24',
+    name: 'Raisin Black',
     variant: 'default',
   },
   {
-    hex: '#BEB7A4',
-    name: 'Black Shadows',
+    complimentary: '#1e1e24',
+    hex: '#f7f8ee',
+    name: 'Seashell',
     variant: 'light',
   },
   {
-    hex: '#253D5B',
-    name: 'Japanese Indigo',
+    complimentary: '#fdfdfb',
+    hex: '#654f6f',
+    name: 'Independence',
     variant: 'primary',
   },
   {
-    hex: '#FF7F11',
-    name: 'Pumpkin',
+    complimentary: '#1e1e24',
+    hex: '#e28413',
+    name: 'Fulvous',
     variant: 'warning',
   },
   {
-    hex: '#09814A',
-    name: 'Spanish Viridian',
+    complimentary: '#1e1e24',
+    hex: '#94c595',
+    name: 'Eton Blue',
     variant: 'success',
   },
 ];

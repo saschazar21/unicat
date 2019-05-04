@@ -31,3 +31,5 @@ export const fontSizes: string[] = [
   '1em',
   '0.75em',
 ];
+
+export const lineHeights = ['1.75', '1.5', '1.15', '1', '0.9'];

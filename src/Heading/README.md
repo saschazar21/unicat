@@ -1,4 +1,4 @@
-A simple header text, may be customized using the `level` prop.
+A simple header text, may be customized using the `level` prop. Sets the `font-family` automatically to the `--font-heading` custom CSS property.
 
 ```jsx
 <Heading level={1}>

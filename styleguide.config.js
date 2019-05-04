@@ -15,6 +15,14 @@ module.exports = {
       usageMode: 'collapse',
     },
   ],
+  styles: {
+    StyleGuide: {
+      '@global body': {
+        '--font-heading': '"Muli", sans-serif',
+        fontFamily: '"Raleway", sans-serif',
+      },
+    },
+  },
   template: {
     head: {
       links: [
@@ -27,12 +35,12 @@ module.exports = {
   },
   theme: {
     color: {
-      base: '#121619',
-      lightest: '#BEB7A4',
-      link: '#253D5B',
+      base: '#1e1e24',
+      lightest: '#f7f8ee',
+      link: '#654f6f',
     },
     fontFamily: {
-      base: ['Raleway', 'sans-serif'],
+      base: ['"Raleway"', 'sans-serif'],
     },
   },
 };

@@ -2,6 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { Spacing } from '../__data__/definitions';
+import { lineHeights } from '../__styles__/fonts';
 import { spacings } from '../__styles__/sizes';
 import KeyGenerator from '../__tools__/key-generator';
 
@@ -44,6 +45,7 @@ export default styled(List)<ListProps>`
       : 'display: block'};
   padding: 0;
   list-style-type: ${({ prefix }) => (prefix ? 'none' : 'inherit')};
+  line-height: ${lineHeights[Spacing.XL]}
 
   > li {
     ${({ prefix }) =>
