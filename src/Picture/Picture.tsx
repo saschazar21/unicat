@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Spacing } from '../__data__/definitions';
 import { borderRadius } from '../__styles__/borders';
-import { spacings } from '../__styles__/sizes';
+import KeyGenerator from '../__tools__/key-generator';
+
+declare module 'react' {
+  interface ImgHTMLAttributes<T> {
+    loading?: 'lazy' | 'eager' | 'auto';
+  }
+}
 
 export interface PictureProps {
-  caption?: string;
   className?: string;
   crop?: { height?: string; width?: string };
   description: string;
-  sizes?: [
+  lazyload: boolean;
+  loading?: 'lazy' | 'eager' | 'auto';
+  sources?: [
     {
-      mediaQuery: string;
-      width: string;
-    }
-  ];
-  srcset?: [
-    {
+      media?: string;
+      sizes?: [
+        {
+          mediaQuery?: string;
+          width: string;
+        }
+      ];
+      srcset: [
+        {
+          res?: '1x' | '2x';
+          url: string;
+          width: string;
+        }
+      ];
       type?: string;
-      url: string;
-      width: string;
     }
   ];
   src: string;
@@ -28,32 +40,50 @@ export interface PictureProps {
 }
 
 class Picture extends Component<PictureProps> {
+  static nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
+
   static defaultProps = {
+    loading: 'auto',
     shape: 'default',
     sizes: [],
   };
 
-  public render() {
-    const { caption, className, description, sizes, srcset, src } = this.props;
+  private _key = new KeyGenerator('picture');
 
-    const set = srcset && (
-      <source
-        srcSet={srcset.map(({ url, width }) => `${url} ${width}`).join(', ')}
-        sizes={
-          Array.isArray(sizes)
-            ? sizes
-                .map(({ mediaQuery, width }) => `${mediaQuery} ${width}`)
-                .join(', ')
-            : undefined
-        }
-      />
-    );
+  public render() {
+    const {
+      className,
+      description,
+      lazyload,
+      loading,
+      sources,
+      src,
+    } = this.props;
+    const source =
+      Picture.nativeLazyLoading || !lazyload ? { src } : { dataSrc: src };
+
+    const set =
+      Array.isArray(sources) &&
+      sources.map(({ media, sizes, srcset, type }) => (
+        <source
+          key={this._key.next()}
+          media={media}
+          srcSet={srcset.map(({ url, width }) => `${url} ${width}`).join(', ')}
+          sizes={
+            Array.isArray(sizes)
+              ? sizes
+                  .map(({ mediaQuery, width }) => `${mediaQuery} ${width}`)
+                  .join(', ')
+              : undefined
+          }
+          type={type}
+        />
+      ));
 
     return (
       <picture className={className}>
         {set}
-        <img src={src} alt={description} />
-        {caption && <caption>{caption}</caption>}
+        <img alt={description} loading={loading} {...source} />
       </picture>
     );
   }
@@ -75,8 +105,7 @@ export default styled(Picture)<PictureProps>`
     overflow: hidden;
   `}
 
-  img,
-  caption {
+  img {
     ${({ crop }) =>
       crop &&
       `
@@ -105,17 +134,5 @@ export default styled(Picture)<PictureProps>`
     }}
     margin: 0 auto;
     max-width: 100%;
-  }
-
-  caption {
-    display: block;
-    margin-top: ${spacings[Spacing.S]};
-    ${({ crop }) =>
-      crop &&
-      `
-      background-color: white;
-      bottom: 0;
-      padding: ${spacings[Spacing.M]} 0;
-      z-index: 10;`}
   }
 `;

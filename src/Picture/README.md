@@ -1,7 +1,7 @@
 Renders a responsive image using a given `srcset` property.
 
 ```jsx
-const sources = [
+const srcset = [
   {
     url:
       'https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg',
@@ -39,11 +39,17 @@ const sizes = [
   },
 ];
 
+const sources = [
+  {
+    sizes,
+    srcset,
+    type: 'image/jpeg',
+  },
+];
+
 <Picture
-  srcset={sources}
-  sizes={sizes}
-  description="Autumn trees in Montreal"
-  caption="Photo by Joe Example on unsplash"
+  sources={sources}
+  description="Autumn trees in Montreal - Photo by Joe Example on unsplash"
   src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=200&fit=max"
 />;
 ```
@@ -51,7 +57,7 @@ const sizes = [
 Furthermore, it's possible to crop an image (useful for keeping certain formats, e.g. avatars, etc...)
 
 ```jsx
-const sources = [
+const srcset = [
   {
     url:
       'https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg',
@@ -89,12 +95,18 @@ const sizes = [
   },
 ];
 
+const sources = [
+  {
+    sizes,
+    srcset,
+    type: 'image/jpeg',
+  },
+];
+
 <Picture
   crop={{ height: '480px', width: '640px' }}
-  srcset={sources}
-  sizes={sizes}
-  description="Autumn trees in Montreal"
-  caption="Photo by Joe Example on unsplash"
+  sources={sources}
+  description="Autumn trees in Montreal - Photo by Joe Example on unsplash"
   src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=200&fit=max"
 />;
 ```
