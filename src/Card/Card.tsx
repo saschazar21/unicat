@@ -2,8 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { Spacing, Variant } from '../__data__/definitions';
-import { borderRadius, borderWidths } from '../__styles__/borders';
-import { colors } from '../__styles__/colors';
+import { borderRadius } from '../__styles__/borders';
 import { shadows, shadowString } from '../__styles__/shadows';
 import { spacings } from '../__styles__/sizes';
 
@@ -12,14 +11,12 @@ export interface CardProps {
   className?: string;
   level?: Spacing;
   spacing?: Spacing;
-  variant?: 'default' | 'primary' | 'success' | 'warning';
 }
 
 class Card extends Component<CardProps> {
   static defaultProps = {
     level: Spacing.XS,
-    spacing: Spacing.M,
-    variant: 'default',
+    spacing: Spacing.XL,
   };
 
   public render() {
@@ -30,21 +27,9 @@ class Card extends Component<CardProps> {
 }
 
 export default styled(Card)<CardProps>`
-  border-color: ${({ variant = 'default' }) => {
-    switch (variant) {
-      case 'primary':
-        return colors[Variant.Primary].hex;
-      case 'success':
-        return colors[Variant.Success].hex;
-      case 'warning':
-        return colors[Variant.Warning].hex;
-      default:
-        return 'transparent';
-    }
-  }}
+  position: relative;
   border-radius: ${borderRadius[Variant.Default]};
-  border-style: solid;
-  border-width: ${borderWidths[1]}
   box-shadow: ${({ level = Spacing.XS }) => shadowString(shadows[level])};
-  padding: ${({ spacing = Spacing.M }) => spacings[spacing]};
+  padding: ${({ spacing = Spacing.XL }) => spacings[spacing]};
+  overflow: hidden;
 `;

@@ -1,3 +1,5 @@
+import { Variant } from '../__data__/definitions';
+
 export interface Color {
   complimentary: string;
   hex: string;
@@ -35,5 +37,26 @@ export const colors: Color[] = [
     hex: '#94c595',
     name: 'Eton Blue',
     variant: 'success',
+  },
+];
+
+export const backdrop: Color[] = [
+  {
+    complimentary: colors[Variant.Light].hex,
+    hex: 'rgba(30, 30, 36, 0.38)',
+    name: 'Raisin Black 38%',
+    variant: 'default',
+  },
+  {
+    complimentary: colors[Variant.Default].hex,
+    hex: 'rgba(247, 248, 238, 0.61)',
+    name: 'Seashell 61%',
+    variant: 'light',
+  },
+  {
+    complimentary: colors[Variant.Light].hex,
+    hex: 'rgba(101, 79, 111, 0.38)',
+    name: 'Independence 38%',
+    variant: 'primary',
   },
 ];
