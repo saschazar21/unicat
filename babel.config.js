@@ -1,14 +1,3 @@
 module.exports = {
-  plugins: ['babel-plugin-styled-components'],
-  presets: [
-    [
-      '@babel/env',
-      {
-        corejs: 3,
-        modules: false,
-        useBuiltIns: 'usage',
-      },
-    ],
-    '@babel/react',
-  ],
+  presets: ['@babel/preset-env', '@babel/preset-react'],
 };

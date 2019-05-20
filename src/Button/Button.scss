@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border: none;
+  border-radius: 4px; // TODO: change to variable
+  padding: 1rem; // TODO: change to variable
+  max-width: 100%;
+  background-color: white; // TODO: change to variable
+  color: black; // TODO: change to variable
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  
+  > span {
+    margin-right: 1em; // TODO: change to variable
+  }
+}

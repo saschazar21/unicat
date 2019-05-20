@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import classnames from 'classnames';
 
-import { Variant, Spacing } from '../__data__/definitions';
-import { borderRadius } from '../__styles__/borders';
-import { colors } from '../__styles__/colors';
-import { spacings } from '../__styles__/sizes';
+import { Spacing, Variant } from '../__data__/definitions';
+import styles from './Button.scss';
 
 export interface ButtonProps {
   block?: boolean;
@@ -17,7 +15,7 @@ export interface ButtonProps {
   variant?: Variant;
 }
 
-class Button extends Component<ButtonProps> {
+export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
     variant: Variant.Primary,
@@ -26,7 +24,14 @@ class Button extends Component<ButtonProps> {
   };
 
   public render() {
-    const { className, icon, onClick, title, type } = this.props;
+    const {
+      className: customClassName,
+      icon,
+      onClick,
+      title,
+      type,
+    } = this.props;
+    const className = classnames(styles.wrapper, customClassName);
 
     return (
       <button className={className} onClick={onClick} type={type}>
@@ -36,23 +41,3 @@ class Button extends Component<ButtonProps> {
     );
   }
 }
-
-export default styled(Button)<ButtonProps>`
-  display: ${({ block }) => (block ? 'flex' : 'inline-flex')};
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  border: none;
-  border-radius: ${borderRadius[0]}
-  padding: ${({ size = Spacing.M }) =>
-    `${spacings[size]} ${spacings[size > 0 ? size - 1 : size]}`};
-  max-width: 100%;
-  background-color: ${({ variant = Variant.Primary }) => colors[variant].hex};
-  color: ${({ variant = Variant.Primary }) => colors[variant].complimentary};
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  
-  > span {
-    margin-right: ${spacings[Spacing.M]};
-  }
-`;
