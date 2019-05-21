@@ -4,12 +4,17 @@ import babel from 'rollup-plugin-babel';
 import filesize from 'rollup-plugin-filesize';
 import postcss from 'rollup-plugin-postcss';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-import { uglify } from 'rollup-plugin-uglify';
 
 import pkg from './package.json';
 
 const distFile = file => resolve(__dirname, `./dist/${file}`);
+
+const globals = {
+  classnames: 'classnames',
+  react: 'React',
+};
 
 const base = {
   external: [...builtins, 'react', 'classnames'],
@@ -29,7 +34,7 @@ const base = {
 
 const prodBase = {
   ...base,
-  plugins: [...base.plugins, uglify(), filesize()],
+  plugins: [...base.plugins, terser(), filesize()],
 };
 
 export default [
@@ -39,14 +44,17 @@ export default [
       {
         file: distFile('index.js'),
         format: 'cjs',
+        globals,
       },
       {
         file: distFile('index.es.js'),
         format: 'es',
+        globals,
       },
       {
         file: distFile('index.umd.js'),
         format: 'umd',
+        globals,
         name: `${pkg.name} v${parseInt(pkg.version, 10)}`,
       },
     ],
@@ -57,14 +65,17 @@ export default [
       {
         file: distFile('index.min.js'),
         format: 'cjs',
+        globals,
       },
       {
         file: distFile('index.es.min.js'),
         format: 'es',
+        globals,
       },
       {
         file: distFile('index.umd.min.js'),
         format: 'umd',
+        globals,
         name: `${pkg.name} v${parseInt(pkg.version, 10)}`,
       },
     ],
