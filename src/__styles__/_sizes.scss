@@ -1,0 +1,69 @@
+$base: 16px;
+
+$mediaQueries: (
+  "xs": (
+    "from": 0px,
+    "name": "phone",
+    "to": 480px,
+  ),
+  "s": (
+    "from": 480px,
+    "name": "phone",
+    "to": 768px,
+  ),
+  "m" (
+    "from": 768px,
+    "name": "tablet",
+    "to": 1200px,
+  ),
+  "l": (
+    "from": 1200px,
+    "name": "desktop",
+    "to": 9999px,
+  ),
+  "xl": (
+    "from": 1920px,
+    "name": "hd",
+    "to": 9999px,
+  ),
+);
+
+@function media-query-up($size, $type: "screen") {
+  @if map-has-key($mediaQueries, $size) {
+    @return "@media #{$type} and (min-width: #{map-get(map-get($mediaQueries, $size), $from)} {";
+  } 
+  @error "The size #{$size} does not exist on mediaQueries!";
+}
+
+@function media-query-down($size, $type: "screen") {
+  @if map-has-key($mediaQueries, $size) {
+    @return "@media #{$type} and (max-width: #{map-get(map-get($mediaQueries, $size), $to)} {";
+  } 
+  @error "The size #{$size} does not exist on mediaQueries!";
+}
+
+$spacings: (
+  "xl": 2rem, // 32px
+  "l": 1.5rem, // 24px
+  "m": 1rem, // 16px
+  "s": 0.75rem, // 12px
+  "xs": 0.6rem, // 10px
+);
+
+@function spacing($size: "m") {
+  @if map-has-key($spacings, $size) {
+    @return map-get($spacings, $size);
+  }
+  @return "The value #{$size} does not exist in spacings!";
+}
+
+@function rem($pxval) {
+  @if not unitless($pxval) {
+      $pxval: strip-units($pxval);
+  }
+
+  @if not unitless($base) {
+      $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}

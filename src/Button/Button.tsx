@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import { Spacing, Variant } from '../__data__/definitions';
 import styles from './Button.scss';
 
 export interface ButtonProps {
@@ -10,7 +9,7 @@ export interface ButtonProps {
   icon?: SVGSVGElement;
   onClick?: any;
   title: string;
-  size?: Spacing;
+  size?: Size;
   type?: 'submit' | 'reset';
   variant?: Variant;
 }
@@ -18,20 +17,23 @@ export interface ButtonProps {
 export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
-    variant: Variant.Primary,
-    size: Spacing.M,
+    variant: 'primary',
+    size: 'm',
     type: 'submit',
   };
 
   public render() {
+    const { size: defaultSize, variant: defaultVariant } = Button.defaultProps;
     const {
       className: customClassName,
       icon,
       onClick,
+      size = defaultSize,
       title,
       type,
+      variant = defaultVariant,
     } = this.props;
-    const className = classnames(styles.wrapper, customClassName);
+    const className = classnames(styles.wrapper, styles[size], styles[variant], customClassName);
 
     return (
       <button className={className} onClick={onClick} type={type}>
