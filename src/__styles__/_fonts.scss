@@ -25,3 +25,20 @@ $fonts: (
   }
   @error "The key #{$variant} is not defined for fonts!";
 }
+
+$fontSizes: (
+  h1: 4.209em,
+  h2: 3.157em,
+  h3: 2.369em,
+  h4: 1.777em,
+  h5: 1.333em,
+  h6: 1em,
+  small: 0.75em,
+);
+
+@function fontSize($variant: h6) {
+  @if map-has-key($map: $fontSizes, $key: $variant) {
+    @return map-get($map: $fontSizes, $key: $variant);
+  }
+  @error "The key #{$variant} is not defined for font sizes!";
+}
