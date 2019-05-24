@@ -1,0 +1,11 @@
+$sizes: 'xs' 's' 'm' 'l' 'xl';
+$variants: 'default' 'light' 'primary' 'warning' 'success';
+$fonts: 'default' 'heading';
+$fontSizes: 'large' 'default' 'small';
+$headings: 'h1' 'h2' 'h3' 'h4' 'h5';
+
+@import './colors';
+@import './sizes';
+@import './fonts';
+@import './borders';
+@import './shadows';

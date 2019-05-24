@@ -1,0 +1,27 @@
+$fonts: (
+  default: (
+    name: 'Raleway',
+    weights: 300,
+  ),
+  heading: (
+    name: 'Muli',
+    weights: 700,
+  ),
+);
+
+@function font($variant: 'default') {
+  @if map-has-key($fonts, $variant) {
+    @return '#{map-get(map-get($fonts, $variant), $name)}, sans-serif';
+  }
+  @error "The key #{$variant} is not defined for fonts!";
+}
+
+@function googleFontUrl($variant: 'default') {
+  @if map-has-key($fonts, $variant) {
+    $font: map-get($fonts, $variant);
+    $name: map-get($font, $name);
+    $weights: map-get($font, $weights);
+    @return 'https://fonts.googleapis.com/css?family=#{$name}:#{$weights}';
+  }
+  @error "The key #{$variant} is not defined for fonts!";
+}

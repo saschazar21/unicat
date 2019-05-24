@@ -1,0 +1,35 @@
+@import './colors';
+
+$shadows: (
+  xs: (
+    0 15px 38px 2px transparentize(color(default), 0.8),
+    0 5px 14px -7px transparentize(color(default), 0.47),
+  ),
+  s: (
+    0 10px 24px 5px transparentize(color(default), 0.81),
+    0 3px 10px -2px transparentize(color(default), 0.75),
+  ),
+  m: (
+    0 4px 12px 7px transparentize(color(default), 0.85),
+    0 3px 6px 0 transparentize(color(default), 0.73),
+  ),
+  l: (
+    0 3px 9px 7px transparentize(color(default), 0.91),
+    0 3px 5px 1px transparentize(color(default), 0.77),
+  ),
+  xl: (
+    0 2px 7px 6px transparentize(color(default), 0.93),
+    0 2px 3px 0 transparentize(color(default), 0.75),
+  ),
+);
+
+@function shadow($size, $inset: false) {
+  @if not map-has-key($shadows, $size) {
+    @error "The size #{$size} is not defined for shadows!";
+  }
+  $str: map-get($shadows, $size);
+  @if $inset {
+    @return 'inset #{$str}';
+  }
+  @return $str;
+}

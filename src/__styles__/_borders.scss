@@ -1,6 +1,18 @@
-@import "colors";
+@import './colors';
 
-$borderColor: color(light);
-$borderColorContrast: color(light, true);
+$borderColor: color(default, true);
+$borderColorContrast: color(primary);
 $borderRadius: 4px, 9999px;
-$borderWidth: .5px, 2px;
+$borderWidth: 0.5px, 2px;
+
+@function border($color: color(default, true), $width: 0.5px) {
+  @return $width solid $color;
+}
+
+@function borderRadius($idx: 1) {
+  @return nth($borderRadius, $idx);
+}
+
+@function borderWidth($idx: 1) {
+  @return nth($borderWidth, $idx);
+}
