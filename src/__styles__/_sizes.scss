@@ -28,18 +28,22 @@ $mediaQueries: (
   ),
 );
 
-@function media-query-up($size, $type: 'screen') {
-  @if map-has-key($mediaQueries, $size) {
-    @return '@media #{$type} and (min-width: #{map-get(map-get($mediaQueries, $size), $from)} {';
+@mixin media-query-up($size, $type: 'screen') {
+  @if not map-has-key($mediaQueries, $size) {
+    @error "The size #{$size} does not exist on mediaQueries!";
   }
-  @error "The size #{$size} does not exist on mediaQueries!";
+  @media #{$type} and (min-width: #{map-get(map-get($mediaQueries, $size), from)}) {
+    @content;
+  }
 }
 
-@function media-query-down($size, $type: 'screen') {
-  @if map-has-key($mediaQueries, $size) {
-    @return '@media #{$type} and (max-width: #{map-get(map-get($mediaQueries, $size), $to)} {';
+@mixin media-query-down($size, $type: 'screen') {
+  @if not map-has-key($mediaQueries, $size) {
+    @error "The size #{$size} does not exist on mediaQueries!";
   }
-  @error "The size #{$size} does not exist on mediaQueries!";
+  @media #{$type} and (max-width: #{map-get(map-get($mediaQueries, $size), to)}) {
+    @content;
+  }
 }
 
 $spacings: (

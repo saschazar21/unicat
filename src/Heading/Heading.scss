@@ -1,0 +1,18 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  display: block;
+  font-family: var(--font-heading);
+  margin-top: 0;
+  margin-bottom: spacing(xs);
+
+  @include media-query-up(m) {
+    margin-bottom: spacing(m);
+  }
+}
+
+@each $heading in $headings {
+  .#{$heading} {
+    font-size: fontSize($heading);
+  }
+}

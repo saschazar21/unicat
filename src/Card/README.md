@@ -1,70 +1,70 @@
 Renders a Box with a `box-shadow` in 5 different height levels.
 
-By default the lowest level (4, or `Spacing.XS`) will be used and simulates an element lowest leveraged from the ground. In the same fashion, paddings may be customized using the `spacing` prop, also ranging from 0 (highest) to 4 (lowest).
+By default the lowest level (`xs`) will be used and simulates an element lowest leveraged from the ground. In the same fashion, paddings may be customized using the `spacing` prop, also ranging from `xl` (highest) to `xs` (lowest).
 
 Cards of level below 3 should only be used with caution!
 
-## Card level 4
+## Card level 'xs'
 
 ```jsx
 import Heading from '../Heading/Heading.tsx';
 
 <Card>
-  <Heading level={2} SEO={false}>
-    Headline
-  </Heading>
-  <span>A default (level 4) card</span>
+  <Heading level="h2">Headline</Heading>
+  <span>
+    A default card in size and elevation <code>xs</code>
+  </span>
 </Card>;
 ```
 
-## Card level 3
+## Card level 's'
 
 ```jsx
 import Heading from '../Heading/Heading.tsx';
 
-<Card level={3}>
-  <Heading level={2} SEO={false}>
-    Headline
-  </Heading>
-  <span>A level 3 card</span>
+<Card level="s" spacing="l">
+  <Heading level="h2">Headline</Heading>
+  <span>
+    A card in size <code>l</code>, but elevated as <code>s</code>
+  </span>
 </Card>;
 ```
 
-## Card level 2
+## Card level 'm'
 
 ```jsx
 import Heading from '../Heading/Heading.tsx';
 
-<Card level={2}>
-  <Heading level={2} SEO={false}>
-    Headline
-  </Heading>
-  <span>A level 2 card</span>
+<Card level="m">
+  <Heading level="h2">Headline</Heading>
+  <span>
+    A level <code>m</code> card
+  </span>
 </Card>;
 ```
 
-## Card level 1
+## Card level 'l'
 
 ```jsx
 import Heading from '../Heading/Heading.tsx';
 
-<Card level={1}>
-  <Heading level={2} SEO={false}>
-    Headline
-  </Heading>
-  <span>A level 1 card</span>
+<Card level="l">
+  <Heading level="h2">Headline</Heading>
+  <span>
+    A level <code>l</code> card
+  </span>
 </Card>;
 ```
 
-## Card level 0
+## Card level 'xl'
 
 ```jsx
 import Heading from '../Heading/Heading.tsx';
 
-<Card level={0}>
-  <Heading level={2} SEO={false}>
-    Headline
-  </Heading>
-  <span>A level 0 card</span>
+<Card level="xl">
+  <Heading level="h2">Headline</Heading>
+  <span>
+    A level <code>xl</code> card
+  </span>
 </Card>;
 ```
