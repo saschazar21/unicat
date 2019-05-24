@@ -23,7 +23,7 @@ $shadows: (
   ),
 );
 
-@function shadow($size, $inset: false) {
+@function boxShadow($size, $inset: false) {
   @if not map-has-key($shadows, $size) {
     @error "The size #{$size} is not defined for shadows!";
   }

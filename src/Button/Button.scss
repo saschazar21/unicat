@@ -1,20 +1,52 @@
 @import '../__styles__/variables';
 
 .wrapper {
-  display: flex;
+  display: inline-flex;
+  box-shadow: boxShadow(xs);
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   border: none;
-  border-radius: borderRadius(); // TODO: change to variable
-  padding: 1rem; // TODO: change to variable
+  border-radius: borderRadius();
+  padding: spacing(xs) spacing(m);
   max-width: 100%;
-  background-color: color(light); // TODO: change to variable
-  color: color(default); // TODO: change to variable
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  transition: transition(box-shadow);
+  
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: boxShadow(m);
+    cursor: pointer;
+  }
+}
 
-  > span {
-    margin-right: 1em; // TODO: change to variable
+.block {
+  display: flex;
+}
+
+.large {
+  padding: spacing(m) spacing(l);
+  font-size: fontSize(h4);
+}
+
+.disabled {
+  box-shadow: none;
+  background-color: transparentize(color(default), 0.75);
+  color: color(default);
+  cursor: default;
+  
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: default;
+  }
+}
+
+@each $variant in $variants {
+  .#{$variant} {
+    background-color: color($variant);
+    color: color($variant, true);
   }
 }

@@ -6,10 +6,11 @@ import styles from './Button.scss';
 export interface ButtonProps {
   block?: boolean;
   className?: string;
+  disabled?: boolean;
   icon?: SVGSVGElement;
+  large?: boolean;
   onClick?: any;
   title: string;
-  size?: Size;
   type?: 'submit' | 'reset';
   variant?: Variant;
 }
@@ -18,22 +19,28 @@ export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
     variant: 'primary',
-    size: 'm',
     type: 'submit',
   };
 
   public render() {
-    const { size: defaultSize, variant: defaultVariant } = Button.defaultProps;
+    const { variant: defaultVariant } = Button.defaultProps;
     const {
       className: customClassName,
+      disabled,
       icon,
+      large,
       onClick,
-      size = defaultSize,
       title,
       type,
       variant = defaultVariant,
     } = this.props;
-    const className = classnames(styles.wrapper, styles[size], styles[variant], customClassName);
+
+    const className = classnames(
+      styles.wrapper,
+      styles[variant],
+      { [styles.large]: large, [styles.disabled]: disabled },
+      customClassName
+    );
 
     return (
       <button className={className} onClick={onClick} type={type}>

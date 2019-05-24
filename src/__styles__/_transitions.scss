@@ -1,0 +1,5 @@
+$duration: 200ms;
+
+@function transition($property: 'background', $dur: $duration) {
+  @return $property $dur ease-in;
+}

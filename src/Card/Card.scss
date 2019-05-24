@@ -1,0 +1,19 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  position: relative;
+  background-color: color(light);
+  border-radius: borderRadius();
+  margin: spacing(m);
+  overflow: hidden;
+}
+
+@each $size in $sizes {
+  .level-#{$size} {
+    box-shadow: boxShadow($size);
+  }
+  
+  .spacing-#{$size} {
+    padding: spacing($size);
+  }
+}

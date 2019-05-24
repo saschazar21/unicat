@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import builtins from 'builtin-modules';
+import autoprefixer from 'autoprefixer';
 import babel from 'rollup-plugin-babel';
 import filesize from 'rollup-plugin-filesize';
 import postcss from 'rollup-plugin-postcss';
@@ -28,6 +29,7 @@ const base = {
       modules: {
         generateScopedName: '[name]__[local]___[md5:hash:hex:4]',
       },
+      plugins: [autoprefixer()],
     }),
   ],
 };
