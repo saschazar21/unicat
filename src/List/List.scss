@@ -1,0 +1,35 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  display: block;
+  padding: 0;
+  line-height: spacing(xl);
+
+  > li {
+    display: block;
+  }
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; 
+  flex-wrap: wrap;
+
+  &.distribute {
+    flex: 1;
+  }
+
+  > li:not(:last-child) {
+    margin-right: spacing(xs);
+  }
+}
+
+.prefix {
+  list-style-type: none;
+
+  > li {
+    display: flex; align-items: center;
+  }
+}
