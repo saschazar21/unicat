@@ -39,16 +39,9 @@ const sizes = [
   },
 ];
 
-const sources = [
-  {
-    sizes,
-    srcset,
-    type: 'image/jpeg',
-  },
-];
-
 <Picture
-  sources={sources}
+  sizes={sizes}
+  srcset={srcset}
   description="Autumn trees in Montreal - Photo by Joe Example on unsplash"
   src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=200&fit=max"
 />;
@@ -95,17 +88,12 @@ const sizes = [
   },
 ];
 
-const sources = [
-  {
-    sizes,
-    srcset,
-    type: 'image/jpeg',
-  },
-];
-
 <Picture
-  crop={{ height: '480px', width: '640px' }}
-  sources={sources}
+  crop
+  sizes={sizes}
+  srcset={srcset}
+  height="480px"
+  width="640px"
   description="Autumn trees in Montreal - Photo by Joe Example on unsplash"
   src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=200&fit=max"
 />;

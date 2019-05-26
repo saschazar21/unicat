@@ -1,56 +1,32 @@
+@import '../__styles__/variables';
+
+.crop {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .wrapper {
-  // TODO: add styles
   display: block;
   overflow: hidden;
+  height: auto;
+  width: 100%;
 
-  ${({ crop }) =>
-    crop &&
-    `
-    position: relative;
-    margin: 0 auto;
-    height: ${crop.height || '100%'};
-    width: ${crop.width || '100%'};
-    max-height: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  `}
-
-  img {
-    ${({ crop }) =>
-      crop &&
-      `
-      position: absolute;
-      height: auto;
-      width: 100%;`}
-  }
-
-  img {
-    display: block;
-    ${({ crop }) =>
-      crop &&
-      `
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);`}
-    ${({ shape }) => {
-      switch (shape) {
-        case 'round':
-          return `border-radius: ${borderRadius.pop()};`;
-        case 'rounded':
-          return `border-radius: ${borderRadius.shift()};`;
-        default:
-          return null;
-      }
-    }}
-    margin: 0 auto;
-    max-width: 100%;
+  .crop & {
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
   }
 }
 
 .round {
-  // TODO: add styles
+  border-radius: borderRadius(-1);
 }
 
 .rounded {
-  // TODO: add styles
+  border-radius: borderRadius();
 }

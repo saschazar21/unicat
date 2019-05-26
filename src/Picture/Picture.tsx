@@ -12,9 +12,9 @@ declare module 'react' {
 export interface PictureProps {
   AMP?: boolean;
   className?: string;
-  crop?: { height?: string; width?: string };
+  crop?: boolean;
   description: string;
-  height?: string | number;
+  height?: string;
   lazyload: boolean;
   loading?: 'lazy' | 'eager' | 'auto';
   media?: string;
@@ -33,7 +33,7 @@ export interface PictureProps {
   ];
   src: string;
   shape?: 'round' | 'rounded' | 'default';
-  width?: string | number;
+  width?: string;
 }
 
 export default class Picture extends Component<PictureProps> {
@@ -55,6 +55,7 @@ export default class Picture extends Component<PictureProps> {
     const {
       AMP,
       className: customClassName,
+      crop,
       description,
       lazyload,
       loading = defaultLoading,
@@ -82,6 +83,9 @@ export default class Picture extends Component<PictureProps> {
       srcSet: Array.isArray(srcset) && srcset.map(({ res = '1x', url, width }) => `${url} ${width} ${res}`).join(', '),
     };
 
-    return React.createElement(AMP ? 'amp-img' : 'img', props);
+    const { height = '64px', width = '64px' } = this.props;
+
+    const img = React.createElement(AMP ? 'amp-img' : 'img', props);
+    return crop ? <figure className={styles.crop} style={{ height, width }}></figure> : img;
   }
 }
