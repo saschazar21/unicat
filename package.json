@@ -13,7 +13,9 @@
     "build:compile": "rollup -c",
     "build:copy": "shx cp package.json dist/ && cp README.md dist/ && shx cp LICENSE.md dist/ && shx cp CHANGELOG.md dist/",
     "build:dir": "shx mkdir dist",
-    "build": "npm run build:clean && npm run build:dir && npm run build:copy && npm run build:compile"
+    "build": "npm run build:clean && npm run build:dir && npm run build:copy && npm run build:compile",
+    "styleguide:watch": "npx styleguidist server",
+    "styleguide:build": "npx styleguidist build"
   },
   "prettier": {
     "printWidth": 80,
@@ -28,9 +30,16 @@
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.17",
     "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.6",
     "builtin-modules": "^3.1.0",
     "classnames": "^2.2.6",
+    "css-loader": "^2.1.1",
     "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.8.6",
+    "react-docgen-typescript": "^1.12.4",
+    "react-dom": "^16.8.6",
+    "react-styleguidist": "^9.1.2",
     "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.0.1",
@@ -38,8 +47,12 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-typescript2": "^0.21.1",
+    "sass-loader": "^7.1.0",
     "shx": "^0.3.2",
-    "typescript": "^3.4.5"
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.1",
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.2"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",

@@ -13,7 +13,7 @@ export interface CardProps {
 export default class Card extends Component<CardProps> {
   static defaultProps = {
     level: 'xs',
-    spacing: 'xs',
+    spacing: 'l',
   };
 
   public render() {
