@@ -18,7 +18,7 @@ export interface ButtonProps {
 export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
-    variant: 'primary',
+    variant: 'default',
     type: 'submit',
   };
 
@@ -44,8 +44,8 @@ export default class Button extends Component<ButtonProps> {
 
     return (
       <button className={className} onClick={onClick} type={type}>
-        {icon && <span>{icon}</span>}
         {title}
+        {icon && <span>{icon}</span>}
       </button>
     );
   }

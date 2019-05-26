@@ -31,8 +31,14 @@
   font-size: fontSize(h4);
 }
 
+@each $variant in $variants {
+  .#{$variant} {
+    background-color: color($variant);
+    color: color($variant, true);
+  }
+}
+
 .disabled {
-  box-shadow: none;
   background-color: transparentize(color(default), 0.75);
   color: color(default);
   cursor: default;
@@ -41,12 +47,6 @@
   &:focus,
   &:active {
     cursor: default;
-  }
-}
-
-@each $variant in $variants {
-  .#{$variant} {
-    background-color: color($variant);
-    color: color($variant, true);
+    box-shadow: boxShadow(xs);
   }
 }

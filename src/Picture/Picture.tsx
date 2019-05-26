@@ -26,7 +26,6 @@ export interface PictureProps {
   ];
   srcset?: [
     {
-      res?: '1x' | '2x';
       url: string;
       width: string;
     }
@@ -80,12 +79,12 @@ export default class Picture extends Component<PictureProps> {
       loading,
       media,
       sizes: Array.isArray(sizes) && sizes.map(({ mediaQuery = '', width }) => `${mediaQuery} ${width}`).join(', '),
-      srcSet: Array.isArray(srcset) && srcset.map(({ res = '1x', url, width }) => `${url} ${width} ${res}`).join(', '),
+      srcSet: Array.isArray(srcset) && srcset.map(({ url, width }) => `${url} ${width}`).join(', '),
     };
 
     const { height = '64px', width = '64px' } = this.props;
 
     const img = React.createElement(AMP ? 'amp-img' : 'img', props);
-    return crop ? <figure className={styles.crop} style={{ height, width }}></figure> : img;
+    return crop ? <figure className={styles.crop} style={{ height, width }}>{img}</figure> : img;
   }
 }
