@@ -2,7 +2,7 @@
 
 .wrapper {
   position: relative;
-  background-color: color(light);
+  background-color: color(white, false, $systemColors);
   border-radius: borderRadius();
   margin: spacing(m);
   overflow: hidden;

@@ -1,37 +1,55 @@
 $colors: (
   default: (
-    color: hsla(228%, 25%, 12%, 1),
-    contrast: hsla(207%, 76%, 64%, 1),
-    name: 'Eerie Black',
+    color: #2B303A,
+    contrast: #C7D59F,
+    name: 'Gunmetal',
   ),
   light: (
-    color: hsla(100%, 100%, 99%, 1),
-    contrast: hsla(228%, 25%, 12%, 1),
-    name: 'Baby Powder',
+    color: #C7D59F,
+    contrast: #0D5C63,
+    name: 'Medium Spring Bud',
   ),
   primary: (
-    color: hsla(214%, 100%, 28%, 1),
-    contrast: hsla(52%, 98%, 48%, 1),
-    name: 'Blue Jeans',
+    color: #0D3B66,
+    contrast: #FFFFFA,
+    name: 'Dark Midnight Blue',
   ),
   warning: (
-    color: hsla(52%, 98%, 48%, 1),
-    contrast: hsla(228%, 25%, 12%, 1),
-    name: 'Safety Yellow',
+    color: #F4D35E,
+    contrast: #2B303A,
+    name: 'Stil de Grain Yellow',
   ),
   success: (
-    color: hsla(214%, 100%, 28%, 1),
-    contrast: hsla(100%, 100%, 99%, 1),
-    name: 'Blue Jeans',
+    color: #0D5C63,
+    contrast: #92DCE5,
+    name: 'Deep Green-Cyan Turquoise',
+  )
+);
+
+$systemColors: (
+  default: (
+    color: #2B303A,
+    contrast: #FFFFFA,
+    name: 'Gunmetal',
+  ),
+  grey: (
+    color: #7C7C7C,
+    contrast: black,
+    name: 'Trolley Grey',
+  ),
+  white: (
+    color: #FFFFFA,
+    contrast: #0D5C63,
+    name: 'Baby Powder',
   ),
 );
 
-@function color($mode, $contrast: false) {
-  @if map-has-key($colors, $mode) {
+@function color($mode, $contrast: false, $palette: $colors) {
+  @if map-has-key($palette, $mode) {
     @if not $contrast {
-      @return map-get(map-get($colors, $mode), color);
+      @return map-get(map-get($palette, $mode), color);
     }
-    @return map-get(map-get($colors, $mode), contrast);
+    @return map-get(map-get($palette, $mode), contrast);
   }
   @error "The color key #{$mode} is not defined!";
 }

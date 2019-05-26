@@ -28,7 +28,7 @@
 
 .large {
   padding: spacing(m) spacing(l);
-  font-size: fontSize(h4);
+  font-size: fontSize(h5);
 }
 
 @each $variant in $variants {

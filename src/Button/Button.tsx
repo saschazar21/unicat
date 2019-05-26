@@ -18,7 +18,7 @@ export interface ButtonProps {
 export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
-    variant: 'default',
+    variant: 'primary',
     type: 'submit',
   };
 
