@@ -1,6 +1,7 @@
 import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 
+import { Size } from '../__types__/global';
 import styles from './Card.scss';
 
 export interface CardProps {

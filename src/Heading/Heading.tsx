@@ -1,6 +1,8 @@
 import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 
+import { Heading } from '../__types__/global';
+
 import styles from './Heading.scss';
 
 export interface HeadingProps {

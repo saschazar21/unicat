@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
+import { Variant } from '../__types__/global';
+
 import styles from './Button.scss';
 
 export interface ButtonProps {
