@@ -8,12 +8,13 @@
   flex-wrap: nowrap;
   border: none;
   border-radius: borderRadius();
-  padding: spacing(xs) spacing(m);
+  padding: spacing(m) spacing(s);
   max-width: 100%;
+  font-size: fontSize(small);
   letter-spacing: 0.25em;
   text-transform: uppercase;
   transition: transition(box-shadow);
-  
+
   &:hover,
   &:focus,
   &:active {
@@ -27,8 +28,8 @@
 }
 
 .large {
-  padding: spacing(m) spacing(l);
-  font-size: fontSize(h5);
+  padding: spacing(l) spacing(m);
+  font-size: fontSize(h6);
 }
 
 @each $variant in $variants {
@@ -42,7 +43,7 @@
   background-color: transparentize(color(default), 0.75);
   color: color(default);
   cursor: default;
-  
+
   &:hover,
   &:focus,
   &:active {
