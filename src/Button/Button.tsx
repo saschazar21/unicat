@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import { Variant } from '../__types__/global';
+import { SmallVariant } from '../__types__/global';
 
 import styles from './Button.scss';
 
@@ -14,13 +14,13 @@ export interface ButtonProps {
   onClick?: any;
   title: string;
   type?: 'submit' | 'reset';
-  variant?: Variant;
+  variant?: SmallVariant;
 }
 
 export default class Button extends Component<ButtonProps> {
   static defaultProps = {
     block: false,
-    variant: 'primary',
+    variant: 'default',
     type: 'submit',
   };
 
@@ -39,7 +39,7 @@ export default class Button extends Component<ButtonProps> {
 
     const className = classnames(
       styles.wrapper,
-      styles[variant],
+      { [styles[variant]]: !disabled },
       { [styles.large]: large, [styles.disabled]: disabled },
       customClassName
     );

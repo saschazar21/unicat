@@ -9,3 +9,4 @@ export declare type Variant =
   | 'primary'
   | 'warning'
   | 'success';
+export declare type SmallVariant = 'default' | 'light';
