@@ -1,35 +1,31 @@
 import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 
-import { Size } from '../__types__/global';
+import { SmallVariant } from '../__types__/global';
 import styles from './Card.scss';
 
 export interface CardProps {
   children: ReactNode[] | ReactNode;
   className?: string;
-  level?: Size;
-  spacing?: Size;
+  variant: SmallVariant;
 }
 
 export default class Card extends Component<CardProps> {
   static defaultProps = {
-    level: 'xs',
-    spacing: 'l',
+    variant: 'default',
   };
 
   public render() {
-    const { level: defaultLevel, spacing: defaultSpacing } = Card.defaultProps;
+    const { variant: defaultVariant } = Card.defaultProps;
     const {
       children,
       className: customClassName,
-      level = defaultLevel,
-      spacing = defaultSpacing,
+      variant = defaultVariant,
     } = this.props;
 
     const className = classnames(
       styles.wrapper,
-      styles[`level-${level}`],
-      styles[`spacing-${spacing}`],
+      { [styles[variant]]: variant !== defaultVariant },
       customClassName
     );
 

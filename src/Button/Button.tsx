@@ -45,7 +45,12 @@ export default class Button extends Component<ButtonProps> {
     );
 
     return (
-      <button className={className} onClick={onClick} type={type}>
+      <button
+        className={className}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+      >
         {title}
         {icon && <span>{icon}</span>}
       </button>

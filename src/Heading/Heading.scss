@@ -5,6 +5,9 @@
   font-family: var(--font-heading);
   margin-top: 0;
   margin-bottom: spacing(xs);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   @include media-query-up(m) {
     margin-bottom: spacing(m);
@@ -13,6 +16,15 @@
 
 @each $heading in $headings {
   .#{$heading} {
-    font-size: fontSize($heading);
+    $i: map-get($numbers, str-slice($heading, -1));
+    $oneDown: h#{$i + 1};
+    @if $oneDown == h6 {
+      font-size: fontSize(h5);
+    }
+    font-size: fontSize($oneDown);
+
+    @include media-query-up(m) {
+      font-size: fontSize($heading);
+    }
   }
 }

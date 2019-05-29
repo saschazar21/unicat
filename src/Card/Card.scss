@@ -3,17 +3,17 @@
 .wrapper {
   position: relative;
   background-color: color(white, false, $systemColors);
+  color: color(default);
   border-radius: borderRadius();
+  padding: spacing(l);
   margin: spacing(m);
+  box-shadow: boxShadow(m);
   overflow: hidden;
 }
 
-@each $size in $sizes {
-  .level-#{$size} {
-    box-shadow: boxShadow($size);
-  }
-  
-  .spacing-#{$size} {
-    padding: spacing($size);
-  }
+.light {
+  padding: spacing(s);
+  margin: spacing(s);
+  font-size: fontSize(small);
+  box-shadow: boxShadow(xs);
 }
