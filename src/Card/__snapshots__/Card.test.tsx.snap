@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders 1`] = `
+<aside
+  className="wrapper"
+>
+  <span>
+    Test
+  </span>
+</aside>
+`;
+
+exports[`Card renders a light variant 1`] = `
+<aside
+  className="wrapper light"
+>
+  Test
+</aside>
+`;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import { SmallVariant } from '../__types__/global';
+import { SmallVariant, MouseEvent } from '../__types__/global';
 
 import styles from './Button.scss';
 
@@ -11,7 +11,7 @@ export interface ButtonProps {
   disabled?: boolean;
   icon?: SVGSVGElement;
   large?: boolean;
-  onClick?: any;
+  onClick?: MouseEvent;
   title: string;
   type?: 'submit' | 'reset';
   variant?: SmallVariant;
@@ -47,7 +47,7 @@ export default class Button extends Component<ButtonProps> {
     return (
       <button
         className={className}
-        onClick={onClick}
+        onClick={!disabled ? onClick : undefined}
         type={type}
         disabled={disabled}
       >

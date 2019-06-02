@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading renders 1`] = `
+<span
+  className="wrapper h1"
+>
+  Test
+</span>
+`;
+
+exports[`Heading renders a <h2 /> tag 1`] = `
+<h2
+  className="wrapper h2"
+>
+  Test
+</h2>
+`;

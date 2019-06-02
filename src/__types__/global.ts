@@ -1,3 +1,5 @@
+import React from 'react';
+
 export declare type FontFamily = 'default' | 'heading';
 export declare type FontSize = 'large' | 'default' | 'small';
 export declare type Heading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
@@ -10,3 +12,5 @@ export declare type Variant =
   | 'warning'
   | 'success';
 export declare type SmallVariant = 'default' | 'light';
+
+export declare type MouseEvent = (event?: React.MouseEvent<HTMLElement>) => void;

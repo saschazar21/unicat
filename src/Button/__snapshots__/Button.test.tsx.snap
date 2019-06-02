@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders 1`] = `
+<button
+  className="wrapper default"
+  onClick={[MockFunction]}
+  type="submit"
+>
+  Test
+</button>
+`;
+
+exports[`Button renders a disabled variant 1`] = `
+<button
+  className="wrapper disabled"
+  disabled={true}
+  type="submit"
+>
+  Test
+</button>
+`;
+
+exports[`Button renders a light variant 1`] = `
+<button
+  className="wrapper light"
+  onClick={[MockFunction]}
+  type="submit"
+>
+  Test
+</button>
+`;
