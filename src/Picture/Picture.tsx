@@ -36,7 +36,7 @@ export interface PictureProps {
 }
 
 export default class Picture extends Component<PictureProps> {
-  static nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
+  private nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
 
   static defaultProps = {
     loading: 'auto',
@@ -67,9 +67,13 @@ export default class Picture extends Component<PictureProps> {
     } = this.props;
 
     const source =
-      Picture.nativeLazyLoading || !lazyload ? { src } : { dataSrc: src };
+      this.nativeLazyLoading || !lazyload ? { src } : { dataSrc: src };
 
-    const className = classnames(styles.wrapper, { [styles.shape]: shape !== defaultShape }, customClassName);
+    const className = classnames(
+      styles.wrapper,
+      { [styles.shape]: shape !== defaultShape },
+      customClassName
+    );
 
     const props = {
       ...other,
@@ -78,13 +82,25 @@ export default class Picture extends Component<PictureProps> {
       description,
       loading,
       media,
-      sizes: Array.isArray(sizes) && sizes.map(({ mediaQuery = '', width }) => `${mediaQuery} ${width}`).join(', '),
-      srcSet: Array.isArray(srcset) && srcset.map(({ url, width }) => `${url} ${width}`).join(', '),
+      sizes:
+        Array.isArray(sizes) &&
+        sizes
+          .map(({ mediaQuery = '', width }) => `${mediaQuery} ${width}`)
+          .join(', '),
+      srcSet:
+        Array.isArray(srcset) &&
+        srcset.map(({ url, width }) => `${url} ${width}`).join(', '),
     };
 
     const { height = '64px', width = '64px' } = this.props;
 
     const img = React.createElement(AMP ? 'amp-img' : 'img', props);
-    return crop ? <figure className={styles.crop} style={{ height, width }}>{img}</figure> : img;
+    return crop ? (
+      <figure className={styles.crop} style={{ height, width }}>
+        {img}
+      </figure>
+    ) : (
+      img
+    );
   }
 }
