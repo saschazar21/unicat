@@ -12,5 +12,3 @@ export declare type Variant =
   | 'warning'
   | 'success';
 export declare type SmallVariant = 'default' | 'light';
-
-export declare type MouseEvent = (event?: React.MouseEvent<HTMLElement>) => void;

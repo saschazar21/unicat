@@ -1,9 +1,68 @@
 @import '../__styles__/variables';
 
-.wrapper {
-  // TODO: add styles
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-.variant {
-  // TODO: add styles
+@keyframes slideUp {
+  0% {
+    transform: translateY(50vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+@include media-query-up(m) {
+  @keyframes slideUp {
+    0% {
+      transform: translateX(-50%) translateY(50vh);
+    }
+
+    100% {
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+
+.backdrop {
+  animation: appear $duration ease-out;
+  position: fixed;
+  background-color: transparentize(color(default), 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.wrapper {
+  animation: slideUp $duration ease-out;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  box-sizing: border-box;
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+
+  @include media-query-up(m) {
+    border-bottom-right-radius: borderRadius();
+    border-bottom-left-radius: borderRadius();
+    margin: 1rem;
+    width: auto;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }

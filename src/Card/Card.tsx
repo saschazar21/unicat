@@ -7,7 +7,7 @@ import styles from './Card.scss';
 export interface CardProps {
   children: ReactNode[] | ReactNode;
   className?: string;
-  variant: SmallVariant;
+  variant?: SmallVariant;
 }
 
 export default class Card extends Component<CardProps> {

@@ -28,5 +28,6 @@
     "strictPropertyInitialization": true,
     "target": "esnext"
   },
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"],
   "include": ["src", "types"]
 }

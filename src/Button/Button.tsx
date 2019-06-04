@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import { SmallVariant, MouseEvent } from '../__types__/global';
+import { SmallVariant } from '../__types__/global';
 
 import styles from './Button.scss';
 
@@ -11,7 +11,7 @@ export interface ButtonProps {
   disabled?: boolean;
   icon?: SVGSVGElement;
   large?: boolean;
-  onClick?: MouseEvent;
+  onClick?: (event?: React.SyntheticEvent) => void;
   title: string;
   type?: 'submit' | 'reset';
   variant?: SmallVariant;

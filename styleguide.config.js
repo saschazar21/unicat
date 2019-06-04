@@ -1,6 +1,6 @@
 module.exports = {
   components: 'src/**/[A-Z]*.{js,jsx,ts,tsx}',
-  ignore: ['src/{__data__,__styles__}/**.{js,jsx,ts,tsx}'],
+  ignore: ['src/__data__/**.{js,jsx,ts,tsx}', 'src/**/*.test.{js,jsx,ts,tsx}'],
   propsParser: require('react-docgen-typescript').parse,
   sections: [
     {
@@ -10,7 +10,7 @@ module.exports = {
     {
       name: 'UI Components',
       components: 'src/**/[A-Z]*.{js,jsx,ts,tsx}',
-      ignore: ['src/{__data__,__styles__}/**.{js,jsx,ts,tsx}'],
+      ignore: ['src/__data__/**.{js,jsx,ts,tsx}'],
       exampleMode: 'expand',
       usageMode: 'collapse',
     },

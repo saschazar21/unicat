@@ -10,7 +10,6 @@ declare module 'react' {
 }
 
 export interface PictureProps {
-  AMP?: boolean;
   className?: string;
   crop?: boolean;
   description: string;
@@ -52,7 +51,6 @@ export default class Picture extends Component<PictureProps> {
     } = Picture.defaultProps;
 
     const {
-      AMP,
       className: customClassName,
       crop,
       description,
@@ -94,7 +92,7 @@ export default class Picture extends Component<PictureProps> {
 
     const { height = '64px', width = '64px' } = this.props;
 
-    const img = React.createElement(AMP ? 'amp-img' : 'img', props);
+    const img = React.createElement('img', props);
     return crop ? (
       <figure className={styles.crop} style={{ height, width }}>
         {img}
