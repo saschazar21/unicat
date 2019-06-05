@@ -1,5 +1,3 @@
-import React from 'react';
-
 export declare type FontFamily = 'default' | 'heading';
 export declare type FontSize = 'large' | 'default' | 'small';
 export declare type Heading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

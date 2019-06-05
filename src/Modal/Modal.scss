@@ -12,57 +12,51 @@
 
 @keyframes slideUp {
   0% {
-    transform: translateY(50vh);
+    opacity: 0;
+    transform: translateY(25vh);
   }
 
   100% {
+    opacity: 1;
     transform: translateY(0);
-  }
-}
-
-
-
-@include media-query-up(m) {
-  @keyframes slideUp {
-    0% {
-      transform: translateX(-50%) translateY(50vh);
-    }
-
-    100% {
-      transform: translateX(-50%) translateY(-50%);
-    }
   }
 }
 
 .backdrop {
   animation: appear $duration ease-out;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   background-color: transparentize(color(default), 0.4);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  overflow: hidden;
   z-index: 9999;
+
+  @include media-query-up(m) {
+    align-items: center;
+  }
 }
 
 .wrapper {
   animation: slideUp $duration ease-out;
+  display: block;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   box-sizing: border-box;
-  position: absolute;
   margin: 0;
+  max-height: calc(100vh - #{spacing(xl)});
   width: 100%;
-  bottom: 0;
-  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   @include media-query-up(m) {
     border-bottom-right-radius: borderRadius();
     border-bottom-left-radius: borderRadius();
-    margin: 1rem;
-    width: auto;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    margin: spacing();
+    max-width: rem(568px);
   }
 }

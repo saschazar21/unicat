@@ -62,12 +62,5 @@ $spacings: (
 }
 
 @function rem($pxval) {
-  @if not unitless($pxval) {
-    $pxval: strip-units($pxval);
-  }
-
-  @if not unitless($base) {
-    $base: strip-units($base);
-  }
   @return ($pxval / $base) * 1rem;
 }
