@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders 1`] = `
+<div
+  className="container"
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="backdrop"
+    onClick={[Function]}
+  />
+  <Card
+    className="wrapper"
+    variant="default"
+  >
+    <span>
+      Test
+    </span>
+  </Card>
+</div>
+`;

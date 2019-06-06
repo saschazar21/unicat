@@ -22,23 +22,27 @@
   }
 }
 
-.backdrop {
-  animation: appear $duration ease-out;
+.backdrop,
+.container {
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background-color: transparentize(color(default), 0.4);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 9998;
 
   @include media-query-up(m) {
     align-items: center;
   }
+}
+
+.backdrop {
+  animation: appear $duration ease-out;
+  background-color: transparentize(color(default), 0.4);
 }
 
 .wrapper {
@@ -52,6 +56,7 @@
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 9999;
 
   @include media-query-up(m) {
     border-bottom-right-radius: borderRadius();

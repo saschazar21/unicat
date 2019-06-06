@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, ReactNode, createRef } from 'react';
 import classnames from 'classnames';
 
 import { SmallVariant } from '../__types__/global';
@@ -31,13 +31,17 @@ export default class Modal extends Component<ModalProps, ModalState> {
     overflow: '',
   };
 
-  private handleClick(e: React.MouseEvent): void {
+  private containerRef: React.RefObject<HTMLDivElement> = createRef();
+
+  private handleClick = (e: React.MouseEvent): void => {
+    e && typeof e.preventDefault === 'function' && e.preventDefault();
     const { onClose } = this.props;
 
     onClose(e);
   }
 
-  private handleKeyUp(e: React.KeyboardEvent): void {
+  private handleKeyUp = (e: React.KeyboardEvent): void => {
+    e && typeof e.preventDefault === 'function' && e.preventDefault();
     const { onClose } = this.props;
 
     if (e.key && Modal.closingKeys.indexOf(e.key) > -1) {
@@ -53,6 +57,10 @@ export default class Modal extends Component<ModalProps, ModalState> {
       });
       document.body.style.overflow = 'hidden';
       document.body.style.height = '100%';
+
+      if (this.containerRef && this.containerRef.current) {
+        this.containerRef.current.focus();
+      }
     }
   }
 
@@ -77,7 +85,8 @@ export default class Modal extends Component<ModalProps, ModalState> {
 
     // Insert template logic here
     return (
-      <div className={styles.backdrop} onClick={this.handleClick.bind(this)} onKeyUp={this.handleKeyUp.bind(this)}>
+      <div className={styles.container} onKeyUp={this.handleKeyUp} tabIndex={0} ref={this.containerRef}>
+        <div className={styles.backdrop} onClick={this.handleClick} />
         <Card className={className} variant={variant as SmallVariant}>{children}</Card>
       </div>
     );
