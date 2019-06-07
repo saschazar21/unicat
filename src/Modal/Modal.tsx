@@ -1,6 +1,7 @@
 import React, { Component, ReactNode, createRef } from 'react';
 import classnames from 'classnames';
 
+import { preventDefault } from '../__tools__/helpers';
 import { SmallVariant } from '../__types__/global';
 import Card from '../Card';
 
@@ -34,20 +35,20 @@ export default class Modal extends Component<ModalProps, ModalState> {
   private containerRef: React.RefObject<HTMLDivElement> = createRef();
 
   private handleClick = (e: React.MouseEvent): void => {
-    e && typeof e.preventDefault === 'function' && e.preventDefault();
+    preventDefault(e);
     const { onClose } = this.props;
 
     onClose(e);
-  }
+  };
 
   private handleKeyUp = (e: React.KeyboardEvent): void => {
-    e && typeof e.preventDefault === 'function' && e.preventDefault();
+    preventDefault(e);
     const { onClose } = this.props;
 
     if (e.key && Modal.closingKeys.indexOf(e.key) > -1) {
       onClose(e);
     }
-  }
+  };
 
   public componentDidMount(): void {
     if (typeof document === 'object' && typeof document.body !== 'undefined') {
@@ -76,18 +77,26 @@ export default class Modal extends Component<ModalProps, ModalState> {
   public render() {
     const { variant: defaultVariant } = Modal.defaultProps;
 
-    const { children, className: customClassName, variant = defaultVariant } = this.props;
+    const {
+      children,
+      className: customClassName,
+      variant = defaultVariant,
+    } = this.props;
 
-    const className = classnames(
-      styles.wrapper,
-      customClassName,
-    );
+    const className = classnames(styles.wrapper, customClassName);
 
     // Insert template logic here
     return (
-      <div className={styles.container} onKeyUp={this.handleKeyUp} tabIndex={0} ref={this.containerRef}>
+      <div
+        className={styles.container}
+        onKeyUp={this.handleKeyUp}
+        tabIndex={0}
+        ref={this.containerRef}
+      >
         <div className={styles.backdrop} onClick={this.handleClick} />
-        <Card className={className} variant={variant as SmallVariant}>{children}</Card>
+        <Card className={className} variant={variant as SmallVariant}>
+          {children}
+        </Card>
       </div>
     );
   }

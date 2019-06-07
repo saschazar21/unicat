@@ -14,21 +14,17 @@ export interface PictureProps {
   crop?: boolean;
   description: string;
   height?: string;
-  lazyload: boolean;
+  lazyload?: boolean;
   loading?: 'lazy' | 'eager' | 'auto';
   media?: string;
-  sizes?: [
-    {
-      mediaQuery?: string;
-      width: string;
-    }
-  ];
-  srcset?: [
-    {
-      url: string;
-      width: string;
-    }
-  ];
+  sizes?: {
+    mediaQuery?: string;
+    width: string;
+  }[];
+  srcset?: {
+    url: string;
+    width: string;
+  }[];
   src: string;
   shape?: 'round' | 'rounded' | 'default';
   width?: string;
@@ -38,6 +34,7 @@ export default class Picture extends Component<PictureProps> {
   private nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
 
   static defaultProps = {
+    lazyload: false,
     loading: 'auto',
     shape: 'default',
     sizes: [],
@@ -46,6 +43,7 @@ export default class Picture extends Component<PictureProps> {
 
   public render() {
     const {
+      lazyload: defaultLazyLoad,
       loading: defaultLoading,
       shape: defaultShape,
     } = Picture.defaultProps;
@@ -54,7 +52,7 @@ export default class Picture extends Component<PictureProps> {
       className: customClassName,
       crop,
       description,
-      lazyload,
+      lazyload = defaultLazyLoad,
       loading = defaultLoading,
       media,
       shape = defaultShape,
@@ -64,8 +62,14 @@ export default class Picture extends Component<PictureProps> {
       ...other
     } = this.props;
 
+    const srcSet =
+      Array.isArray(srcset) &&
+      srcset.map(({ url, width }) => `${url} ${width}`).join(', ');
+
     const source =
-      this.nativeLazyLoading || !lazyload ? { src } : { dataSrc: src };
+      this.nativeLazyLoading || !lazyload
+        ? { src, srcSet }
+        : { dataSrc: src, dataSrcSet: srcSet };
 
     const className = classnames(
       styles.wrapper,
@@ -85,9 +89,6 @@ export default class Picture extends Component<PictureProps> {
         sizes
           .map(({ mediaQuery = '', width }) => `${mediaQuery} ${width}`)
           .join(', '),
-      srcSet:
-        Array.isArray(srcset) &&
-        srcset.map(({ url, width }) => `${url} ${width}`).join(', '),
     };
 
     const { height = '64px', width = '64px' } = this.props;
