@@ -12,6 +12,7 @@ exports[`Modal renders 1`] = `
   />
   <Card
     className="wrapper"
+    onClose={[MockFunction]}
     variant="default"
   >
     <span>

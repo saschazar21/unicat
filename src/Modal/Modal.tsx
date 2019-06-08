@@ -1,8 +1,9 @@
-import React, { Component, ReactNode, createRef } from 'react';
+import React, { Component, ReactNode, createRef, ReactElement } from 'react';
 import classnames from 'classnames';
 
 import { preventDefault } from '../__tools__/helpers';
 import { SmallVariant } from '../__types__/global';
+import Button from '../Button';
 import Card from '../Card';
 
 import styles from './Modal.scss';
@@ -10,6 +11,7 @@ import styles from './Modal.scss';
 export interface ModalProps {
   children: ReactNode[] | ReactNode;
   className?: string;
+  cta?: ReactElement<Button>;
   heading?: ReactNode;
   onClose: (event?: React.SyntheticEvent) => void;
   variant?: SmallVariant;
@@ -81,6 +83,7 @@ export default class Modal extends Component<ModalProps, ModalState> {
       children,
       className: customClassName,
       variant = defaultVariant,
+      ...otherProps
     } = this.props;
 
     const className = classnames(styles.wrapper, customClassName);
@@ -94,7 +97,7 @@ export default class Modal extends Component<ModalProps, ModalState> {
         ref={this.containerRef}
       >
         <div className={styles.backdrop} onClick={this.handleClick} />
-        <Card className={className} variant={variant as SmallVariant}>
+        <Card className={className} variant={variant as SmallVariant} {...otherProps}>
           {children}
         </Card>
       </div>

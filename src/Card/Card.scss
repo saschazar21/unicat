@@ -1,5 +1,41 @@
 @import '../__styles__/variables';
 
+.body {
+  text-align: center;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &:not(:last-child) {
+    padding-bottom: spacing();
+
+    &.light {
+      padding-bottom: spacing(s);
+    }
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: spacing();
+
+  &.light {
+    padding-top: spacing(s);
+  }
+
+  .body + & {
+    border-top: borderWidth() solid $borderColor;
+  }
+
+  @include media-query-up(m) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: spacing();
+  }
+}
+
 .wrapper {
   position: relative;
   background-color: color(white, false, $systemColors);

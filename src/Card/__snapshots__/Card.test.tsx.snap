@@ -4,9 +4,13 @@ exports[`Card renders 1`] = `
 <aside
   className="wrapper"
 >
-  <span>
-    Test
-  </span>
+  <div
+    className="body"
+  >
+    <span>
+      Test
+    </span>
+  </div>
 </aside>
 `;
 
@@ -14,6 +18,10 @@ exports[`Card renders a light variant 1`] = `
 <aside
   className="wrapper light"
 >
-  Test
+  <div
+    className="body"
+  >
+    Test
+  </div>
 </aside>
 `;
