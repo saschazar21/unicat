@@ -53,6 +53,6 @@ describe('Button', () => {
     const wrapper = shallow(<Button onClick={mock} title="Test" icon={icon} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.find('.icon')).toHaveLength(1);
+    expect(wrapper.find('svg')).toHaveLength(1);
   });
 });

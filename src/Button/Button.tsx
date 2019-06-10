@@ -52,7 +52,7 @@ export default class Button extends Component<ButtonProps> {
         disabled={disabled}
       >
         {title}
-        {icon && <span className={styles.icon}>{icon}</span>}
+        {icon}
       </button>
     );
   }
