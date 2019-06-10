@@ -9,7 +9,7 @@ export interface ButtonProps {
   block?: boolean;
   className?: string;
   disabled?: boolean;
-  icon?: SVGSVGElement;
+  icon?: JSX.Element;
   large?: boolean;
   onClick?: (event?: React.SyntheticEvent) => void;
   title: string;
@@ -52,7 +52,7 @@ export default class Button extends Component<ButtonProps> {
         disabled={disabled}
       >
         {title}
-        {icon && <span>{icon}</span>}
+        {icon && <span className={styles.icon}>{icon}</span>}
       </button>
     );
   }

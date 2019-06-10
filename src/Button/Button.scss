@@ -8,6 +8,7 @@
   flex-wrap: nowrap;
   font-size: fontSize(small);
   color: color(white, false, $systemColors);
+  fill: color(white, false, $systemColors);
   background-color: color(success);
   box-shadow: boxShadow(xs);
   border: borderWidth(-1) solid transparent;
@@ -34,6 +35,7 @@
 
 .default {
   color: color(white, false, $systemColors);
+  fill: color(white, false, $systemColors);
   background: linear-gradient(
     45deg,
     color(primary) 20%,
@@ -67,6 +69,17 @@
   }
 }
 
+.icon {
+  margin-left: spacing(s);
+  height: 1.5em;
+  width: auto;
+
+  > svg {
+    height: 100%;
+    width: auto;
+  }
+}
+
 .large {
   padding: spacing(l) spacing(m);
   font-size: fontSize(h6);
@@ -75,6 +88,7 @@
 .light {
   border-color: color(white, true, $systemColors);
   color: color(white, true, $systemColors);
+  fill: color(white, true, $systemColors);
   background-color: color(white, false, $systemColors);
 }
 
