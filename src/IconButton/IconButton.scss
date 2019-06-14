@@ -1,0 +1,80 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  display: inline-flex;
+  position: relative;
+  background-color: transparent;
+  border-radius: borderRadius(-1);
+  border: borderWidth(-1) solid transparent;
+  box-shadow: boxShadow(xs);
+  padding: spacing(xs);
+  overflow: hidden;
+  height: 44px;
+  width: 44px;
+  transition: transition(box-shadow);
+  z-index: 0;
+  
+  >svg {
+    flex: 1;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+  &:active,
+  &:hover,
+  &:focus {
+    box-shadow: boxShadow(m);
+    cursor: pointer;
+  }
+}
+
+.block {
+  display: flex;
+  margin: 0 auto;
+}
+
+.default {
+  border-color: color(primary);
+  fill: color(white, false, $systemColors);
+  background: linear-gradient(45deg,
+      color(primary) 20%,
+      color(success) 65%,
+      color(default));
+      
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(27deg,
+        color(primary),
+        color(success) 20%,
+        color(default));
+    transition: transition(opacity);
+    z-index: -1;
+  }
+    
+    &:active,
+    &:hover,
+    &:focus {
+      &::before {
+        opacity: 0;
+      }
+    }
+}
+
+.large {
+  padding: spacing(s);
+  height: 64px;
+  width: 64px;
+}
+
+.light {
+  border-color: color(white, true, $systemColors);
+  color: color(white, true, $systemColors);
+  fill: color(white, true, $systemColors);
+  background-color: color(white, false, $systemColors);
+}

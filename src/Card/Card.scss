@@ -7,10 +7,10 @@
   overflow-y: auto;
 
   &:not(:last-child) {
-    padding-bottom: spacing();
+    padding-bottom: spacing(xl);
 
     &.light {
-      padding-bottom: spacing(s);
+      padding-bottom: spacing();
     }
   }
 }
@@ -20,14 +20,14 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: spacing();
+  padding-top: spacing(xl);
 
   &.light {
-    padding-top: spacing(s);
+    padding-top: spacing();
   }
 
   .body + & {
-    border-top: borderWidth() solid $borderColor;
+    border-top: borderWidth() dashed $borderColor;
   }
 
   @include media-query-up(m) {
@@ -41,15 +41,14 @@
   background-color: color(white, false, $systemColors);
   color: color(default);
   border-radius: borderRadius();
-  padding: spacing(l);
+  padding: spacing(xl);
   margin: spacing(m);
   box-shadow: boxShadow(m);
   overflow: hidden;
 }
 
 .light {
-  padding: spacing(s);
+  padding: spacing();
   margin: spacing(s);
-  font-size: fontSize(small);
   box-shadow: boxShadow(xs);
 }
