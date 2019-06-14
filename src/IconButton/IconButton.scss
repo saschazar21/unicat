@@ -78,3 +78,16 @@
   fill: color(white, true, $systemColors);
   background-color: color(white, false, $systemColors);
 }
+
+.disabled {
+  background-color: transparentize(color(default), 0.75);
+  color: color(default);
+  cursor: default;
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: default;
+    box-shadow: boxShadow(xs);
+  }
+}
