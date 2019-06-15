@@ -30,6 +30,13 @@
   list-style-type: none;
 
   > li {
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  svg,
+  img {
+    margin-right: spacing(xs);
+    max-height: spacing();
   }
 }

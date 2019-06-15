@@ -25,3 +25,24 @@ exports[`Card renders a light variant 1`] = `
   </div>
 </aside>
 `;
+
+exports[`Card renders an image 1`] = `
+<aside
+  className="wrapper dark"
+>
+  <picture
+    className="picture"
+  >
+    <img
+      src="//placehold.it/200x200"
+    />
+  </picture>
+  <div
+    className="body"
+  >
+    <span>
+      Test
+    </span>
+  </div>
+</aside>
+`;

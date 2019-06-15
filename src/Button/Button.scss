@@ -81,6 +81,13 @@
   color: color(white, true, $systemColors);
   fill: color(white, true, $systemColors);
   background-color: color(white, false, $systemColors);
+  transition: transition(all);
+  
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: color(success, true);
+  }
 }
 
 .disabled {

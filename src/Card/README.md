@@ -31,3 +31,17 @@ import Heading from '../Heading/Heading.tsx';
   <span>A smaller version of the Card.</span>
 </Card>;
 ```
+
+An image may be included like this:
+
+```jsx
+import Button from '../Button/Button.tsx';
+import Heading from '../Heading/Heading.tsx';
+import Picture from '../Picture/Picture.tsx';
+
+<Card image={<Picture src="//placehold.it/300x100" description="A placeholder" />}>
+  <Heading level="h2">Headline</Heading>
+  <span>A smaller version of the Card.</span>
+</Card>;
+```
+

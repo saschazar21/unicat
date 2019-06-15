@@ -11,7 +11,7 @@ export interface ListProps {
   horizontal?: boolean;
   items: ReactNode[];
   ordered?: boolean;
-  prefix?: ReactNode;
+  prefix?: ReactNode | JSX.Element;
 }
 
 export default class List extends Component<ListProps> {
@@ -30,13 +30,17 @@ export default class List extends Component<ListProps> {
       horizontal,
       items,
       ordered,
-      prefix
+      prefix,
     } = this.props;
 
     const className = classnames(
       styles.wrapper,
-      { [styles.horizontal]: horizontal, [styles.prefix]: prefix, [styles.distribute]: distribute !== defaultDistribute },
-      customClassName,
+      {
+        [styles.horizontal]: horizontal,
+        [styles.prefix]: prefix,
+        [styles.distribute]: distribute !== defaultDistribute,
+      },
+      customClassName
     );
 
     const key = this._key;

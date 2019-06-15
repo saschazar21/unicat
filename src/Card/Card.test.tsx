@@ -7,7 +7,11 @@ import Card from './Card';
 
 describe('Card', () => {
   it('renders', () => {
-    const wrapper = shallow(<Card><span>Test</span></Card>);
+    const wrapper = shallow(
+      <Card>
+        <span>Test</span>
+      </Card>
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.find('span')).toHaveLength(1);
@@ -30,8 +34,23 @@ describe('Card', () => {
       </Fragment>
     );
 
-    const wrapper = shallow(<Card cta={cta}><span>Test</span></Card>);
+    const wrapper = shallow(
+      <Card cta={cta}>
+        <span>Test</span>
+      </Card>
+    );
 
     expect(wrapper.find('.cta')).toHaveLength(1);
+  });
+
+  it('renders an image', () => {
+    const wrapper = shallow(
+      <Card image={<img src="//placehold.it/200x200" />}>
+        <span>Test</span>
+      </Card>
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find('.dark')).toHaveLength(1);
   });
 });

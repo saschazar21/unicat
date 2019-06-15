@@ -10,6 +10,8 @@ export interface CardProps {
   children: ReactNode[] | ReactNode;
   cta?: ReactElement<Button>;
   className?: string;
+  dark?: boolean;
+  image?: ReactNode;
   variant?: SmallVariant;
 }
 
@@ -22,7 +24,7 @@ export default class Card extends Component<CardProps> {
     const { cta } = this.props;
 
     return <div className={styles.cta}>{cta}</div>;
-  }
+  };
 
   public render() {
     const { variant: defaultVariant } = Card.defaultProps;
@@ -30,21 +32,23 @@ export default class Card extends Component<CardProps> {
       children,
       className: customClassName,
       cta,
+      dark,
+      image,
       variant = defaultVariant,
     } = this.props;
 
     const className = classnames(
       styles.wrapper,
       { [styles[variant]]: variant !== defaultVariant },
-      customClassName,
+      { [styles.dark]: dark || image },
+      customClassName
     );
 
-    const bodyClassName = classnames(
-      styles.body,
-    );
+    const bodyClassName = classnames(styles.body);
 
     return (
       <aside className={className}>
+        {image && <picture className={styles.picture}>{image}</picture>}
         <div className={bodyClassName}>{children}</div>
         {cta && this.renderCta()}
       </aside>

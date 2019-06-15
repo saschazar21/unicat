@@ -5,6 +5,10 @@
   max-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  
+  .picture + & {
+    margin-top: spacing(xl);
+  }
 
   &:not(:last-child) {
     padding-bottom: spacing(xl);
@@ -47,8 +51,47 @@
   overflow: hidden;
 }
 
+.dark {
+  background-color: color(default);
+  color: color(white, false, $systemColors);
+}
+
 .light {
   padding: spacing();
   margin: spacing(s);
   box-shadow: boxShadow(xs);
+}
+
+.picture {
+  display: block;
+  position: relative;
+  margin: -#{spacing(xl)};
+  
+  .light > & {
+    margin: -#{spacing()};
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(
+      180deg,
+      transparentize(color(white, false, $systemColors), 0.98),
+      transparentize(color(white, false, $systemColors), 0.3) 70%,
+      color(white, false, $systemColors) 90%
+    );
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .dark > &::after {
+    background: linear-gradient(
+      180deg,
+      transparentize(color(default), 0.98),
+      transparentize(color(default), 0.3) 70%,
+      color(default) 90%
+    );
+  }
 }
