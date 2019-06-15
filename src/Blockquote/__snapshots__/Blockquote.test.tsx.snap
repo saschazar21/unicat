@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blockquote renders 1`] = `
+<blockquote
+  className="wrapper"
+>
+  <span
+    className="quote"
+  >
+    A test quote
+  </span>
+</blockquote>
+`;
