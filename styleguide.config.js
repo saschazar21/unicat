@@ -17,6 +17,12 @@ module.exports = {
   ],
   styles: {
     StyleGuide: {
+      '@global [data-preview]': {
+        boxSizing: 'border-box',
+      },
+      '@global [data-preview] *, [data-preview] *:before, [data-preview] *:after': {
+        boxSizing: 'inherit',
+      },
       '@global body': {
         '--font-heading': '"Muli", sans-serif',
         fontFamily: '"Raleway", sans-serif',
@@ -46,7 +52,7 @@ module.exports = {
   webpackConfig: {
     resolve: {
       // Add `.ts` and `.tsx` as a resolvable extension.
-      extensions: [".ts", ".tsx", ".js"]
+      extensions: ['.ts', '.tsx', '.js'],
     },
     module: {
       rules: [
@@ -59,27 +65,25 @@ module.exports = {
           test: /\.s?css$/,
           use: [
             'style-loader',
-            { 
+            {
               loader: 'css-loader',
               options: {
                 modules: true,
                 localIdentName: '[name]__[local]___[md5:hash:hex:4]',
                 importLoaders: 2,
-              }
+              },
             },
             {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                plugins: [
-                  require('autoprefixer')(),
-                ],
+                plugins: [require('autoprefixer')()],
               },
             },
             'sass-loader',
           ],
-        }
+        },
       ],
     },
-  }
+  },
 };
