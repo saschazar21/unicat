@@ -1,14 +1,10 @@
 language: node_js
 
 node_js:
-  - lts/carbon
   - lts/dubnium
 
 jobs:
   include:
-    - stage: test
-      name: 'Unit Tests'
-      script: yarn test
     - stage: build
       name: 'Compile to JavaScript'
       script: yarn build
@@ -16,7 +12,7 @@ jobs:
       name: 'Build Docs'
       script: yarn styleguide:build
     - &deploy_npm
-      stage: deploy_npm
+      stage: deploy npm
       name: 'Deploy to npmjs.org'
       script: echo "[DRY_RUN] Deploying to npmjs.org..."
       deploy:
@@ -38,7 +34,7 @@ jobs:
         edge: true
         on:
           tags: true
-    - stage: deploy_surge
+    - stage: deploy surge
       name: 'Deploy to surge.sh'
       script: echo "Deploying to surge.sh..."
       deploy:
