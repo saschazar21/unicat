@@ -1,6 +1,6 @@
 {
   "name": "@saschazar/unicat",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": false,
   "author": "Sascha Zarhuber <sascha.zarhuber@gmail.com>",
   "main": "index.min.js",
@@ -18,6 +18,9 @@
     "styleguide:build": "npx styleguidist build",
     "test": "jest --coverage",
     "test:update": "jest -u --coverage"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "prettier": {
     "printWidth": 80,
