@@ -33,7 +33,7 @@ describe('Picture', () => {
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.find('img[dataSrcSet]')).toHaveLength(1);
+    expect(wrapper.find('img[loading]')).toHaveLength(1);
   });
 
   it('renders a sizes attribute', () => {

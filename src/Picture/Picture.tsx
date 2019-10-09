@@ -58,18 +58,12 @@ export default class Picture extends Component<PictureProps> {
       shape = defaultShape,
       sizes,
       srcset,
-      src,
       ...other
     } = this.props;
 
     const srcSet =
       Array.isArray(srcset) &&
       srcset.map(({ url, width }) => `${url} ${width}`).join(', ');
-
-    const source =
-      this.nativeLazyLoading || !lazyload
-        ? { src, srcSet }
-        : { dataSrc: src, dataSrcSet: srcSet };
 
     const className = classnames(
       styles.wrapper,
@@ -79,11 +73,10 @@ export default class Picture extends Component<PictureProps> {
 
     const props = {
       ...other,
-      ...source,
       className,
-      description,
-      loading,
+      alt: description,
       media,
+      srcSet,
       sizes:
         Array.isArray(sizes) &&
         sizes
@@ -93,7 +86,14 @@ export default class Picture extends Component<PictureProps> {
 
     const { height = '64px', width = '64px' } = this.props;
 
-    const img = React.createElement('img', props);
+    const img = React.createElement(
+      'img',
+      Object.assign(
+        {},
+        props,
+        lazyload || this.nativeLazyLoading ? { loading } : null
+      )
+    );
     return crop ? (
       <figure className={styles.crop} style={{ height, width }}>
         {img}

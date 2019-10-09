@@ -2,9 +2,8 @@
 
 exports[`Picture renders 1`] = `
 <img
+  alt="A sample test image"
   className="wrapper"
-  description="A sample test image"
-  loading="auto"
   sizes=""
   src="//placehold.it/200x200"
   srcSet=""
@@ -13,11 +12,11 @@ exports[`Picture renders 1`] = `
 
 exports[`Picture renders a lazy-load variant 1`] = `
 <img
+  alt="Test"
   className="wrapper"
-  dataSrc="//placehold.it/200x200"
-  dataSrcSet="//placehold.it/400x400 400w, //placehold.it/600x600 600w"
-  description="Test"
   loading="auto"
   sizes=""
+  src="//placehold.it/200x200"
+  srcSet="//placehold.it/400x400 400w, //placehold.it/600x600 600w"
 />
 `;
