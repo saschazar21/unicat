@@ -5,38 +5,31 @@ node_js:
 
 jobs:
   include:
+    - stage: test
+      name: 'Unit Tests'
+      script: yarn test
     - stage: build
-      name: 'Compile to JavaScript'
+      name: 'Compile & deploy to npm.js'
       script: yarn build
+      deploy:
+        - provider: npm
+          email: $NPM_EMAIL
+          api_token: $NPM_API_TOKEN
+          src: ./dist/
+          edge: true
+          dry_run: true
+          on:
+            branch: master
+        - provider: npm
+          email: $NPM_EMAIL
+          api_token: $NPM_API_TOKEN
+          src: ./dist/
+          edge: true
+          on:
+            tags: true
     - stage: docs
-      name: 'Build Docs'
+      name: 'Build Docs & deploy to surge.sh'
       script: yarn styleguide:build
-    - &deploy_npm
-      stage: deploy npm
-      name: 'Deploy to npmjs.org'
-      script: echo "[DRY_RUN] Deploying to npmjs.org..."
-      deploy:
-        provider: npm
-        email: $NPM_EMAIL
-        api_token: $NPM_API_TOKEN
-        src: ./dist/
-        edge: true
-        dry_run: true
-        on:
-          branch: master
-    - <<: *deploy_npm
-      script: echo "Deploying to npmjs.org..."
-      deploy:
-        provider: npm
-        email: $NPM_EMAIL
-        api_token: $NPM_API_TOKEN
-        src: ./dist/
-        edge: true
-        on:
-          tags: true
-    - stage: deploy surge
-      name: 'Deploy to surge.sh'
-      script: echo "Deploying to surge.sh..."
       deploy:
         provider: surge
         login: $SURGE_LOGIN
