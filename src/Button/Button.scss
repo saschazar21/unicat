@@ -21,7 +21,7 @@
   transition: transition(box-shadow);
   z-index: 0;
 
-  >svg {
+  > svg {
     margin-left: spacing(s);
     height: 1.5em;
     width: auto;
@@ -42,18 +42,22 @@
 .default {
   color: color(white, false, $systemColors);
   fill: color(white, false, $systemColors);
-  background: linear-gradient(45deg,
-      color(primary) 20%,
-      color(success) 65%,
-      color(default));
+  background: linear-gradient(
+    45deg,
+    color(primary) 20%,
+    color(success) 65%,
+    color(default)
+  );
 
   &::before {
     position: absolute;
     content: '';
-    background: linear-gradient(27deg,
-        color(primary),
-        color(success) 20%,
-        color(default));
+    background: linear-gradient(
+      27deg,
+      color(primary),
+      color(success) 20%,
+      color(default)
+    );
     top: 0;
     bottom: 0;
     left: 0;
@@ -82,7 +86,7 @@
   fill: color(white, true, $systemColors);
   background-color: color(white, false, $systemColors);
   transition: transition(all);
-  
+
   &:active,
   &:hover,
   &:focus {
@@ -91,7 +95,7 @@
 }
 
 .disabled {
-  background-color: transparentize(color(default), 0.75);
+  background-color: rgba(color(default, false, $colors, true), 0.25);
   color: color(default);
   cursor: default;
 

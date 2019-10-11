@@ -1,55 +1,63 @@
 $colors: (
   default: (
-    color: #2B303A,
-    contrast: #C7D59F,
+    color: var(--color-default, 43, 48, 58),
+    contrast: var(--color-default-contrast, 199, 213, 159),
     name: 'Gunmetal',
   ),
   light: (
-    color: #C7D59F,
-    contrast: #0D5C63,
+    color: var(--color-light, 199, 213, 159),
+    contrast: var(--color-light-contrast, 13, 92, 99),
     name: 'Medium Spring Bud',
   ),
   primary: (
-    color: #0D3B66,
-    contrast: #FFFFFA,
+    color: var(--color-primary, 13, 59, 102),
+    contrast: var(--color-primary-contrast, 255, 255, 250),
     name: 'Dark Midnight Blue',
   ),
   warning: (
-    color: #F4D35E,
-    contrast: #2B303A,
+    color: var(--color-warning, 244, 211, 94),
+    contrast: var(--color-warning-contrast, 43, 48, 58),
     name: 'Stil de Grain Yellow',
   ),
   success: (
-    color: #0D5C63,
-    contrast: #92DCE5,
+    color: var(--color-success, 13, 92, 99),
+    contrast: var(--color-success-contrast, 146, 220, 229),
     name: 'Deep Green-Cyan Turquoise',
-  )
+  ),
 );
 
 $systemColors: (
   default: (
-    color: #2B303A,
-    contrast: #FFFFFA,
+    color: var(--color-system-default, 43, 48, 58),
+    contrast: var(--color-system-default-contrast, 255, 255, 250),
     name: 'Gunmetal',
   ),
   grey: (
-    color: #7C7C7C,
-    contrast: black,
+    color: var(--color-system-grey, 124, 124, 124),
+    contrast: var(--color-system-grey-contrast, 0, 0, 0),
     name: 'Trolley Grey',
   ),
   white: (
-    color: #FFFFFA,
-    contrast: #0D5C63,
+    color: var(--color-system-white, 255, 255, 250),
+    contrast: var(--color-system-white-contrast, 13, 92, 99),
     name: 'Baby Powder',
   ),
 );
 
-@function color($mode, $contrast: false, $palette: $colors) {
+@function color($mode, $contrast: false, $palette: $colors, $raw: false) {
   @if map-has-key($palette, $mode) {
     @if not $contrast {
-      @return map-get(map-get($palette, $mode), color);
+      $c: map-get(map-get($palette, $mode), color);
+      @if not $raw {
+        @return RGB($c);
+      }
+      @return $c;
     }
-    @return map-get(map-get($palette, $mode), contrast);
+    $c: map-get(map-get($palette, $mode), contrast);
+    @if not $raw {
+      @return RGB($c);
+    }
+    @return $c;
   }
   @error "The color key #{$mode} is not defined!";
 }

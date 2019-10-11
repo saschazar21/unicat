@@ -2,24 +2,37 @@
 
 $shadows: (
   xl: (
-    0 15px 38px 2px transparentize(color(default), 0.8),
-    0 5px 14px -7px transparentize(color(default), 0.47),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.1),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.1),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.1),
+    0 8px 8px rgba(color(default, false, $systemColors, true), 0.1),
+    0 16px 16px rgba(color(default, false, $systemColors, true), 0.1),
+    0 32px 32px rgba(color(default, false, $systemColors, true), 0.1),
+    0 64px 64px rgba(color(default, false, $systemColors, true), 0.1),
+    0 128px 128px rgba(color(default, false, $systemColors, true), 0.1),
   ),
   l: (
-    0 10px 24px 5px transparentize(color(default), 0.81),
-    0 3px 10px -2px transparentize(color(default), 0.75),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.15),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.15),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.15),
+    0 8px 8px rgba(color(default, false, $systemColors, true), 0.15),
+    0 16px 16px rgba(color(default, false, $systemColors, true), 0.15),
+    0 32px 32px rgba(color(default, false, $systemColors, true), 0.15),
   ),
   m: (
-    0 4px 12px 7px transparentize(color(default), 0.85),
-    0 3px 6px 0 transparentize(color(default), 0.73),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.2),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.2),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.2),
+    0 8px 8px rgba(color(default, false, $systemColors, true), 0.2),
   ),
   s: (
-    0 3px 9px 7px transparentize(color(default), 0.91),
-    0 3px 5px 1px transparentize(color(default), 0.77),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.25),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.25),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.25),
   ),
   xs: (
-    0 2px 7px 6px transparentize(color(default), 0.93),
-    0 2px 3px 0 transparentize(color(default), 0.75),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.35),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.35),
   ),
 );
 

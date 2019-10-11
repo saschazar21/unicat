@@ -35,7 +35,7 @@
 .backdrop {
   position: absolute;
   animation: appear $duration ease-out;
-  background-color: transparentize(color(default), 0.4);
+  background-color: rgba(color(default, false, $colors, true), 0.4);
 }
 
 .container {
