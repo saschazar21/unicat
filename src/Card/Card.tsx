@@ -14,7 +14,7 @@ export interface CardProps {
   className?: string;
   dark?: boolean;
   image?: ReactNode;
-  onClose: (event?: React.SyntheticEvent) => void;
+  onClose?: (event?: React.SyntheticEvent) => void;
   variant?: SmallVariant;
 }
 
