@@ -43,6 +43,20 @@ describe('Card', () => {
     expect(wrapper.find('.cta')).toHaveLength(1);
   });
 
+  it('renders a close button', () => {
+    const noop = jest.fn();
+    const wrapper = shallow(
+      <Card onClose={noop}>
+        <span>Test</span>
+      </Card>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+
+    const button = wrapper.find('.meta > IconButton').simulate('click');
+    expect(button).toHaveLength(1);
+    expect(noop).toHaveBeenCalled();
+  });
+
   it('renders an image', () => {
     const wrapper = shallow(
       <Card image={<img src="//placehold.it/200x200" />}>

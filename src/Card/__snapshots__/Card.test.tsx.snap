@@ -14,6 +14,30 @@ exports[`Card renders 1`] = `
 </aside>
 `;
 
+exports[`Card renders a close button 1`] = `
+<aside
+  className="wrapper"
+>
+  <div
+    className="meta"
+  >
+    <IconButton
+      icon={<CloseIcon />}
+      onClick={[MockFunction]}
+      title="close"
+      variant="light"
+    />
+  </div>
+  <div
+    className="body"
+  >
+    <span>
+      Test
+    </span>
+  </div>
+</aside>
+`;
+
 exports[`Card renders a light variant 1`] = `
 <aside
   className="wrapper light"

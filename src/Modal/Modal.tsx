@@ -18,7 +18,6 @@ export interface ModalProps {
 }
 
 export interface ModalState {
-  height: string | null;
   overflow: string | null;
 }
 
@@ -30,7 +29,6 @@ export default class Modal extends Component<ModalProps, ModalState> {
   };
 
   state = {
-    height: '',
     overflow: '',
   };
 
@@ -55,11 +53,9 @@ export default class Modal extends Component<ModalProps, ModalState> {
   public componentDidMount(): void {
     if (typeof document === 'object' && typeof document.body !== 'undefined') {
       this.setState({
-        height: document.body.style.height,
         overflow: document.body.style.overflow,
       });
       document.body.style.overflow = 'hidden';
-      document.body.style.height = '100%';
 
       if (this.containerRef && this.containerRef.current) {
         this.containerRef.current.focus();
@@ -68,10 +64,9 @@ export default class Modal extends Component<ModalProps, ModalState> {
   }
 
   public componentWillUnmount(): void {
-    const { height, overflow } = this.state;
+    const { overflow } = this.state;
 
     if (typeof document === 'object' && typeof document.body !== 'undefined') {
-      document.body.style.height = height;
       document.body.style.overflow = overflow;
     }
   }
@@ -97,7 +92,11 @@ export default class Modal extends Component<ModalProps, ModalState> {
         ref={this.containerRef}
       >
         <div className={styles.backdrop} onClick={this.handleClick} />
-        <Card className={className} variant={variant as SmallVariant} {...otherProps}>
+        <Card
+          className={className}
+          variant={variant as SmallVariant}
+          {...otherProps}
+        >
           {children}
         </Card>
       </div>

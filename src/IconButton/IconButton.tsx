@@ -26,8 +26,12 @@ export default class IconButton extends Component<IconButtonProps> {
     const className = classnames(
       styles.wrapper,
       { [styles[variant]]: !disabled },
-      { [styles.large]: large, [styles.disabled]: disabled, [styles.block]: block },
-      customClassName,
+      {
+        [styles.large]: large,
+        [styles.disabled]: disabled,
+        [styles.block]: block,
+      },
+      customClassName
     );
 
     return (

@@ -871,6 +871,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@saschazar/unicat-icons@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@saschazar/unicat-icons/-/unicat-icons-0.0.3.tgz#bb3c2af2b8cecaa446bcdd9f4138cbd0846ae018"
+  integrity sha512-xRQmCSSqKNem5qpwEjo30V/N/xk2zXSduBHxcVfdV0rRROJ+dbw7j7lYSblQMJyLzPkG9hAVdrbXRfb8BPj/tQ==
+
 "@types/babel__core@^7.1.0":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.3.tgz#e441ea7df63cd080dfcd02ab199e6d16a735fc30"

@@ -64,6 +64,16 @@
   box-shadow: boxShadow(xs);
 }
 
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  margin-bottom: spacing(s);
+  min-width: 0;
+  max-width: 100%;
+}
+
 .picture {
   display: block;
   position: relative;
@@ -78,8 +88,9 @@
     position: absolute;
     background: linear-gradient(
       180deg,
-      RGBA(color(white, false, $systemColors, true), 0.98),
-      RGBA(color(white, false, $systemColors, true), 0.3) 70%,
+      RGBA(color(white, false, $systemColors, true), 0),
+      RGBA(color(white, false, $systemColors, true), 0.5) 70%,
+      RGBA(color(white, false, $systemColors, true), 0.7) 70%,
       color(white, false, $systemColors) 90%
     );
     top: 50%;
@@ -91,8 +102,9 @@
   .dark > &::after {
     background: linear-gradient(
       180deg,
-      RGBA(color(default), 0.98),
-      RGBA(color(default), 0.3) 70%,
+      RGBA(color(default, false, $colors, true), 0),
+      RGBA(color(default, false, $colors, true), 0.5) 50%,
+      RGBA(color(default, false, $colors, true), 0.7) 70%,
       color(default) 90%
     );
   }

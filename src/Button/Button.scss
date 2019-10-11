@@ -28,10 +28,13 @@
   }
 
   &:hover,
-  &:focus,
   &:active {
     box-shadow: boxShadow(m);
     cursor: pointer;
+  }
+  
+  &:focus {
+    @include focus();
   }
 }
 

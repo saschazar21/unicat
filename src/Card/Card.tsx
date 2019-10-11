@@ -1,10 +1,12 @@
 import React, { Component, ReactNode, ReactElement } from 'react';
 import classnames from 'classnames';
+import { CloseIcon } from '@saschazar/unicat-icons';
 
 import { SmallVariant } from '../__types__/global';
 import Button from '../Button';
 
 import styles from './Card.scss';
+import IconButton from '../IconButton';
 
 export interface CardProps {
   children: ReactNode[] | ReactNode;
@@ -12,6 +14,7 @@ export interface CardProps {
   className?: string;
   dark?: boolean;
   image?: ReactNode;
+  onClose: (event?: React.SyntheticEvent) => void;
   variant?: SmallVariant;
 }
 
@@ -26,6 +29,23 @@ export default class Card extends Component<CardProps> {
     return <div className={styles.cta}>{cta}</div>;
   };
 
+  public renderMeta = () => {
+    const { onClose } = this.props;
+
+    return (
+      <div className={styles.meta}>
+        {onClose && (
+          <IconButton
+            variant="light"
+            title="close"
+            icon={<CloseIcon />}
+            onClick={onClose}
+          />
+        )}
+      </div>
+    );
+  };
+
   public render() {
     const { variant: defaultVariant } = Card.defaultProps;
     const {
@@ -34,6 +54,7 @@ export default class Card extends Component<CardProps> {
       cta,
       dark,
       image,
+      onClose,
       variant = defaultVariant,
     } = this.props;
 
@@ -48,6 +69,7 @@ export default class Card extends Component<CardProps> {
 
     return (
       <aside className={className}>
+        {onClose && this.renderMeta()}
         {image && <picture className={styles.picture}>{image}</picture>}
         <div className={bodyClassName}>{children}</div>
         {cta && this.renderCta()}

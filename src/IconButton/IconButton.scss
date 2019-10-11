@@ -26,6 +26,10 @@
     box-shadow: boxShadow(m);
     cursor: pointer;
   }
+  
+  > *:hover {
+    cursor: pointer;
+  }
 }
 
 .block {

@@ -1,15 +1,16 @@
 @import './colors';
 
+$outline: 0 0 5px rgba(color(warning, false, $colors, true), 0.5);
+
 $shadows: (
   xl: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.1),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.1),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.1),
-    0 8px 8px rgba(color(default, false, $systemColors, true), 0.1),
-    0 16px 16px rgba(color(default, false, $systemColors, true), 0.1),
-    0 32px 32px rgba(color(default, false, $systemColors, true), 0.1),
-    0 64px 64px rgba(color(default, false, $systemColors, true), 0.1),
-    0 128px 128px rgba(color(default, false, $systemColors, true), 0.1),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.125),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.125),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.125),
+    0 8px 8px rgba(color(default, false, $systemColors, true), 0.125),
+    0 16px 16px rgba(color(default, false, $systemColors, true), 0.125),
+    0 32px 32px rgba(color(default, false, $systemColors, true), 0.125),
+    0 64px 64px rgba(color(default, false, $systemColors, true), 0.125),
   ),
   l: (
     0 1px 1px rgba(color(default, false, $systemColors, true), 0.15),
@@ -20,19 +21,19 @@ $shadows: (
     0 32px 32px rgba(color(default, false, $systemColors, true), 0.15),
   ),
   m: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.2),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.2),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.2),
-    0 8px 8px rgba(color(default, false, $systemColors, true), 0.2),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.175),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.175),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.175),
+    0 8px 8px rgba(color(default, false, $systemColors, true), 0.175),
   ),
   s: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.25),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.25),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.25),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.22),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.22),
+    0 4px 4px rgba(color(default, false, $systemColors, true), 0.22),
   ),
   xs: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.35),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.35),
+    0 1px 1px rgba(color(default, false, $systemColors, true), 0.3),
+    0 2px 2px rgba(color(default, false, $systemColors, true), 0.3),
   ),
 );
 
@@ -45,4 +46,9 @@ $shadows: (
     @return 'inset #{$str}';
   }
   @return $str;
+}
+
+@mixin focus() {
+  box-shadow: $outline;
+  border-color: color(warning);
 }
