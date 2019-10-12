@@ -1,11 +1,11 @@
 $fonts: (
   default: (
-    name: 'Raleway',
-    weights: 300,
+    name: var(--font-default, 'Raleway'),
+    weights: var(--font-default-weights, 300),
   ),
   heading: (
-    name: 'Muli',
-    weights: 700,
+    name: var(--font-heading, 'Muli'),
+    weights: var(--font-heading-weights, 700),
   ),
 );
 

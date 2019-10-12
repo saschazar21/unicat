@@ -11,7 +11,8 @@
   "scripts": {
     "build:clean": "shx rm -rf dist",
     "build:compile": "rollup -c",
-    "build:copy": "shx cp package.json README.md LICENSE.md CHANGELOG.md dist/",
+    "build:copy:styles": "shx mkdir dist/styles && shx cp -R src/__styles__/* dist/styles/",
+    "build:copy": "shx cp package.json README.md LICENSE.md CHANGELOG.md dist/ && npm run build:copy:styles",
     "build:dir": "shx mkdir dist",
     "build": "npm run build:clean && npm run build:dir && npm run build:copy && npm run build:compile",
     "styleguide:watch": "npx styleguidist server",

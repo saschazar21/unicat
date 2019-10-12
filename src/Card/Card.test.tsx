@@ -52,7 +52,7 @@ describe('Card', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
 
-    const button = wrapper.find('.meta > IconButton').simulate('click');
+    const button = wrapper.find('IconButton').simulate('click');
     expect(button).toHaveLength(1);
     expect(noop).toHaveBeenCalled();
   });

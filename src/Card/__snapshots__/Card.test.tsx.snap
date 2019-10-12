@@ -19,7 +19,7 @@ exports[`Card renders a close button 1`] = `
   className="wrapper"
 >
   <div
-    className="meta"
+    className="controls"
   >
     <IconButton
       icon={<CloseIcon />}

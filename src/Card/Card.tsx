@@ -29,11 +29,11 @@ export default class Card extends Component<CardProps> {
     return <div className={styles.cta}>{cta}</div>;
   };
 
-  public renderMeta = () => {
+  public renderControls = () => {
     const { onClose } = this.props;
 
     return (
-      <div className={styles.meta}>
+      <div className={styles.controls}>
         {onClose && (
           <IconButton
             variant="light"
@@ -69,7 +69,7 @@ export default class Card extends Component<CardProps> {
 
     return (
       <aside className={className}>
-        {onClose && this.renderMeta()}
+        {onClose && this.renderControls()}
         {image && <picture className={styles.picture}>{image}</picture>}
         <div className={bodyClassName}>{children}</div>
         {cta && this.renderCta()}

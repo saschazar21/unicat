@@ -1,11 +1,11 @@
 @import './colors';
 
-$borderColor: color(default, true);
+$borderColor: color(grey, false, $systemColors);
 $borderColorContrast: color(primary);
 $borderRadius: 4px, 9999px;
 $borderWidth: 0.5px, 2px;
 
-@function border($color: color(default, true), $width: 0.5px) {
+@function border($color: $borderColor, $width: 0.5px) {
   @return $width solid $color;
 }
 
