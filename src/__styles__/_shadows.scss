@@ -1,39 +1,40 @@
 @import './colors';
 
 $outline: 0 0 5px rgba(color(warning, false, $colors, true), 0.5);
+$shadowColor: var(--color-shadow, color(default, false, $systemColors, true));
 
 $shadows: (
   xl: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.125),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.125),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.125),
-    0 8px 8px rgba(color(default, false, $systemColors, true), 0.125),
-    0 16px 16px rgba(color(default, false, $systemColors, true), 0.125),
-    0 32px 32px rgba(color(default, false, $systemColors, true), 0.125),
-    0 64px 64px rgba(color(default, false, $systemColors, true), 0.125),
+    0 1px 1px rgba($shadowColor, 0.125),
+    0 2px 2px rgba($shadowColor, 0.125),
+    0 4px 4px rgba($shadowColor, 0.125),
+    0 8px 8px rgba($shadowColor, 0.125),
+    0 16px 16px rgba($shadowColor, 0.125),
+    0 32px 32px rgba($shadowColor, 0.125),
+    0 64px 64px rgba($shadowColor, 0.125),
   ),
   l: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.15),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.15),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.15),
-    0 8px 8px rgba(color(default, false, $systemColors, true), 0.15),
-    0 16px 16px rgba(color(default, false, $systemColors, true), 0.15),
-    0 32px 32px rgba(color(default, false, $systemColors, true), 0.15),
+    0 1px 1px rgba($shadowColor, 0.15),
+    0 2px 2px rgba($shadowColor, 0.15),
+    0 4px 4px rgba($shadowColor, 0.15),
+    0 8px 8px rgba($shadowColor, 0.15),
+    0 16px 16px rgba($shadowColor, 0.15),
+    0 32px 32px rgba($shadowColor, 0.15),
   ),
   m: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.175),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.175),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.175),
-    0 8px 8px rgba(color(default, false, $systemColors, true), 0.175),
+    0 1px 1px rgba($shadowColor, 0.175),
+    0 2px 2px rgba($shadowColor, 0.175),
+    0 4px 4px rgba($shadowColor, 0.175),
+    0 8px 8px rgba($shadowColor, 0.175),
   ),
   s: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.22),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.22),
-    0 4px 4px rgba(color(default, false, $systemColors, true), 0.22),
+    0 1px 1px rgba($shadowColor, 0.22),
+    0 2px 2px rgba($shadowColor, 0.22),
+    0 4px 4px rgba($shadowColor, 0.22),
   ),
   xs: (
-    0 1px 1px rgba(color(default, false, $systemColors, true), 0.3),
-    0 2px 2px rgba(color(default, false, $systemColors, true), 0.3),
+    0 1px 1px rgba($shadowColor, 0.3),
+    0 2px 2px rgba($shadowColor, 0.3),
   ),
 );
 

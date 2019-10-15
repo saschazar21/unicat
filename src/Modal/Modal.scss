@@ -35,7 +35,7 @@
 .backdrop {
   position: absolute;
   animation: appear $duration ease-out;
-  background-color: rgba(color(default, false, $colors, true), 0.4);
+  background-color: rgba(color(default, false, $colors, true), 0.6);
 }
 
 .container {
@@ -55,6 +55,7 @@
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   box-sizing: border-box;
+  box-shadow: boxShadow(xl);
   margin: 0;
   max-height: calc(100vh - #{spacing(xl)});
   width: 100%;
