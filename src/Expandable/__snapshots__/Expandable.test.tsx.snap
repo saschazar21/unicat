@@ -1,5 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Expandable has the .open class 1`] = `
+<aside
+  className="wrapper"
+>
+  <button
+    className="open activator"
+    onClick={[Function]}
+  >
+    <Element
+      SEO={false}
+      className="title"
+      level="h5"
+    >
+      Test
+    </Element>
+    <ChevronIcon
+      className="icon"
+    />
+  </button>
+  <AnimateHeight
+    animateOpacity={false}
+    animationStateClasses={
+      Object {
+        "animating": "rah-animating",
+        "animatingDown": "rah-animating--down",
+        "animatingToHeightAuto": "rah-animating--to-height-auto",
+        "animatingToHeightSpecific": "rah-animating--to-height-specific",
+        "animatingToHeightZero": "rah-animating--to-height-zero",
+        "animatingUp": "rah-animating--up",
+        "static": "rah-static",
+        "staticHeightAuto": "rah-static--height-auto",
+        "staticHeightSpecific": "rah-static--height-specific",
+        "staticHeightZero": "rah-static--height-zero",
+      }
+    }
+    applyInlineTransitions={true}
+    delay={0}
+    duration={300}
+    easing="ease"
+    height="auto"
+    style={Object {}}
+  >
+    <section
+      className="content"
+    >
+      <p>
+        Test Body
+      </p>
+    </section>
+  </AnimateHeight>
+</aside>
+`;
+
 exports[`Expandable renders 1`] = `
 <aside
   className="wrapper"
@@ -11,7 +64,7 @@ exports[`Expandable renders 1`] = `
     <Element
       SEO={false}
       className="title"
-      level="h4"
+      level="h5"
     >
       Test
     </Element>
@@ -19,17 +72,36 @@ exports[`Expandable renders 1`] = `
       className="icon"
     />
   </button>
-  <section
-    className="content"
-    style={
+  <AnimateHeight
+    animateOpacity={false}
+    animationStateClasses={
       Object {
-        "maxHeight": "0px",
+        "animating": "rah-animating",
+        "animatingDown": "rah-animating--down",
+        "animatingToHeightAuto": "rah-animating--to-height-auto",
+        "animatingToHeightSpecific": "rah-animating--to-height-specific",
+        "animatingToHeightZero": "rah-animating--to-height-zero",
+        "animatingUp": "rah-animating--up",
+        "static": "rah-static",
+        "staticHeightAuto": "rah-static--height-auto",
+        "staticHeightSpecific": "rah-static--height-specific",
+        "staticHeightZero": "rah-static--height-zero",
       }
     }
+    applyInlineTransitions={true}
+    delay={0}
+    duration={300}
+    easing="ease"
+    height={0}
+    style={Object {}}
   >
-    <p>
-      Test Body
-    </p>
-  </section>
+    <section
+      className="content"
+    >
+      <p>
+        Test Body
+      </p>
+    </section>
+  </AnimateHeight>
 </aside>
 `;

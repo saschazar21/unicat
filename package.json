@@ -51,6 +51,7 @@
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.8.6",
+    "react-animate-height": "^2.0.16",
     "react-docgen-typescript": "^1.12.4",
     "react-dom": "^16.8.6",
     "react-styleguidist": "^9.1.2",
