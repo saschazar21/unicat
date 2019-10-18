@@ -1,6 +1,7 @@
 export { default as Blockquote } from './Blockquote';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
+export { default as Expandable } from './Expandable';
 export { default as Heading } from './Heading';
 export { default as IconButton } from './IconButton';
 export { default as List } from './List';

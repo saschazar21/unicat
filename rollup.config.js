@@ -13,12 +13,13 @@ import pkg from './package.json';
 const distFile = file => resolve(__dirname, `./dist/${file}`);
 
 const globals = {
+  'react-animate-height': 'AnimateHeight',
   classnames: 'classnames',
   react: 'React',
 };
 
 const base = {
-  external: [...builtins, 'react', 'classnames'],
+  external: [...builtins, 'react', 'react-animate-height', 'classnames'],
   input: './src/index.ts',
   plugins: [
     nodeResolve(),

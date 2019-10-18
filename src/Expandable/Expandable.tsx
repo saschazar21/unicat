@@ -1,4 +1,9 @@
-import React, { useState, ReactNode, SyntheticEvent } from 'react';
+import React, {
+  useState,
+  ReactNode,
+  SyntheticEvent,
+  KeyboardEvent,
+} from 'react';
 import classnames from 'classnames';
 import { ChevronIcon } from '@saschazar/unicat-icons';
 import AnimateHeight from 'react-animate-height';
@@ -36,9 +41,22 @@ export default function expandable(props: ExpandableProps) {
     setOpen(o => !o);
   };
 
+  const handleKeyUp = (event: KeyboardEvent) => {
+    preventDefault(event);
+    if (event.key === 'ArrowUp' && open) {
+      handleClick(event);
+    }
+    if (event.key === 'ArrowDown' && !open) {
+      handleClick(event);
+    }
+    if (event.key === ' ') {
+      handleClick(event);
+    }
+  };
+
   return (
     <aside className={styles.wrapper}>
-      <button className={className} onClick={handleClick}>
+      <button className={className} onClick={handleClick} onKeyUp={handleKeyUp}>
         <Heading level="h5" className={styles.title}>
           {title}
         </Heading>

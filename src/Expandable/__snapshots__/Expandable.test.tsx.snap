@@ -7,6 +7,7 @@ exports[`Expandable has the .open class 1`] = `
   <button
     className="open activator"
     onClick={[Function]}
+    onKeyUp={[Function]}
   >
     <Element
       SEO={false}
@@ -60,6 +61,7 @@ exports[`Expandable renders 1`] = `
   <button
     className="activator"
     onClick={[Function]}
+    onKeyUp={[Function]}
   >
     <Element
       SEO={false}
