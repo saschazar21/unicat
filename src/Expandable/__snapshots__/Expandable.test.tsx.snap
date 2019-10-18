@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expandable renders 1`] = `
+<aside
+  className="wrapper"
+>
+  <button
+    className="activator"
+    onClick={[Function]}
+  >
+    <Element
+      SEO={false}
+      className="title"
+      level="h4"
+    >
+      Test
+    </Element>
+    <ChevronIcon
+      className="icon"
+    />
+  </button>
+  <section
+    className="content"
+    style={
+      Object {
+        "maxHeight": "0px",
+      }
+    }
+  >
+    <p>
+      Test Body
+    </p>
+  </section>
+</aside>
+`;

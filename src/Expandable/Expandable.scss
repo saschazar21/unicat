@@ -1,0 +1,40 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  position: relative;
+  border-radius: borderRadius();
+  border: border();
+  box-shadow: boxShadow();
+  background-color: color(white, false, $systemColors);
+  padding: spacing();
+  margin-bottom: spacing(xs);
+}
+
+.activator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% + #{spacing() * 2});
+  padding: spacing();
+  margin: -#{spacing()} -#{spacing()} 0;
+}
+
+.icon {
+  transition: transition(transform);
+  height: fontSize(h4);
+  width: fontSize(h4);
+  transform: rotateZ(0);
+  
+  .open & {
+    transform: rotateZ(90deg);
+  }
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.content {
+  padding-top: spacing();
+  overflow: hidden;
+}
