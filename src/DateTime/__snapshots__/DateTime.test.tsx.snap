@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTime renders 1`] = `<span />`;
+
+exports[`DateTime renders a raw version 1`] = `<span />`;
