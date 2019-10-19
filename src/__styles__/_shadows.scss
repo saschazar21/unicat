@@ -44,7 +44,11 @@ $shadows: (
   }
   $str: map-get($shadows, $size);
   @if $inset {
-    @return 'inset #{$str}';
+    $insetified: ();
+    @each $s in $str {
+      $insetified: append($insetified, inset #{$s}, $separator: comma);
+    }
+    @return $insetified;
   }
   @return $str;
 }

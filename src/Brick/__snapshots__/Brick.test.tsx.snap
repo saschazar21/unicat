@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Brick renders 1`] = `
+<span
+  className="light wrapper"
+>
+  I'm a brick
+</span>
+`;
+
+exports[`Brick renders an icon 1`] = `
+<span
+  className="light wrapper"
+>
+  <StarIcon
+    key="demo-key"
+  />
+  I'm an icon brick
+</span>
+`;
