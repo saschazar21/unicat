@@ -25,7 +25,9 @@
 }
 
 a.wrapper {
-  box-shadow: boxShadow(xs);
+  --color-shadow: #{color(default, false, $systemColors, true)};
+  --color-border-variant: transparent;
+  box-shadow: boxShadow(s);
 
   &:hover {
     --color-border-variant: var(--color-variant);
@@ -40,8 +42,19 @@ a.wrapper {
 
 @each $i in $variants {
   .#{$i} {
-    --color-variant: #{color($i, true, $colors, true)};
-    --color-shadow: var(--color-variant);
+    --color-variant: #{color($i)};
+    --color-border-variant: var(--color-variant);
+    --color-shadow: #{color(white, false, $systemColors, true)};
+    color: color($i);
+    background-color: color(white, false, $systemColors);
+
+    svg {
+      fill: color($i);
+    }
+  }
+
+  a.#{$i} {
+    --color-variant: #{color($i, true)};
     color: color($i, true);
     background-color: color($i);
 

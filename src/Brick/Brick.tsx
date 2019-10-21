@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { LinkIcon } from '@saschazar/unicat-icons';
 
 import { Variant } from '../__types__/global';
 
@@ -24,7 +25,7 @@ export default (props: BrickProps) => {
     className: customClassName,
     icon,
     href,
-    variant = 'light',
+    variant = 'primary',
   } = props;
 
   const className = classnames(
@@ -34,7 +35,7 @@ export default (props: BrickProps) => {
   );
 
   return React.createElement(href ? 'a' : 'span', { className, href }, [
-    icon,
+    href && !icon ? <LinkIcon /> : icon,
     children,
   ]);
 };
