@@ -6,9 +6,7 @@ exports[`Button renders 1`] = `
   name="Test"
   onClick={[MockFunction]}
   type="submit"
->
-  Test
-</button>
+/>
 `;
 
 exports[`Button renders a disabled variant 1`] = `
@@ -17,9 +15,7 @@ exports[`Button renders a disabled variant 1`] = `
   disabled={true}
   name="Test"
   type="submit"
->
-  Test
-</button>
+/>
 `;
 
 exports[`Button renders a light variant 1`] = `
@@ -28,9 +24,7 @@ exports[`Button renders a light variant 1`] = `
   name="Test"
   onClick={[MockFunction]}
   type="submit"
->
-  Test
-</button>
+/>
 `;
 
 exports[`Button renders an icon 1`] = `
@@ -40,7 +34,6 @@ exports[`Button renders an icon 1`] = `
   onClick={[MockFunction]}
   type="submit"
 >
-  Test
   <svg
     viewBox="0 0 64 64"
   >

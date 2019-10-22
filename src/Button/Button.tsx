@@ -7,6 +7,7 @@ import styles from './Button.scss';
 
 export interface ButtonProps {
   block?: boolean;
+  children?: string;
   className?: string;
   disabled?: boolean;
   icon?: JSX.Element;
@@ -27,6 +28,7 @@ export default class Button extends Component<ButtonProps> {
   public render() {
     const { variant: defaultVariant } = Button.defaultProps;
     const {
+      children,
       className: customClassName,
       disabled,
       icon,
@@ -52,7 +54,7 @@ export default class Button extends Component<ButtonProps> {
         disabled={disabled}
         name={name}
       >
-        {name}
+        {children}
         {icon}
       </button>
     );

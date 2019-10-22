@@ -27,7 +27,11 @@ import Button from '../Button/Button.tsx';
 import Heading from '../Heading/Heading.tsx';
 
 <Card
-  cta={<Button onClick={() => null} title="I'm a CTA button" variant="light" />}
+  cta={
+    <Button onClick={() => null} name="Close" variant="light">
+      I'm a CTA button
+    </Button>
+  }
   variant="light"
 >
   <Heading level="h2">Headline</Heading>
