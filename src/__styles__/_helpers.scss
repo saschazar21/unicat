@@ -1,0 +1,14 @@
+@function str-replace($string, $pattern, $replacement: '') {
+  $index: str-index($string, $pattern);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replacement +
+      str-replace(
+        str-slice($string, $index + str-length($pattern)),
+        $pattern,
+        $replacement
+      );
+  }
+
+  @return $string;
+}

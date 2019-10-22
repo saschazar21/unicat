@@ -1,3 +1,5 @@
+@import './helpers';
+
 $fonts: (
   default: (
     name: var(--font-default, 'Raleway'),
@@ -19,7 +21,7 @@ $fonts: (
 @function googleFontUrl($variant: 'default') {
   @if map-has-key($fonts, $variant) {
     $font: map-get($fonts, $variant);
-    $name: map-get($font, $name);
+    $name: str-replace(map-get($font, $name), ' ', '+');
     $weights: map-get($font, $weights);
     @return 'https://fonts.googleapis.com/css?family=#{$name}:#{$weights}';
   }
