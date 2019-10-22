@@ -23,8 +23,8 @@ exports[`Card renders a close button 1`] = `
   >
     <IconButton
       icon={<CloseIcon />}
+      name="close"
       onClick={[MockFunction]}
-      title="close"
       variant="light"
     />
   </div>

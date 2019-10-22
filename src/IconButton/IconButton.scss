@@ -21,12 +21,15 @@
   }
 
   &:active,
-  &:hover,
-  &:focus {
+  &:hover {
     box-shadow: boxShadow(m);
     cursor: pointer;
   }
-  
+
+  &:focus {
+    @include focus();
+  }
+
   > *:hover {
     cursor: pointer;
   }

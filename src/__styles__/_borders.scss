@@ -16,3 +16,8 @@ $borderWidth: 0.5px, 2px;
 @function borderWidth($idx: 1) {
   @return nth($borderWidth, $idx);
 }
+
+@mixin focus() {
+  outline: borderWidth(2) solid color(warning);
+  cursor: pointer;
+}

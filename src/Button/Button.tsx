@@ -12,7 +12,7 @@ export interface ButtonProps {
   icon?: JSX.Element;
   large?: boolean;
   onClick?: (event?: React.SyntheticEvent) => void;
-  title: string;
+  name: string;
   type?: 'submit' | 'reset';
   variant?: SmallVariant;
 }
@@ -32,7 +32,7 @@ export default class Button extends Component<ButtonProps> {
       icon,
       large,
       onClick,
-      title,
+      name,
       type,
       variant = defaultVariant,
     } = this.props;
@@ -50,8 +50,9 @@ export default class Button extends Component<ButtonProps> {
         onClick={!disabled ? onClick : undefined}
         type={type}
         disabled={disabled}
+        name={name}
       >
-        {title}
+        {name}
         {icon}
       </button>
     );

@@ -13,7 +13,7 @@ const icon = (
 describe('Button', () => {
   it('renders', () => {
     const mock = jest.fn();
-    const wrapper = shallow(<Button onClick={mock} title="Test" />);
+    const wrapper = shallow(<Button onClick={mock} name="Test" />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.prop('type')).toEqual('submit');
@@ -27,7 +27,7 @@ describe('Button', () => {
   it('renders a light variant', () => {
     const mock = jest.fn();
     const wrapper = shallow(
-      <Button onClick={mock} title="Test" variant="light" />
+      <Button onClick={mock} name="Test" variant="light" />
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('Button', () => {
 
   it('renders a disabled variant', () => {
     const mock = jest.fn();
-    const wrapper = shallow(<Button onClick={mock} title="Test" disabled />);
+    const wrapper = shallow(<Button onClick={mock} name="Test" disabled />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(mock).not.toHaveBeenCalled();
@@ -50,7 +50,7 @@ describe('Button', () => {
 
   it('renders an icon', () => {
     const mock = jest.fn();
-    const wrapper = shallow(<Button onClick={mock} title="Test" icon={icon} />);
+    const wrapper = shallow(<Button onClick={mock} name="Test" icon={icon} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.find('svg')).toHaveLength(1);

@@ -18,7 +18,7 @@ export default class IconButton extends Component<IconButtonProps> {
       icon,
       className: customClassName,
       large,
-      title,
+      name,
       variant = defaultVariant,
       ...props
     } = this.props;
@@ -36,10 +36,12 @@ export default class IconButton extends Component<IconButtonProps> {
 
     return (
       <button
+        aria-label={name}
         className={className}
         {...props}
         disabled={!!disabled}
-        value={title}
+        name={name}
+        value={name}
       >
         {icon}
       </button>

@@ -29,14 +29,14 @@ a.wrapper {
   --color-border-variant: transparent;
   box-shadow: boxShadow(s);
 
+  &:active,
   &:hover {
     --color-border-variant: var(--color-variant);
     cursor: pointer;
   }
 
   &:focus {
-    --color-shadow: #{color(warning, false, $colors, true)};
-    box-shadow: boxShadow();
+    @include focus();
   }
 }
 

@@ -93,6 +93,7 @@ export default class Modal extends Component<ModalProps, ModalState> {
       >
         <div className={styles.backdrop} onClick={this.handleClick} />
         <Card
+          modal
           className={className}
           variant={variant as SmallVariant}
           {...otherProps}

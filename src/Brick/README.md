@@ -15,5 +15,7 @@ Of course it's possible to add an icon:
 ```jsx
 import { StarIcon } from '@saschazar/unicat-icons';
 
-<Brick icon={<StarIcon />}>I'm an icon brick</Brick>;
+<Brick icon={<StarIcon focusable="false" aria-hidden="true" />}>
+  I'm an icon brick
+</Brick>;
 ```

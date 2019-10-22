@@ -52,8 +52,3 @@ $shadows: (
   }
   @return $str;
 }
-
-@mixin focus() {
-  box-shadow: $outline;
-  border-color: color(warning);
-}

@@ -3,6 +3,7 @@
 exports[`Button renders 1`] = `
 <button
   className="wrapper default"
+  name="Test"
   onClick={[MockFunction]}
   type="submit"
 >
@@ -14,6 +15,7 @@ exports[`Button renders a disabled variant 1`] = `
 <button
   className="wrapper disabled"
   disabled={true}
+  name="Test"
   type="submit"
 >
   Test
@@ -23,6 +25,7 @@ exports[`Button renders a disabled variant 1`] = `
 exports[`Button renders a light variant 1`] = `
 <button
   className="wrapper light"
+  name="Test"
   onClick={[MockFunction]}
   type="submit"
 >
@@ -33,6 +36,7 @@ exports[`Button renders a light variant 1`] = `
 exports[`Button renders an icon 1`] = `
 <button
   className="wrapper default"
+  name="Test"
   onClick={[MockFunction]}
   type="submit"
 >

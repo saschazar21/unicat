@@ -35,7 +35,7 @@ export default (props: BrickProps) => {
   );
 
   return React.createElement(href ? 'a' : 'span', { className, href }, [
-    href && !icon ? <LinkIcon /> : icon,
+    href && !icon ? <LinkIcon focusable="false" aria-hidden="true" /> : icon,
     children,
   ]);
 };

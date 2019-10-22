@@ -2,8 +2,10 @@
 
 exports[`IconButton renders 1`] = `
 <button
+  aria-label="Test"
   className="wrapper default"
   disabled={false}
+  name="Test"
   onClick={[MockFunction]}
   value="Test"
 >

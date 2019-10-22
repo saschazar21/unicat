@@ -14,6 +14,7 @@ export interface CardProps {
   className?: string;
   dark?: boolean;
   image?: ReactNode;
+  modal?: boolean;
   onClose?: (event?: React.SyntheticEvent) => void;
   variant?: SmallVariant;
 }
@@ -37,7 +38,7 @@ export default class Card extends Component<CardProps> {
         {onClose && (
           <IconButton
             variant="light"
-            title="close"
+            name="close"
             icon={<CloseIcon />}
             onClick={onClose}
           />
@@ -54,9 +55,12 @@ export default class Card extends Component<CardProps> {
       cta,
       dark,
       image,
+      modal,
       onClose,
       variant = defaultVariant,
     } = this.props;
+
+    const aria = modal ? { role: 'dialog', 'aria-modal': true } : {};
 
     const className = classnames(
       styles.wrapper,
@@ -68,7 +72,7 @@ export default class Card extends Component<CardProps> {
     const bodyClassName = classnames(styles.body);
 
     return (
-      <aside className={className}>
+      <aside className={className} {...aria}>
         {onClose && this.renderControls()}
         {image && <picture className={styles.picture}>{image}</picture>}
         <div className={bodyClassName}>{children}</div>
