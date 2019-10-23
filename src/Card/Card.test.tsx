@@ -29,8 +29,12 @@ describe('Card', () => {
     const noop = jest.fn();
     const cta = (
       <Fragment>
-        <Button onClick={noop} title="Test 1" />
-        <Button variant="light" onClick={noop} title="Test2" />
+        <Button onClick={noop} name="test1">
+          Test 1
+        </Button>
+        <Button variant="light" onClick={noop} name="test2">
+          Test 2
+        </Button>
       </Fragment>
     );
 
