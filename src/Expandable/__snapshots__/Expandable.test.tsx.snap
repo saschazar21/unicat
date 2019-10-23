@@ -3,8 +3,11 @@
 exports[`Expandable has the .open class 1`] = `
 <aside
   className="wrapper"
+  role="region"
 >
   <button
+    aria-expanded={true}
+    aria-label="Test"
     className="open activator"
     onClick={[Function]}
     onKeyUp={[Function]}
@@ -17,7 +20,9 @@ exports[`Expandable has the .open class 1`] = `
       Test
     </Element>
     <ChevronIcon
+      aria-hidden="true"
       className="icon"
+      focusable="false"
     />
   </button>
   <AnimateHeight
@@ -57,8 +62,11 @@ exports[`Expandable has the .open class 1`] = `
 exports[`Expandable renders 1`] = `
 <aside
   className="wrapper"
+  role="region"
 >
   <button
+    aria-expanded={false}
+    aria-label="Test"
     className="activator"
     onClick={[Function]}
     onKeyUp={[Function]}
@@ -71,7 +79,9 @@ exports[`Expandable renders 1`] = `
       Test
     </Element>
     <ChevronIcon
+      aria-hidden="true"
       className="icon"
+      focusable="false"
     />
   </button>
   <AnimateHeight

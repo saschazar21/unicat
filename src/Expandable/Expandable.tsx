@@ -55,12 +55,22 @@ export default function expandable(props: ExpandableProps) {
   };
 
   return (
-    <aside className={styles.wrapper}>
-      <button className={className} onClick={handleClick} onKeyUp={handleKeyUp}>
+    <aside className={styles.wrapper} role="region">
+      <button
+        className={className}
+        onClick={handleClick}
+        onKeyUp={handleKeyUp}
+        aria-expanded={open}
+        aria-label={title}
+      >
         <Heading level="h5" className={styles.title}>
           {title}
         </Heading>
-        <ChevronIcon className={styles.icon} />
+        <ChevronIcon
+          focusable="false"
+          aria-hidden="true"
+          className={styles.icon}
+        />
       </button>
       <AnimateHeight
         duration={ANIMATION_DEFAULT_DURATION}
