@@ -1,0 +1,86 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 2em;
+}
+
+.large {
+  height: 1.5em;
+  width: 3em;
+}
+
+.srOnly {
+  position: absolute;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.circle {
+  transition: transition(left);
+  position: absolute;
+  border-radius: borderRadius(2);
+  box-shadow: boxShadow(m);
+  top: 50%;
+  left: borderWidth(2);
+  height: calc(100% - #{borderWidth(2) * 2});
+  width: calc(50% - #{borderWidth(2) * 2});
+  transform: translateY(-50%);
+
+  .input:checked + .container > & {
+    left: calc(50% + #{borderWidth(2)});
+  }
+}
+
+.container {
+  transition: transition(background-color);
+  position: absolute;
+  border-radius: borderRadius(2);
+  box-shadow: boxShadow(xs, true);
+  background-color: color(grey, false, $systemColors);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+
+  > .circle {
+    fill: color(default, true, $systemColors);
+  }
+
+  .input:checked + & {
+    background-color: color(light);
+
+    > .circle {
+      fill: color(white, false, $systemColors);
+    }
+  }
+
+  .input:focus + & {
+    @include focus();
+  }
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 10;
+
+  &:active,
+  &:hover {
+    cursor: pointer;
+  }
+}

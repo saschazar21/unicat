@@ -9,3 +9,4 @@ export { default as IconButton } from './IconButton';
 export { default as List } from './List';
 export { default as Modal } from './Modal';
 export { default as Picture } from './Picture';
+export { default as Switch } from './Switch';
