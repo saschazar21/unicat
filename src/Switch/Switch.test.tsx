@@ -30,9 +30,11 @@ describe('Switch', () => {
   });
 
   it('renders a verbose variant', () => {
-    const wrapper = shallow(<Switch name="test" verbose />);
+    const wrapper = shallow(<Switch name="test" prefix="text" />);
 
     expect(wrapper.find('.verbose')).toHaveLength(1);
+    expect(wrapper.find('[data-prefix]')).toHaveLength(1);
+    expect(wrapper.find('[data-suffix]')).toHaveLength(0);
   });
 
   it('handles click', () => {
@@ -43,6 +45,18 @@ describe('Switch', () => {
     expect(onClick).not.toHaveBeenCalled();
 
     wrapper.find('input').simulate('click');
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('handles key up', () => {
+    const onClick = jest.fn();
+
+    const wrapper = shallow(<Switch name="test" onClick={onClick} />);
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    wrapper.find('input').simulate('keyup', { key: ' ' });
 
     expect(onClick).toHaveBeenCalled();
   });

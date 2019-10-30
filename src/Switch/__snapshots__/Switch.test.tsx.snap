@@ -3,19 +3,21 @@
 exports[`Switch renders 1`] = `
 <div
   className="wrapper"
+  data-checked={false}
 >
   <input
     checked={false}
     className="input"
     name="test"
     onClick={[Function]}
+    onKeyUp={[Function]}
     type="checkbox"
   />
   <div
+    aria-hidden="true"
     className="container"
   >
     <svg
-      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >
@@ -32,19 +34,21 @@ exports[`Switch renders 1`] = `
 exports[`Switch renders a checked variant 1`] = `
 <div
   className="wrapper"
+  data-checked={true}
 >
   <input
     checked={true}
     className="input"
     name="test"
     onClick={[Function]}
+    onKeyUp={[Function]}
     type="checkbox"
   />
   <div
+    aria-hidden="true"
     className="container"
   >
     <svg
-      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >
@@ -61,19 +65,21 @@ exports[`Switch renders a checked variant 1`] = `
 exports[`Switch renders a large variant 1`] = `
 <div
   className="wrapper"
+  data-checked={false}
 >
   <input
     checked={false}
     className="input"
     name="test"
     onClick={[Function]}
+    onKeyUp={[Function]}
     type="checkbox"
   />
   <div
+    aria-hidden="true"
     className="large container"
   >
     <svg
-      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >

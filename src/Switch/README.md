@@ -16,8 +16,8 @@ Also, a `large` variant is possible:
 <Switch name="hello" large />
 ```
 
-For verbosity, `on` & `off` labels may be rendered using the `verbose` prop:
+For verbosity, custom labels may be rendered using the correct `prefix`/`suffix` props:
 
 ```jsx
-<Switch name="hello" verbose />
+<Switch name="hello" prefix="nay" suffix="okay" />
 ```

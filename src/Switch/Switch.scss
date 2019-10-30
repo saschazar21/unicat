@@ -17,13 +17,18 @@
   }
 
   &:before {
-    content: 'off';
+    content: attr(data-prefix);
     margin-right: spacing(xs);
   }
 
   &:after {
-    content: 'on';
+    content: attr(data-suffix);
     margin-left: spacing(xs);
+  }
+
+  &[data-checked='false']:before,
+  &[data-checked='true']:after {
+    color: color(default);
   }
 }
 
