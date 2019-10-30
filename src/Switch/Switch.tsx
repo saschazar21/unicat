@@ -8,8 +8,8 @@ export interface SwitchProps {
   checked?: boolean;
   /* custom class name */
   className?: string;
-  /* the label for the checkbox */
-  label: string;
+  /* set an ID for a label */
+  id?: string;
   /* grow Switch larger */
   large?: boolean;
   /* set a name */
@@ -22,18 +22,13 @@ export default (props: SwitchProps) => {
   const {
     checked: initChecked,
     className: customClassName,
-    label,
     large,
     name,
     onClick,
   } = props;
   const [checked, setChecked] = useState(!!initChecked);
 
-  const className = classnames(
-    styles.wrapper,
-    { [styles.large]: large },
-    customClassName
-  );
+  const className = classnames(styles.wrapper, customClassName);
 
   const handleClick = (event: SyntheticEvent) => {
     setChecked(prevState => !prevState);
@@ -41,8 +36,7 @@ export default (props: SwitchProps) => {
   };
 
   return (
-    <span className={className}>
-      <label className={styles.srOnly}>{label}</label>
+    <div className={className}>
       <input
         className={styles.input}
         type="checkbox"
@@ -50,11 +44,11 @@ export default (props: SwitchProps) => {
         checked={checked}
         onClick={handleClick}
       />
-      <div className={styles.container}>
-        <svg viewBox="0 0 16 16" className={styles.circle}>
+      <div className={classnames({ [styles.large]: large }, styles.container)}>
+        <svg viewBox="0 0 16 16" className={styles.circle} aria-hidden="true">
           <circle cx="8" cy="8" r="8" />
         </svg>
       </div>
-    </span>
+    </div>
   );
 };

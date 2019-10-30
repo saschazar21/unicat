@@ -1,14 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch renders 1`] = `
-<span
+<div
   className="wrapper"
 >
-  <label
-    className="srOnly"
-  >
-    test label
-  </label>
   <input
     checked={false}
     className="input"
@@ -20,6 +15,7 @@ exports[`Switch renders 1`] = `
     className="container"
   >
     <svg
+      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >
@@ -30,18 +26,13 @@ exports[`Switch renders 1`] = `
       />
     </svg>
   </div>
-</span>
+</div>
 `;
 
 exports[`Switch renders a checked variant 1`] = `
-<span
+<div
   className="wrapper"
 >
-  <label
-    className="srOnly"
-  >
-    test label
-  </label>
   <input
     checked={true}
     className="input"
@@ -53,6 +44,7 @@ exports[`Switch renders a checked variant 1`] = `
     className="container"
   >
     <svg
+      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >
@@ -63,18 +55,13 @@ exports[`Switch renders a checked variant 1`] = `
       />
     </svg>
   </div>
-</span>
+</div>
 `;
 
 exports[`Switch renders a large variant 1`] = `
-<span
-  className="wrapper large"
+<div
+  className="wrapper"
 >
-  <label
-    className="srOnly"
-  >
-    test label
-  </label>
   <input
     checked={false}
     className="input"
@@ -83,9 +70,10 @@ exports[`Switch renders a large variant 1`] = `
     type="checkbox"
   />
   <div
-    className="container"
+    className="large container"
   >
     <svg
+      aria-hidden="true"
       className="circle"
       viewBox="0 0 16 16"
     >
@@ -96,5 +84,5 @@ exports[`Switch renders a large variant 1`] = `
       />
     </svg>
   </div>
-</span>
+</div>
 `;

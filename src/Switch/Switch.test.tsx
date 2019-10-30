@@ -6,13 +6,13 @@ import Switch from './Switch';
 
 describe('Switch', () => {
   it('renders', () => {
-    const wrapper = shallow(<Switch label="test label" name="test" />);
+    const wrapper = shallow(<Switch name="test" />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders a large variant', () => {
-    const wrapper = shallow(<Switch label="test label" name="test" large />);
+    const wrapper = shallow(<Switch name="test" large />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
 
@@ -24,7 +24,7 @@ describe('Switch', () => {
   });
 
   it('renders a checked variant', () => {
-    const wrapper = shallow(<Switch label="test label" name="test" checked />);
+    const wrapper = shallow(<Switch name="test" checked />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -32,9 +32,7 @@ describe('Switch', () => {
   it('handles click', () => {
     const onClick = jest.fn();
 
-    const wrapper = shallow(
-      <Switch label="test label" name="test" onClick={onClick} />
-    );
+    const wrapper = shallow(<Switch name="test" onClick={onClick} />);
 
     expect(onClick).not.toHaveBeenCalled();
 
