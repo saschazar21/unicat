@@ -16,6 +16,8 @@ export interface SwitchProps {
   name: string;
   /* onClick handler */
   onClick?: (event: SyntheticEvent) => void;
+  /* verbose mode - print on/off labels */
+  verbose?: boolean;
 }
 
 export default (props: SwitchProps) => {
@@ -25,10 +27,15 @@ export default (props: SwitchProps) => {
     large,
     name,
     onClick,
+    verbose,
   } = props;
   const [checked, setChecked] = useState(!!initChecked);
 
-  const className = classnames(styles.wrapper, customClassName);
+  const className = classnames(
+    { [styles.verbose]: verbose },
+    styles.wrapper,
+    customClassName
+  );
 
   const handleClick = (event: SyntheticEvent) => {
     setChecked(prevState => !prevState);

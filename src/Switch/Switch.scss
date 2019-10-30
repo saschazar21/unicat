@@ -6,15 +6,25 @@
   position: relative;
 }
 
-.srOnly {
-  position: absolute;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  padding: 0;
-  margin: -1px;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
+.verbose {
+  &:before,
+  &:after {
+    transition: transition(color);
+    font-size: fontSize(small);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: color(grey, false, $systemColors);
+  }
+
+  &:before {
+    content: 'off';
+    margin-right: spacing(xs);
+  }
+
+  &:after {
+    content: 'on';
+    margin-left: spacing(xs);
+  }
 }
 
 .circle {

@@ -29,6 +29,12 @@ describe('Switch', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders a verbose variant', () => {
+    const wrapper = shallow(<Switch name="test" verbose />);
+
+    expect(wrapper.find('.verbose')).toHaveLength(1);
+  });
+
   it('handles click', () => {
     const onClick = jest.fn();
 
