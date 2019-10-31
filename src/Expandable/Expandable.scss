@@ -3,8 +3,7 @@
 .wrapper {
   position: relative;
   border-radius: borderRadius();
-  border: border();
-  box-shadow: boxShadow();
+  box-shadow: boxShadow(m);
   background-color: color(white, false, $systemColors);
   padding: 0 spacing();
   margin-bottom: spacing(xs);

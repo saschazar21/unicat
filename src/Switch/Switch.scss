@@ -36,12 +36,17 @@
   transition: transition(left);
   position: absolute;
   border-radius: borderRadius(2);
-  box-shadow: boxShadow(m);
+  box-shadow: boxShadow(l);
   top: 50%;
   left: borderWidth(2);
   height: calc(100% - #{borderWidth(2) * 2});
   width: calc(50% - #{borderWidth(2) * 2});
   transform: translateY(-50%);
+
+  > circle:last-child {
+    stroke: RGBA(color(grey, false, $systemColors, true), 0.4);
+    stroke-width: borderWidth();
+  }
 
   .input:checked + .container > & {
     left: calc(50% + #{borderWidth(2)});
@@ -52,7 +57,7 @@
   transition: transition(background-color);
   position: relative;
   border-radius: borderRadius(2);
-  box-shadow: boxShadow(xs, true);
+  box-shadow: boxShadow(s, true);
   background-color: color(grey, false, $systemColors);
   height: 1em;
   width: 2em;

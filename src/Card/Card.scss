@@ -44,12 +44,11 @@
   position: relative;
   background-color: color(white, false, $systemColors);
   color: color(default);
-  border: border();
   border-radius: borderRadius();
   padding: spacing(xl);
   margin: spacing(m);
   max-width: 100%;
-  box-shadow: boxShadow(m);
+  box-shadow: boxShadow(xl);
   overflow: hidden;
 }
 
@@ -61,7 +60,7 @@
 .light {
   padding: spacing();
   margin: spacing(s);
-  box-shadow: boxShadow(xs);
+  box-shadow: boxShadow(m);
 }
 
 .controls {

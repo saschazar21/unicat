@@ -75,6 +75,7 @@ export default (props: SwitchProps) => {
       >
         <svg viewBox="0 0 16 16" className={styles.circle}>
           <circle cx="8" cy="8" r="8" />
+          <circle cx="8" cy="8" r="6" />
         </svg>
       </div>
     </div>

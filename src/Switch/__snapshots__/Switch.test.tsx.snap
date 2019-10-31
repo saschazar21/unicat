@@ -26,6 +26,11 @@ exports[`Switch renders 1`] = `
         cy="8"
         r="8"
       />
+      <circle
+        cx="8"
+        cy="8"
+        r="6"
+      />
     </svg>
   </div>
 </div>
@@ -57,6 +62,11 @@ exports[`Switch renders a checked variant 1`] = `
         cy="8"
         r="8"
       />
+      <circle
+        cx="8"
+        cy="8"
+        r="6"
+      />
     </svg>
   </div>
 </div>
@@ -87,6 +97,11 @@ exports[`Switch renders a large variant 1`] = `
         cx="8"
         cy="8"
         r="8"
+      />
+      <circle
+        cx="8"
+        cy="8"
+        r="6"
       />
     </svg>
   </div>
