@@ -1,0 +1,23 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  padding: spacing(m);
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+
+  @include media-query-up(m) {
+    padding: spacing(l);
+  }
+
+  @include media-query-up(l) {
+    padding: spacing(xl);
+  }
+}
+
+@each $variant in $variants {
+  .#{$variant} {
+    color: color($variant, true);
+    background-color: color($variant);
+  }
+}
