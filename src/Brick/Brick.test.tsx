@@ -7,14 +7,14 @@ import Brick from './Brick';
 
 describe('Brick', () => {
   it('renders', () => {
-    const wrapper = shallow(<Brick>I'm a brick</Brick>);
+    const wrapper = shallow(<Brick>I am a brick</Brick>);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders an icon', () => {
     const wrapper = shallow(
-      <Brick icon={<StarIcon key="demo-key" />}>I'm an icon brick</Brick>
+      <Brick icon={<StarIcon key="demo-key" />}>I am an icon brick</Brick>
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

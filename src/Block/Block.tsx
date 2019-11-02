@@ -14,7 +14,7 @@ export interface BlockProps {
   variant?: Variant;
 }
 
-export default (props: BlockProps) => {
+export default function Block(props: BlockProps) {
   const {
     children,
     className: customClassName,
@@ -29,4 +29,6 @@ export default (props: BlockProps) => {
   );
 
   return <section className={className}>{children}</section>;
-};
+}
+
+Block.displayName = 'Block';

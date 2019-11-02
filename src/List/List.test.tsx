@@ -27,7 +27,10 @@ describe('List', () => {
   });
 
   it('renders a list with HTML items', () => {
-    const customItems = items.map(i => <strong>{i}</strong>);
+    let iter = 0;
+    const customItems = items.map(i => (
+      <strong key={`${i}-${iter++}`}>{i}</strong>
+    ));
 
     const wrapper = shallow(<List items={customItems} />);
 

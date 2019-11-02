@@ -4,7 +4,7 @@ exports[`Brick renders 1`] = `
 <span
   className="primary wrapper"
 >
-  I'm a brick
+  I am a brick
 </span>
 `;
 
@@ -15,6 +15,6 @@ exports[`Brick renders an icon 1`] = `
   <StarIcon
     key="demo-key"
   />
-  I'm an icon brick
+  I am an icon brick
 </span>
 `;

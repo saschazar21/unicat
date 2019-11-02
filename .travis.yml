@@ -7,7 +7,9 @@ jobs:
   include:
     - stage: test
       name: 'Unit Tests'
-      script: yarn test
+      script:
+        - yarn lint
+        - yarn test
     - stage: build
       name: 'Compile & deploy to npm.js'
       script: yarn build

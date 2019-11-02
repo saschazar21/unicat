@@ -15,6 +15,7 @@
     "build:copy": "shx cp package.json README.md LICENSE.md CHANGELOG.md dist/ && npm run build:copy:styles",
     "build:dir": "shx mkdir dist",
     "build": "npm run build:clean && npm run build:dir && npm run build:copy && npm run build:compile",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "styleguide:watch": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build",
     "test": "jest --coverage",
@@ -29,6 +30,11 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
@@ -38,6 +44,8 @@
     "@types/enzyme": "^3.9.3",
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.17",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.6",
     "builtin-modules": "^3.1.0",
@@ -46,6 +54,9 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "enzyme-to-json": "^3.3.5",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0",
+    "husky": "^3.0.9",
     "jest": "^24.8.0",
     "jest-css-modules": "^2.0.0",
     "node-sass": "^4.12.0",

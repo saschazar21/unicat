@@ -4,7 +4,8 @@ import { milliseconds } from '../__tools__/helpers';
 
 export const DATE_DEFAULT_INTERVAL = 60000;
 
-declare module Intl {
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace Intl {
   export class DateTimeFormat {
     constructor(locales?: string, options?: any);
     format(date: Date): string;
@@ -40,7 +41,7 @@ export interface DateProps {
   update?: number;
 }
 
-export default (props: DateProps) => {
+export default function DateTime(props: DateProps) {
   const { className, date: propsDate, raw, update } = props;
   const supported = 'RelativeTimeFormat' in Intl;
   const [language] = useState(
@@ -95,4 +96,6 @@ export default (props: DateProps) => {
   }, []);
 
   return <span className={className}>{dateString}</span>;
-};
+}
+
+DateTime.displayName = 'DateTime';
