@@ -12,13 +12,13 @@ exports[`Expandable has the .open class 1`] = `
     onClick={[Function]}
     onKeyUp={[Function]}
   >
-    <Element
+    <Heading
       SEO={false}
       className="title"
       level="h5"
     >
       Test
-    </Element>
+    </Heading>
     <ChevronIcon
       aria-hidden="true"
       className="icon"
@@ -71,13 +71,13 @@ exports[`Expandable renders 1`] = `
     onClick={[Function]}
     onKeyUp={[Function]}
   >
-    <Element
+    <Heading
       SEO={false}
       className="title"
       level="h5"
     >
       Test
-    </Element>
+    </Heading>
     <ChevronIcon
       aria-hidden="true"
       className="icon"

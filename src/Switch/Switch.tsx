@@ -24,7 +24,7 @@ export interface SwitchProps {
   suffix?: string;
 }
 
-export default (props: SwitchProps) => {
+export default function Switch(props: SwitchProps): JSX.Element {
   const {
     checked: initChecked,
     className: customClassName,
@@ -42,12 +42,15 @@ export default (props: SwitchProps) => {
     customClassName
   );
 
-  const handleClick = (event: SyntheticEvent) => {
+  const handleClick = (event: SyntheticEvent): void => {
     setChecked(prevState => !prevState);
-    return onClick ? onClick(event) : null;
+
+    if (onClick) {
+      onClick(event);
+    }
   };
 
-  const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>): void => {
     preventDefault(event);
     if (event.key === ' ' || event.key === 'Enter') {
       handleClick(event);
@@ -80,4 +83,6 @@ export default (props: SwitchProps) => {
       </div>
     </div>
   );
-};
+}
+
+Switch.displayName = 'Switch';

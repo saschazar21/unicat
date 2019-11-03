@@ -10,7 +10,7 @@ export interface IconButtonProps extends ButtonProps {
 }
 
 export default class IconButton extends Component<IconButtonProps> {
-  public render() {
+  public render(): JSX.Element {
     const { variant: defaultVariant } = Button.defaultProps;
     const {
       block,

@@ -41,7 +41,7 @@ export default class Picture extends Component<PictureProps> {
     srcset: [],
   };
 
-  public render() {
+  public render(): JSX.Element {
     const {
       lazyload: defaultLazyLoad,
       loading: defaultLoading,

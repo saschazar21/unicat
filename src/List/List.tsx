@@ -21,7 +21,7 @@ export default class List extends Component<ListProps> {
 
   private _key: KeyGenerator = new KeyGenerator('List');
 
-  public render() {
+  public render(): JSX.Element {
     const { distribute: defaultDistribute } = List.defaultProps;
 
     const {

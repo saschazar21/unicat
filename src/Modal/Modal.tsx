@@ -71,7 +71,7 @@ export default class Modal extends Component<ModalProps, ModalState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { variant: defaultVariant } = Modal.defaultProps;
 
     const {

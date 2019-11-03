@@ -1,24 +1,24 @@
 import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 
-import { Heading } from '../__types__/global';
+import { Heading as HeadingType } from '../__types__/global';
 
 import styles from './Heading.scss';
 
 export interface HeadingProps {
   children: ReactNode[] | string;
   className?: string;
-  level: Heading;
+  level: HeadingType;
   SEO?: boolean;
 }
 
-export default class Element extends Component<HeadingProps> {
+export default class Heading extends Component<HeadingProps> {
   static defaultProps = {
     className: null,
     SEO: false,
   };
 
-  public render() {
+  public render(): JSX.Element {
     const { children, className: customClassName, level, SEO } = this.props;
     const className = classnames(
       styles.wrapper,

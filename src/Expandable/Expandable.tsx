@@ -26,7 +26,7 @@ export interface ExpandableProps {
   title: string;
 }
 
-export default function expandable(props: ExpandableProps) {
+export default function Expandable(props: ExpandableProps): JSX.Element {
   const { children, className: customClassname, open: isOpen, title } = props;
   const [open, setOpen] = useState(!!isOpen);
 
@@ -36,12 +36,12 @@ export default function expandable(props: ExpandableProps) {
     customClassname
   );
 
-  const handleClick = (event: SyntheticEvent) => {
+  const handleClick = (event: SyntheticEvent): void => {
     preventDefault(event);
-    setOpen(o => !o);
+    return setOpen(o => !o);
   };
 
-  const handleKeyUp = (event: KeyboardEvent) => {
+  const handleKeyUp = (event: KeyboardEvent): void => {
     preventDefault(event);
     if (event.key === 'ArrowUp' && open) {
       handleClick(event);
@@ -81,3 +81,5 @@ export default function expandable(props: ExpandableProps) {
     </aside>
   );
 }
+
+Expandable.displayName = 'Expandable';
