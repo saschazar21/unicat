@@ -3,7 +3,7 @@ export default class KeyGenerator {
   private _prefix: string;
 
   constructor(prefix: string, iteration?: number) {
-    this._prefix = `${prefix}-${(Math.random() * 100).toString()}`;
+    this._prefix = `${prefix}-${Math.round(Math.random() * 100000).toString()}`;
     this._iteration = iteration || 0;
   }
 

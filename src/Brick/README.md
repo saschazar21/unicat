@@ -1,13 +1,21 @@
 Displays a single brick. Can be used for tags, labels, etc...
 
 ```jsx
+import KeyGenerator from '../__tools__/key-generator';
+
+const iter = new KeyGenerator('Brick');
+
 <div style={{ display: 'flex', alignItems: 'stretch' }}>
-  <Brick>I'm a brick</Brick>
-  <Brick variant="default">I'm a default brick</Brick>
-  <Brick href="#" variant="success">
+  <Brick className={iter.next()} key={iter.next()}>
+    I'm a brick
+  </Brick>
+  <Brick key={iter.next()} variant="default">
+    I'm a default brick
+  </Brick>
+  <Brick key={iter.next()} href="#" variant="success">
     I'm a success brick with a link
   </Brick>
-</div>
+</div>;
 ```
 
 Of course it's possible to add an icon:
