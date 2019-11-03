@@ -7,7 +7,27 @@ export const DATE_DEFAULT_INTERVAL = 60000;
 // eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace Intl {
   export class DateTimeFormat {
-    constructor(locales?: string, options?: any);
+    constructor(
+      locales?: string,
+      options?: {
+        dateStyle?: string;
+        timeStyle?: string;
+        localeMatcher?: string;
+        timeZone?: string;
+        hour12?: boolean;
+        hourCycle?: string;
+        formatMatcher?: string;
+        weekday?: string;
+        era?: string;
+        year?: string;
+        month?: string;
+        day?: string;
+        hour?: string;
+        minute?: string;
+        second?: string;
+        timeZoneName?: string;
+      }
+    );
     format(date: Date): string;
   }
   export class RelativeTimeFormat {
@@ -19,7 +39,9 @@ declare namespace Intl {
   }
 }
 
-const relativeFormat = (prevDate: Date) => {
+const relativeFormat = (
+  prevDate: Date
+): { value: number; unit: string } | null => {
   const delta = prevDate.getTime() - Date.now();
   const filter = Object.keys(milliseconds).filter(v =>
     delta < 0 ? delta < milliseconds[v] * -1 : delta > milliseconds[v]
@@ -41,7 +63,7 @@ export interface DateProps {
   update?: number;
 }
 
-export default function DateTime(props: DateProps) {
+export default function DateTime(props: DateProps): JSX.Element {
   const { className, date: propsDate, raw, update } = props;
   const supported = 'RelativeTimeFormat' in Intl;
   const [language] = useState(
@@ -57,7 +79,7 @@ export default function DateTime(props: DateProps) {
   );
   const [dateString, setDateString] = useState<string>();
 
-  const formatString = () => {
+  const formatString = (): void => {
     if (!raw && supported) {
       const format = relativeFormat(date);
 
@@ -88,7 +110,7 @@ export default function DateTime(props: DateProps) {
     if (!raw) {
       intervalId = setInterval(formatString, update || DATE_DEFAULT_INTERVAL);
     }
-    return () => {
+    return (): void => {
       if (intervalId) {
         clearInterval(intervalId);
       }

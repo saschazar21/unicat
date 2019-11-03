@@ -25,7 +25,7 @@ export default class Button extends Component<ButtonProps> {
     type: 'submit',
   };
 
-  public render() {
+  public render(): JSX.Element {
     const { variant: defaultVariant } = Button.defaultProps;
     const {
       children,

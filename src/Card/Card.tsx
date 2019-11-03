@@ -24,13 +24,13 @@ export default class Card extends Component<CardProps> {
     variant: 'default',
   };
 
-  public renderCta = () => {
+  public renderCta = (): JSX.Element => {
     const { cta } = this.props;
 
     return <div className={styles.cta}>{cta}</div>;
   };
 
-  public renderControls = () => {
+  public renderControls = (): JSX.Element => {
     const { onClose } = this.props;
 
     return (
@@ -47,7 +47,7 @@ export default class Card extends Component<CardProps> {
     );
   };
 
-  public render() {
+  public render(): JSX.Element {
     const { variant: defaultVariant } = Card.defaultProps;
     const {
       children,

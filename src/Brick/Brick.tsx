@@ -19,7 +19,7 @@ export interface BrickProps {
   variant?: Variant;
 }
 
-export default (props: BrickProps) => {
+export default function Brick(props: BrickProps): JSX.Element {
   const {
     children,
     className: customClassName,
@@ -38,4 +38,4 @@ export default (props: BrickProps) => {
     href && !icon ? <LinkIcon focusable="false" aria-hidden="true" /> : icon,
     children,
   ]);
-};
+}

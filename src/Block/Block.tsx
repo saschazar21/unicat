@@ -14,7 +14,7 @@ export interface BlockProps {
   variant?: Variant;
 }
 
-export default function Block(props: BlockProps) {
+export default function Block(props: BlockProps): JSX.Element {
   const {
     children,
     className: customClassName,

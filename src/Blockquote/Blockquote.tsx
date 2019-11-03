@@ -11,7 +11,7 @@ export interface BlockquoteProps {
 }
 
 export default class Blockquote extends Component<BlockquoteProps> {
-  public render() {
+  public render(): JSX.Element {
     const {
       author,
       children,
