@@ -1,0 +1,13 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  padding: 0 spacing();
+
+  @include media-query-up(m) {
+    padding: 0 spacing(l);
+  }
+
+  @include media-query-up(l) {
+    padding: 0 spacing(xl);
+  }
+}
