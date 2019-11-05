@@ -16,8 +16,8 @@
     "build:dir": "shx mkdir dist",
     "build": "npm run build:clean && npm run build:dir && npm run build:copy && npm run build:compile",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "styleguide:watch": "npx styleguidist server",
-    "styleguide:build": "npx styleguidist build",
+    "styleguide:watch": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "test": "jest --coverage",
     "test:update": "jest -u --coverage"
   },
