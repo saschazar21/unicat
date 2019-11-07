@@ -44,3 +44,12 @@ $fontSizes: (
   }
   @error "The key #{$variant} is not defined for font sizes!";
 }
+
+$lineHeights: 1.5em, 1.75em, 2em;
+
+@function lineHeight($i: 1) {
+  @if length($lineHeights) >= $i {
+    @return nth($lineHeights, $i);
+  }
+  @error "The index #{$i} invalid, list has only #{length($lineHeights)} entries!";
+}

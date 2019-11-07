@@ -28,7 +28,7 @@ export default class Card extends Component<CardProps> {
   public renderCta = (): JSX.Element => {
     const { cta } = this.props;
 
-    return <div className={styles.cta}>{cta}</div>;
+    return <Container className={styles.cta}>{cta}</Container>;
   };
 
   public renderControls = (): JSX.Element => {
