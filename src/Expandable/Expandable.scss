@@ -29,8 +29,8 @@
 
 .icon {
   transition: transition(transform);
-  min-height: fontSize(h4);
-  min-width: fontSize(h4);
+  height: fontSize(h4);
+  width: fontSize(h4);
   transform: rotateZ(90deg);
 
   .open & {
