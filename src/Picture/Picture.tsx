@@ -9,6 +9,11 @@ declare module 'react' {
   }
 }
 
+export interface SourceSet {
+  url: string;
+  width: number;
+}
+
 export interface PictureProps {
   className?: string;
   crop?: boolean;
@@ -17,14 +22,9 @@ export interface PictureProps {
   lazyload?: boolean;
   loading?: 'lazy' | 'eager' | 'auto';
   media?: string;
-  sizes?: {
-    mediaQuery?: string;
-    width: string;
-  }[];
-  srcset?: {
-    url: string;
-    width: string;
-  }[];
+  onLoad?: () => void;
+  placeholder?: string;
+  srcset?: SourceSet[];
   src: string;
   shape?: 'round' | 'rounded' | 'default';
   width?: string;
@@ -37,8 +37,21 @@ export default class Picture extends Component<PictureProps> {
     lazyload: false,
     loading: 'auto',
     shape: 'default',
-    sizes: [],
     srcset: [],
+  };
+
+  state = {
+    loaded: false,
+  };
+
+  handleOnLoad = (): void => {
+    const { onLoad } = this.props;
+
+    this.setState({ loaded: true });
+
+    if (onLoad) {
+      onLoad();
+    }
   };
 
   public render(): JSX.Element {
@@ -55,19 +68,22 @@ export default class Picture extends Component<PictureProps> {
       lazyload = defaultLazyLoad,
       loading = defaultLoading,
       media,
+      placeholder,
       shape = defaultShape,
-      sizes,
+      src,
       srcset,
       ...other
     } = this.props;
 
-    const srcSet =
-      Array.isArray(srcset) &&
-      srcset.map(({ url, width }) => `${url} ${width}`).join(', ');
+    const { loaded } = this.state;
+
+    const srcSet = Array.isArray(srcset)
+      ? srcset.map(({ url, width }) => `${url} ${width}w`).join(', ')
+      : null;
 
     const className = classnames(
       styles.wrapper,
-      { [styles.shape]: shape !== defaultShape },
+      { [styles.shape]: shape !== defaultShape, [styles.loaded]: loaded },
       customClassName
     );
 
@@ -76,12 +92,7 @@ export default class Picture extends Component<PictureProps> {
       className,
       alt: description,
       media,
-      srcSet,
-      sizes:
-        Array.isArray(sizes) &&
-        sizes
-          .map(({ mediaQuery = '', width }) => `${mediaQuery} ${width}`)
-          .join(', '),
+      onLoad: this.handleOnLoad,
     };
 
     const { height = '64px', width = '64px' } = this.props;
@@ -91,9 +102,19 @@ export default class Picture extends Component<PictureProps> {
       Object.assign(
         {},
         props,
+        { src, srcSet },
+        lazyload && !this.nativeLazyLoading
+          ? {
+              'data-srcset': srcSet,
+              'data-src': src,
+              src: placeholder,
+              srcSet: null,
+            }
+          : null,
         lazyload || this.nativeLazyLoading ? { loading } : null
       )
     );
+
     return crop ? (
       <figure className={styles.crop} style={{ height, width }}>
         {img}

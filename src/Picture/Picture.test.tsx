@@ -22,11 +22,11 @@ describe('Picture', () => {
         srcset={[
           {
             url: '//placehold.it/400x400',
-            width: '400w',
+            width: 400,
           },
           {
             url: '//placehold.it/600x600',
-            width: '600w',
+            width: 600,
           },
         ]}
       />
@@ -34,28 +34,5 @@ describe('Picture', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.find('img[loading]')).toHaveLength(1);
-  });
-
-  it('renders a sizes attribute', () => {
-    const wrapper = shallow(
-      <Picture
-        description="Test"
-        src="//placehold.it/200x200"
-        sizes={[
-          {
-            mediaQuery: '(min-width 640px)',
-            width: '80vw',
-          },
-        ]}
-        srcset={[
-          {
-            url: '//placehold.it/500x500',
-            width: '500w',
-          },
-        ]}
-      />
-    );
-
-    expect(wrapper.find('img[sizes]')).toHaveLength(1);
   });
 });

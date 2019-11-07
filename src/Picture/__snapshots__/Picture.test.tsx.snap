@@ -4,7 +4,7 @@ exports[`Picture renders 1`] = `
 <img
   alt="A sample test image"
   className="wrapper"
-  sizes=""
+  onLoad={[Function]}
   src="//placehold.it/200x200"
   srcSet=""
 />
@@ -14,9 +14,10 @@ exports[`Picture renders a lazy-load variant 1`] = `
 <img
   alt="Test"
   className="wrapper"
+  data-src="//placehold.it/200x200"
+  data-srcset="//placehold.it/400x400 400w, //placehold.it/600x600 600w"
   loading="auto"
-  sizes=""
-  src="//placehold.it/200x200"
-  srcSet="//placehold.it/400x400 400w, //placehold.it/600x600 600w"
+  onLoad={[Function]}
+  srcSet={null}
 />
 `;

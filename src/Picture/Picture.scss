@@ -10,10 +10,12 @@
 }
 
 .wrapper {
+  transition: transition(opacity);
   display: block;
   overflow: hidden;
   height: auto;
   width: 100%;
+  opacity: 0;
 
   .crop & {
     position: absolute;
@@ -23,6 +25,10 @@
     top: 0;
     left: 0;
   }
+}
+
+.loaded {
+  opacity: 1;
 }
 
 .round {
