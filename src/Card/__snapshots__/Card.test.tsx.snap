@@ -4,13 +4,13 @@ exports[`Card renders 1`] = `
 <aside
   className="wrapper"
 >
-  <div
+  <Container
     className="body"
   >
     <span>
       Test
     </span>
-  </div>
+  </Container>
 </aside>
 `;
 
@@ -28,13 +28,13 @@ exports[`Card renders a close button 1`] = `
       variant="light"
     />
   </div>
-  <div
+  <Container
     className="body"
   >
     <span>
       Test
     </span>
-  </div>
+  </Container>
 </aside>
 `;
 
@@ -42,11 +42,11 @@ exports[`Card renders a light variant 1`] = `
 <aside
   className="wrapper light"
 >
-  <div
+  <Container
     className="body"
   >
     Test
-  </div>
+  </Container>
 </aside>
 `;
 
@@ -61,12 +61,12 @@ exports[`Card renders an image 1`] = `
       src="//placehold.it/200x200"
     />
   </picture>
-  <div
+  <Container
     className="body"
   >
     <span>
       Test
     </span>
-  </div>
+  </Container>
 </aside>
 `;

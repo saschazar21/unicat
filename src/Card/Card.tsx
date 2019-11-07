@@ -4,9 +4,10 @@ import { CloseIcon } from '@saschazar/unicat-icons';
 
 import { SmallVariant } from '../__types__/global';
 import Button from '../Button';
+import Container from '../Container';
+import IconButton from '../IconButton';
 
 import styles from './Card.scss';
-import IconButton from '../IconButton';
 
 export interface CardProps {
   children: ReactNode[] | ReactNode;
@@ -69,13 +70,11 @@ export default class Card extends Component<CardProps> {
       customClassName
     );
 
-    const bodyClassName = classnames(styles.body);
-
     return (
       <aside className={className} {...aria}>
         {onClose && this.renderControls()}
         {image && <picture className={styles.picture}>{image}</picture>}
-        <div className={bodyClassName}>{children}</div>
+        <Container className={styles.body}>{children}</Container>
         {cta && this.renderCta()}
       </aside>
     );
