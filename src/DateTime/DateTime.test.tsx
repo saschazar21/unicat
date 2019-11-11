@@ -2,17 +2,17 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import DateTime from './DateTime';
+import { RawDateTime } from './DateTime';
 
 describe('DateTime', () => {
   it('renders', () => {
-    const wrapper = shallow(<DateTime date="2019-10-27" />);
+    const wrapper = shallow(<RawDateTime date="2019-10-27" />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders a raw version', () => {
-    const wrapper = shallow(<DateTime date={new Date()} raw />);
+    const wrapper = shallow(<RawDateTime date={new Date()} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { milliseconds } from '../__tools__/helpers';
+import withUpdate from '../__hoc__/withUpdate';
 
-export const DATE_DEFAULT_INTERVAL = 60000;
+import { milliseconds } from '../__tools__/helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace Intl {
@@ -57,14 +57,12 @@ export interface DateProps {
   className?: string;
   /* date string to format */
   date: string | Date;
-  /* show the raw version */
-  raw?: boolean;
-  /* update interval, defaults to 60000 */
-  update?: number;
+  /* the current timestamp, (usually set by the HOC) */
+  timestamp?: Date;
 }
 
-export default function DateTime(props: DateProps): JSX.Element {
-  const { className, date: propsDate, raw, update } = props;
+export function RawDateTime(props: DateProps): JSX.Element {
+  const { className, date: propsDate, timestamp } = props;
   const supported = 'RelativeTimeFormat' in Intl;
   const [language] = useState(
     navigator && navigator.language ? navigator.language : 'en'
@@ -80,7 +78,7 @@ export default function DateTime(props: DateProps): JSX.Element {
   const [dateString, setDateString] = useState<string>();
 
   const formatString = (): void => {
-    if (!raw && supported) {
+    if (timestamp && supported) {
       const format = relativeFormat(date);
 
       if (format) {
@@ -104,20 +102,11 @@ export default function DateTime(props: DateProps): JSX.Element {
     );
   };
 
-  useEffect(() => {
-    formatString();
-    let intervalId: NodeJS.Timeout;
-    if (!raw) {
-      intervalId = setInterval(formatString, update || DATE_DEFAULT_INTERVAL);
-    }
-    return (): void => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, []);
+  useEffect(() => formatString(), [timestamp]);
 
   return <span className={className}>{dateString}</span>;
 }
 
-DateTime.displayName = 'DateTime';
+export default withUpdate(RawDateTime);
+
+RawDateTime.displayName = 'DateTime';
