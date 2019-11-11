@@ -10,7 +10,7 @@ It's also possible to change the default update interval by setting a millisecon
 <DateTime date={new Date()} interval={60000} />
 ```
 
-By appending the `raw` prop, it just prints the static formatted date string:
+By importing the `RawDateTime` component, it just prints the statically formatted date string, without any interval update:
 
 ```jsx
 import { RawDateTime } from './DateTime';
