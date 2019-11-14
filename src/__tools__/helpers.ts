@@ -1,5 +1,8 @@
 import React from 'react';
 
+/** browser supports native lazy-loading */
+export const nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
+
 /** a simple no-operation function */
 export const noop = (): null => null;
 

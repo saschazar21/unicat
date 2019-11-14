@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Picture from './Picture';
+import { RawPicture as Picture } from './Picture';
 
 describe('Picture', () => {
   it('renders', () => {

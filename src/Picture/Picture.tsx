@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, RefObject } from 'react';
 import classnames from 'classnames';
+
+import withLazyLoading from '../__hoc__/withLazyLoading';
+import { nativeLazyLoading } from '../__tools__/helpers';
 
 import styles from './Picture.scss';
 
@@ -18,6 +21,7 @@ export interface PictureProps {
   className?: string;
   crop?: boolean;
   description: string;
+  forwardedRef?: RefObject<HTMLElement>;
   height?: string;
   lazyload?: boolean;
   loading?: 'lazy' | 'eager' | 'auto';
@@ -30,16 +34,7 @@ export interface PictureProps {
   width?: string;
 }
 
-export default class Picture extends Component<PictureProps> {
-  private nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
-
-  static defaultProps = {
-    lazyload: false,
-    loading: 'auto',
-    shape: 'default',
-    srcset: [],
-  };
-
+export class RawPicture extends Component<PictureProps> {
   state = {
     loaded: false,
   };
@@ -56,20 +51,15 @@ export default class Picture extends Component<PictureProps> {
 
   public render(): JSX.Element {
     const {
-      lazyload: defaultLazyLoad,
-      loading: defaultLoading,
-      shape: defaultShape,
-    } = Picture.defaultProps;
-
-    const {
       className: customClassName,
       crop,
       description,
-      lazyload = defaultLazyLoad,
-      loading = defaultLoading,
+      forwardedRef,
+      lazyload = false,
+      loading = 'auto',
       media,
       placeholder,
-      shape = defaultShape,
+      shape = 'default',
       src,
       srcset,
       ...other
@@ -83,7 +73,7 @@ export default class Picture extends Component<PictureProps> {
 
     const className = classnames(
       styles.wrapper,
-      { [styles.shape]: shape !== defaultShape, [styles.loaded]: loaded },
+      { [styles.shape]: shape !== 'default', [styles.loaded]: loaded },
       customClassName
     );
 
@@ -92,6 +82,7 @@ export default class Picture extends Component<PictureProps> {
       className,
       alt: description,
       media,
+      ref: forwardedRef,
       onLoad: this.handleOnLoad,
     };
 
@@ -103,7 +94,7 @@ export default class Picture extends Component<PictureProps> {
         {},
         props,
         { src, srcSet },
-        lazyload && !this.nativeLazyLoading
+        lazyload && !nativeLazyLoading
           ? {
               'data-srcset': srcSet,
               'data-src': src,
@@ -111,7 +102,7 @@ export default class Picture extends Component<PictureProps> {
               srcSet: null,
             }
           : null,
-        lazyload || this.nativeLazyLoading ? { loading } : null
+        lazyload || nativeLazyLoading ? { loading } : null
       )
     );
 
@@ -124,3 +115,5 @@ export default class Picture extends Component<PictureProps> {
     );
   }
 }
+
+export default withLazyLoading()(RawPicture);

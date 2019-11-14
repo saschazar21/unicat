@@ -6,7 +6,7 @@ exports[`Picture renders 1`] = `
   className="wrapper"
   onLoad={[Function]}
   src="//placehold.it/200x200"
-  srcSet=""
+  srcSet={null}
 />
 `;
 

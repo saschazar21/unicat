@@ -1,6 +1,8 @@
 Renders a responsive image using a given `srcset` property.
 
 ```jsx
+import Picture from './Picture';
+
 const srcset = [
   {
     url: 'https://placehold.it/2500x2000.jpg',
@@ -30,6 +32,8 @@ const srcset = [
 Furthermore, it's possible to crop an image (useful for keeping certain formats, e.g. avatars, etc...)
 
 ```jsx
+import Picture from './Picture';
+
 const srcset = [
   {
     url: 'https://placehold.it/2500x2000.jpg',
@@ -51,6 +55,7 @@ const srcset = [
 
 <Picture
   crop
+  loading="eager"
   srcset={srcset}
   height="480px"
   width="640px"
