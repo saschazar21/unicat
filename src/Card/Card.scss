@@ -76,7 +76,7 @@
 .picture {
   display: block;
   position: relative;
-  margin: -#{spacing(xl)};
+  margin: -#{spacing(xl)} -#{spacing(xl)} 0;
 
   .light > & {
     margin: -#{spacing()};

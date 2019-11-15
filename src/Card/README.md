@@ -66,7 +66,26 @@ import Heading from '../Heading/Heading.tsx';
 import Picture from '../Picture/Picture.tsx';
 
 <Card
-  image={<Picture src="//placehold.it/300x100" description="A placeholder" />}
+  image={
+    <Picture
+      srcset={[
+        {
+          url: 'https://source.unsplash.com/random/800x533.jpg',
+          width: 800,
+        },
+        {
+          url: 'https://source.unsplash.com/random/640x420.jpg',
+          width: 640,
+        },
+        {
+          url: 'https://source.unsplash.com/random/320x212.jpg',
+          width: 320,
+        },
+      ]}
+      src="//source.unsplash.com/random/300x100"
+      description="A placeholder"
+    />
+  }
 >
   <Heading level="h2">Headline</Heading>
   <span>A smaller version of the Card.</span>
