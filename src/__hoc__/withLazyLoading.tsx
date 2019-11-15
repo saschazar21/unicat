@@ -17,5 +17,6 @@ export default (options?: IntersectionObserverInit) => <P extends object>(
     return <WrappedComponent {...(componentProps as P)} lazyload={false} />;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return withIntersectionObserver(options)(WrappedComponent)(componentProps)!;
 };
