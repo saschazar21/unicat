@@ -50,7 +50,9 @@ describe('Button', () => {
 
   it('renders an icon', () => {
     const mock = jest.fn();
-    const wrapper = shallow(<Button onClick={mock} name="Test" icon={icon} />);
+    const wrapper = shallow(
+      <Button variant="light" onClick={mock} name="Test" icon={icon} />
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.find('svg')).toHaveLength(1);

@@ -9,6 +9,7 @@ export interface ListProps {
   className?: string;
   distribute?: 'even' | 'normal';
   horizontal?: boolean;
+  inline?: boolean;
   items: ReactNode[];
   ordered?: boolean;
   prefix?: ReactNode | JSX.Element;
@@ -28,6 +29,7 @@ export default class List extends Component<ListProps> {
       className: customClassName,
       distribute = defaultDistribute,
       horizontal,
+      inline,
       items,
       ordered,
       prefix,
@@ -37,6 +39,7 @@ export default class List extends Component<ListProps> {
       styles.wrapper,
       {
         [styles.horizontal]: horizontal,
+        [styles.inline]: inline,
         [styles.prefix]: prefix,
         [styles.distribute]: distribute !== defaultDistribute,
       },

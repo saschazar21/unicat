@@ -29,7 +29,7 @@ exports[`Button renders a light variant 1`] = `
 
 exports[`Button renders an icon 1`] = `
 <button
-  className="wrapper default"
+  className="wrapper light"
   name="Test"
   onClick={[MockFunction]}
   type="submit"

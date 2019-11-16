@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders 1`] = `
+<nav>
+  <List
+    className="wrapper"
+    distribute="normal"
+    horizontal={true}
+    inline={true}
+    items={
+      Array [
+        <span>
+          Home
+        </span>,
+        <span>
+          Components
+        </span>,
+        <a
+          href="#button"
+        >
+          Button
+        </a>,
+      ]
+    }
+    prefix={<ChevronIcon />}
+  />
+</nav>
+`;

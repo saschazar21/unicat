@@ -10,6 +10,7 @@ describe('Brick', () => {
     const wrapper = shallow(<Brick>I am a brick</Brick>);
 
     expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find('span')).toHaveLength(1);
   });
 
   it('renders an icon', () => {
@@ -18,5 +19,14 @@ describe('Brick', () => {
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find('span')).toHaveLength(1);
+    expect(wrapper.find('StarIcon')).toHaveLength(1);
+  });
+
+  it('renders a link', () => {
+    const wrapper = shallow(<Brick href="#">I am a link brick</Brick>);
+
+    expect(wrapper.find('a')).toHaveLength(1);
+    expect(wrapper.find('span')).toHaveLength(0);
   });
 });
