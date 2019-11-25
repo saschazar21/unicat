@@ -1,0 +1,24 @@
+@import '../__styles__/variables';
+
+.wrapper {
+  height: auto;
+  width: 100%;
+}
+
+.outer {
+  stop-color: color(grey, false, $systemColors);
+}
+
+.inner {
+  stop-color: color(light);
+}
+
+.dark {
+  .outer {
+    stop-color: color(default);
+  }
+
+  .inner {
+    stop-color: color(success);
+  }
+}

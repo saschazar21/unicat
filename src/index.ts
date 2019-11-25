@@ -10,6 +10,7 @@ export { default as Expandable } from './Expandable';
 export { default as Heading } from './Heading';
 export { default as IconButton } from './IconButton';
 export { default as List } from './List';
+export { default as MediaLoading } from './MediaLoading';
 export { default as Modal } from './Modal';
 export { default as Picture, RawPicture } from './Picture';
 export { default as Switch } from './Switch';
