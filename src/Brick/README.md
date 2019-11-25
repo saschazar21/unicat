@@ -23,7 +23,7 @@ Of course it's possible to add an icon:
 ```jsx
 import { StarIcon } from '@saschazar/unicat-icons';
 
-<Brick icon={<StarIcon focusable="false" aria-hidden="true" />}>
+<Brick icon={<StarIcon focusable="false" aria-hidden="true" key="StarIcon" />}>
   I'm an icon brick
 </Brick>;
 ```

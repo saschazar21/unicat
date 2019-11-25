@@ -68,7 +68,7 @@ export default function Switch(props: SwitchProps): JSX.Element {
         className={styles.input}
         type="checkbox"
         name={name}
-        checked={checked}
+        defaultChecked={checked}
         onClick={handleClick}
         onKeyUp={handleKeyUp}
       />

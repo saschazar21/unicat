@@ -16,11 +16,11 @@ describe('Switch', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
 
-    expect(wrapper.find('[checked="false"]')).toHaveLength(0);
+    expect(wrapper.find('[defaultChecked="false"]')).toHaveLength(0);
 
     wrapper.find('input').simulate('click');
 
-    expect(wrapper.find('[checked=true]')).toHaveLength(1);
+    expect(wrapper.find('[defaultChecked=true]')).toHaveLength(1);
   });
 
   it('renders a checked variant', () => {

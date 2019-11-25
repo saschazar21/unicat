@@ -36,7 +36,7 @@ export default function Brick(props: BrickProps): JSX.Element {
 
   return React.createElement(href ? 'a' : 'span', { className, href }, [
     href && !icon ? (
-      <LinkIcon focusable="false" aria-hidden="true" key="link-icon" />
+      <LinkIcon focusable="false" aria-hidden="true" key={`${children}-icon`} />
     ) : (
       icon
     ),
