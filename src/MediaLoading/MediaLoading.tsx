@@ -33,17 +33,17 @@ export default (props: MediaLoadingProps): JSX.Element => {
           <stop className={styles.outer} offset="100%" />
           <animate
             attributeName="x2"
-            from="-0.5"
-            to="1.5"
-            dur="4s"
+            from="-50%"
+            to="150%"
+            dur="2s"
             repeatCount="indefinite"
             fill="freeze"
           />
           <animate
             attributeName="x1"
-            from="-1.0"
-            to="1"
-            dur="4s"
+            from="-100%"
+            to="100%"
+            dur="2s"
             repeatCount="indefinite"
             fill="freeze"
           />
