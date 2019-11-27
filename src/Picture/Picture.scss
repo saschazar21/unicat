@@ -32,11 +32,11 @@
 
 .loaded {
   opacity: 1;
-}
 
-.placeholder {
-  .loaded + & {
+  & + .placeholder {
     position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
