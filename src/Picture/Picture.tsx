@@ -1,6 +1,7 @@
 import React, { Component, RefObject } from 'react';
 import classnames from 'classnames';
 
+import MediaLoading from '../MediaLoading';
 import withLazyLoading from '../__hoc__/withLazyLoading';
 import { nativeLazyLoading } from '../__tools__/helpers';
 
@@ -106,12 +107,18 @@ export class RawPicture extends Component<PictureProps> {
       )
     );
 
-    return crop ? (
-      <figure className={styles.crop} style={{ height, width }}>
+    const figureClassName = classnames(styles.container, {
+      [styles.crop]: crop,
+    });
+    const figureStyle = crop ? { height, width } : {};
+
+    return (
+      <figure className={figureClassName} style={figureStyle}>
         {img}
+        {!loaded && !nativeLazyLoading && !placeholder && (
+          <MediaLoading className={styles.placeholder} />
+        )}
       </figure>
-    ) : (
-      img
     );
   }
 }
