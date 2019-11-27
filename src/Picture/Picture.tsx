@@ -115,7 +115,7 @@ export class RawPicture extends Component<PictureProps> {
     return (
       <figure className={figureClassName} style={figureStyle}>
         {img}
-        {!loaded && !nativeLazyLoading && !placeholder && (
+        {!loaded && !placeholder && (
           <MediaLoading className={styles.placeholder} />
         )}
       </figure>
