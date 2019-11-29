@@ -1,6 +1,36 @@
 @import '../__styles__/variables';
 
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: borderRadius();
+  background: linear-gradient(
+    90deg,
+    RGBA(color(white, false, $systemColors, true), 1) 0%,
+    RGBA(color(white, false, $systemColors, true), 0.333) 10%,
+    transparent 20%,
+    transparent 80%,
+    RGBA(color(white, false, $systemColors, true), 0.333) 90%,
+    RGBA(color(white, false, $systemColors, true), 1) 100%
+  );
   max-width: 100%;
   overflow: hidden;
+}
+
+.viewport {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.icon {
+  margin: spacing(s);
+  z-index: 10;
+
+  &:first-child {
+    transform: rotateY(180deg);
+  }
 }

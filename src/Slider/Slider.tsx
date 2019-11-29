@@ -58,12 +58,14 @@ export default function Slider(props: SliderProps): JSX.Element {
   return (
     <div className={className}>
       <IconButton
+        className={styles.icon}
         name="back"
         icon={<ChevronIcon aria-hidden />}
         onClick={slideBack}
         disabled={!refs.length}
+        variant="light"
       />
-      <div>
+      <div className={styles.viewport}>
         {children.map((c, i) => (
           <div key={keygen.next()} ref={refs[i]}>
             {c}
@@ -71,10 +73,12 @@ export default function Slider(props: SliderProps): JSX.Element {
         ))}
       </div>
       <IconButton
+        className={styles.icon}
         name="forward"
         icon={<ChevronIcon aria-hidden />}
         onClick={slideForward}
         disabled={!refs.length}
+        variant="light"
       />
     </div>
   );
