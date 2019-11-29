@@ -35,7 +35,7 @@ export interface PictureProps {
   width?: string;
 }
 
-export class RawPicture extends Component<PictureProps> {
+class Picture extends Component<PictureProps> {
   state = {
     loaded: false,
   };
@@ -123,4 +123,5 @@ export class RawPicture extends Component<PictureProps> {
   }
 }
 
-export default withLazyLoading()(RawPicture);
+export { Picture as RawPicture };
+export default withLazyLoading()(Picture);
