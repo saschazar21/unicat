@@ -1,8 +1,18 @@
 renders an overflowing container with `<Button />` components to slide through the items:
 
 ```jsx
+import Picture from '../Picture';
+
 <Slider>
-  <span key="low-1">Hey</span>
-  <span key="low-2">Ho</span>
-</Slider>
+  <Picture
+    alt="a random image from unsplash.com"
+    src="https://source.unsplash.com/random/320x240"
+    key="slider-image-1"
+  />
+  <Picture
+    alt="a random image from unsplash.com"
+    src="https://source.unsplash.com/random/320x240"
+    key="slider-image-2"
+  />
+</Slider>;
 ```

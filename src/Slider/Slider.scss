@@ -1,6 +1,7 @@
 @import '../__styles__/variables';
 
 .wrapper {
+  position: relative;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -10,17 +11,27 @@
 }
 
 .viewport {
+  transition: transition(transform);
   display: flex;
-  align-self: stretch;
+  position: relative;
   align-items: center;
   justify-content: space-evenly;
+  height: 100%;
+  min-width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
   overflow: hidden;
+
+  > *:not(:last-child) {
+    margin-right: spacing();
+  }
 }
 
 .buttonWrapper {
   --gradient-color: #{color(white, false, $systemColors, true)};
 
-  transition: transition(opacity);
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,23 +42,31 @@
     RGBA(var(--gradient-color), 0.667) 80%,
     RGBA(var(--gradient-color), 1) 100%
   );
-  opacity: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
 
   .dark & {
     --gradient-color: #{color(grey, false, $systemColors, true)};
   }
 
-  .wrapper:hover & {
-    opacity: 1;
-  }
-
   &:first-child {
     transform: rotateY(180deg);
+    left: 0;
+  }
+
+  &:last-child {
+    right: 0;
   }
 }
 
 .icon {
+  transition: transition(opacity);
   position: relative;
   margin: spacing(s);
-  z-index: 10;
+  opacity: 0;
+
+  .wrapper:hover & {
+    opacity: 1;
+  }
 }

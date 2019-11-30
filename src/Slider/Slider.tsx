@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import { ChevronIcon } from '@saschazar/unicat-icons';
 
 import { IconButton } from '../';
-import KeyGenerator from '../__tools__/key-generator';
 import { preventDefault } from '../__tools__/helpers';
 
 import styles from './Slider.scss';
@@ -35,51 +34,53 @@ export default function Slider(props: SliderProps): JSX.Element {
     index = 0,
   } = props;
 
-  const keygen = new KeyGenerator('Slider');
   const children = Array.isArray(rawChildren) ? rawChildren : [rawChildren];
+
   const className = classnames(
     styles.wrapper,
     { [styles.dark]: dark },
     customClassName
   );
 
+  const factor = 1.0 / children.length;
+
   const [selected, setSelected] = useState(index);
-  const refs = new Array(children.length || 0)
-    .fill(null)
-    .map(() => useRef<HTMLDivElement>(null));
+  const [transition, setTransition] = useState(factor * index * -1.0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ref = refs[selected] && refs[selected].current;
-    ref && ref.focus && ref.focus();
+    setTransition(factor * selected * -1.0);
   }, [selected]);
+
   const slideForward = (event?: SyntheticEvent): void => {
     event && preventDefault(event);
-    setSelected(prev => (prev + 1) % refs.length);
+    setSelected(prev => (prev + 1) % children.length);
   };
 
   const slideBack = (event?: SyntheticEvent): void => {
     event && preventDefault(event);
-    setSelected(prev => (prev + refs.length - 1) % refs.length);
+    setSelected(prev => (prev + children.length - 1) % children.length);
   };
 
   return (
-    <div className={className}>
+    <div className={className} ref={wrapperRef}>
       <div className={styles.buttonWrapper}>
         <IconButton
           className={styles.icon}
           name="back"
           icon={<ChevronIcon aria-hidden />}
           onClick={slideBack}
-          disabled={!refs.length}
+          disabled={children.length < 2}
           variant="light"
         />
       </div>
-      <div className={styles.viewport}>
-        {children.map((c, i) => (
-          <div key={keygen.next()} ref={refs[i]}>
-            {c}
-          </div>
-        ))}
+      <div
+        className={styles.viewport}
+        style={{ transform: `translate3d(${transition * 100.0}%, 0, 0)` }}
+        ref={viewportRef}
+      >
+        {children}
       </div>
       <div className={styles.buttonWrapper}>
         <IconButton
@@ -87,7 +88,7 @@ export default function Slider(props: SliderProps): JSX.Element {
           name="forward"
           icon={<ChevronIcon aria-hidden />}
           onClick={slideForward}
-          disabled={!refs.length}
+          disabled={children.length < 2}
           variant="light"
         />
       </div>
