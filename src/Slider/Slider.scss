@@ -2,18 +2,9 @@
 
 .wrapper {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   border-radius: borderRadius();
-  background: linear-gradient(
-    90deg,
-    RGBA(color(white, false, $systemColors, true), 1) 0%,
-    RGBA(color(white, false, $systemColors, true), 0.333) 10%,
-    transparent 20%,
-    transparent 80%,
-    RGBA(color(white, false, $systemColors, true), 0.333) 90%,
-    RGBA(color(white, false, $systemColors, true), 1) 100%
-  );
   max-width: 100%;
   overflow: hidden;
 }
@@ -26,11 +17,37 @@
   overflow: hidden;
 }
 
-.icon {
-  margin: spacing(s);
-  z-index: 10;
+.buttonWrapper {
+  --gradient-color: #{color(white, false, $systemColors, true)};
+
+  transition: transition(opacity);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    RGBA(var(--gradient-color), 0.333) 50%,
+    RGBA(var(--gradient-color), 0.667) 80%,
+    RGBA(var(--gradient-color), 1) 100%
+  );
+  opacity: 0;
+
+  .dark & {
+    --gradient-color: #{color(grey, false, $systemColors, true)};
+  }
+
+  .wrapper:hover & {
+    opacity: 1;
+  }
 
   &:first-child {
     transform: rotateY(180deg);
   }
+}
+
+.icon {
+  position: relative;
+  margin: spacing(s);
+  z-index: 10;
 }

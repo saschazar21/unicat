@@ -19,6 +19,8 @@ export interface SliderProps {
   className?: string;
   /** the children to display inside the Slider */
   children: ReactNode | ReactNode[];
+  /** show dark mode */
+  dark?: boolean;
   /** the starting index */
   index?: number;
   /** whether slider should auto scroll */
@@ -29,21 +31,26 @@ export default function Slider(props: SliderProps): JSX.Element {
   const {
     className: customClassName,
     children: rawChildren,
+    dark,
     index = 0,
   } = props;
 
   const keygen = new KeyGenerator('Slider');
   const children = Array.isArray(rawChildren) ? rawChildren : [rawChildren];
-  const className = classnames(styles.wrapper, customClassName);
+  const className = classnames(
+    styles.wrapper,
+    { [styles.dark]: dark },
+    customClassName
+  );
 
   const [selected, setSelected] = useState(index);
   const refs = new Array(children.length || 0)
     .fill(null)
-    .map(() => useRef(null));
+    .map(() => useRef<HTMLDivElement>(null));
 
   useEffect(() => {
     const ref = refs[selected] && refs[selected].current;
-    console.log(ref);
+    ref && ref.focus && ref.focus();
   }, [selected]);
   const slideForward = (event?: SyntheticEvent): void => {
     event && preventDefault(event);
@@ -57,14 +64,16 @@ export default function Slider(props: SliderProps): JSX.Element {
 
   return (
     <div className={className}>
-      <IconButton
-        className={styles.icon}
-        name="back"
-        icon={<ChevronIcon aria-hidden />}
-        onClick={slideBack}
-        disabled={!refs.length}
-        variant="light"
-      />
+      <div className={styles.buttonWrapper}>
+        <IconButton
+          className={styles.icon}
+          name="back"
+          icon={<ChevronIcon aria-hidden />}
+          onClick={slideBack}
+          disabled={!refs.length}
+          variant="light"
+        />
+      </div>
       <div className={styles.viewport}>
         {children.map((c, i) => (
           <div key={keygen.next()} ref={refs[i]}>
@@ -72,14 +81,16 @@ export default function Slider(props: SliderProps): JSX.Element {
           </div>
         ))}
       </div>
-      <IconButton
-        className={styles.icon}
-        name="forward"
-        icon={<ChevronIcon aria-hidden />}
-        onClick={slideForward}
-        disabled={!refs.length}
-        variant="light"
-      />
+      <div className={styles.buttonWrapper}>
+        <IconButton
+          className={styles.icon}
+          name="forward"
+          icon={<ChevronIcon aria-hidden />}
+          onClick={slideForward}
+          disabled={!refs.length}
+          variant="light"
+        />
+      </div>
     </div>
   );
 }
