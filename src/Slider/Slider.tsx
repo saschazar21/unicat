@@ -29,18 +29,16 @@ export interface SliderProps {
   children: ReactNode | ReactNode[];
   /** show dark mode */
   dark?: boolean;
-  /** the starting index */
-  index?: number;
   /** whether slider should auto scroll */
-  autoScroll?: boolean;
+  autoscroll?: boolean;
 }
 
 export default function Slider(props: SliderProps): JSX.Element {
   const {
+    autoscroll,
     className: customClassName,
     children: rawChildren,
     dark,
-    index = 0,
   } = props;
 
   const children = Array.isArray(rawChildren) ? rawChildren : [rawChildren];
@@ -52,25 +50,60 @@ export default function Slider(props: SliderProps): JSX.Element {
   );
 
   const viewportRef = useRef<HTMLDivElement>(null);
-  const [selected, setSelected] = useState(index);
+  const [auto, setAuto] = useState(autoscroll);
+  const [frame, setFrame] = useState(0);
   const [transition, setTransition] = useState(0);
-  const [factor] = useState(breakpoints.get(breakpoint())! / children.length);
+  const [factor, setFactor] = useState(0);
+  const [visible, setVisible] = useState(2);
 
   useEffect(() => {
     const { current } = viewportRef;
     if (current) {
-      setTransition(selected * factor * -1.0);
+      // get first of the contained children
+      const [first] = current.children;
+      // get calculated margin of the first child
+      const marginRight = getComputedStyle(first).marginRight;
+      // get the calculated width of the first child
+      const elWidth = first.clientWidth + parseInt(marginRight || '0', 10);
+      // multiply frame by currently visible viewport width
+      setTransition(frame * (visible * elWidth) * -1.0);
     }
-  }, [selected]);
+  }, [frame]);
+
+  useEffect(() => {
+    const b = breakpoints.get(breakpoint());
+    if (b) {
+      setVisible(b);
+      setFactor(b / children.length);
+    }
+  }, [window.innerWidth]);
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | number = 0;
+    if (auto && factor) {
+      intervalId = setInterval(
+        () => setFrame(prev => (prev + 1) % Math.ceil(1.0 / factor)),
+        4000
+      );
+    }
+    if (!auto && intervalId) {
+      clearInterval(intervalId as NodeJS.Timeout);
+    }
+    return (): void => clearInterval(intervalId as NodeJS.Timeout);
+  }, [auto, factor]);
 
   const slideForward = (event?: SyntheticEvent): void => {
     event && preventDefault(event);
-    setSelected(prev => (prev + 1) % children.length);
+    // count frame one up, calculate using modulo of max. frame count to not overshoot.
+    setFrame(prev => (prev + 1) % Math.ceil(1.0 / factor));
+    setAuto(false);
   };
 
   const slideBack = (event?: SyntheticEvent): void => {
     event && preventDefault(event);
-    setSelected(prev => (prev + children.length - 1) % children.length);
+    // add children.length to not subtract below zero. Also use modulo like above.
+    setFrame(prev => (prev + children.length) % Math.ceil(1.0 / factor));
+    setAuto(false);
   };
 
   return (
@@ -87,7 +120,7 @@ export default function Slider(props: SliderProps): JSX.Element {
       </div>
       <div
         className={styles.viewport}
-        style={{ transform: `translate3d(${transition * 100.0}%, 0, 0)` }}
+        style={{ transform: `translate3d(${transition}px, 0, 0)` }}
         ref={viewportRef}
       >
         {children}
