@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Size } from '../__types__/global';
+
 /** browser supports native lazy-loading */
 export const nativeLazyLoading = 'loading' in HTMLImageElement.prototype;
 
@@ -19,4 +21,18 @@ export const milliseconds: { [key: string]: number } = {
   hour: 3600000,
   minute: 60000,
   second: 1000,
+};
+
+/** determines current window breakpoint */
+export const breakpoint = (): Size => {
+  const breakpoints = [0, 480, 768, 1200, 1920];
+  const declarations: Size[] = ['xs', 's', 'm', 'l', 'xl'];
+  const width = window.innerWidth;
+
+  for (let i = breakpoints.length - 1; i >= 0; i--) {
+    if (width && width >= breakpoints[i]) {
+      return declarations[i];
+    }
+  }
+  return declarations[0];
 };

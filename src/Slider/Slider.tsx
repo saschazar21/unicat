@@ -1,17 +1,26 @@
 import React, {
   ReactNode,
+  SyntheticEvent,
   useEffect,
   useRef,
   useState,
-  SyntheticEvent,
 } from 'react';
 import classnames from 'classnames';
 import { ChevronIcon } from '@saschazar/unicat-icons';
 
 import { IconButton } from '../';
-import { preventDefault } from '../__tools__/helpers';
+import { Size } from '../__types__/global';
+import { breakpoint, preventDefault } from '../__tools__/helpers';
 
 import styles from './Slider.scss';
+
+export const breakpoints = new Map<Size, number>([
+  ['xs', 2],
+  ['s', 2],
+  ['m', 3],
+  ['l', 4],
+  ['xl', 4],
+]);
 
 export interface SliderProps {
   /** custom class name */
@@ -42,15 +51,16 @@ export default function Slider(props: SliderProps): JSX.Element {
     customClassName
   );
 
-  const factor = 1.0 / children.length;
-
-  const [selected, setSelected] = useState(index);
-  const [transition, setTransition] = useState(factor * index * -1.0);
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState(index);
+  const [transition, setTransition] = useState(0);
+  const [factor] = useState(breakpoints.get(breakpoint())! / children.length);
 
   useEffect(() => {
-    setTransition(factor * selected * -1.0);
+    const { current } = viewportRef;
+    if (current) {
+      setTransition(selected * factor * -1.0);
+    }
   }, [selected]);
 
   const slideForward = (event?: SyntheticEvent): void => {
@@ -64,7 +74,7 @@ export default function Slider(props: SliderProps): JSX.Element {
   };
 
   return (
-    <div className={className} ref={wrapperRef}>
+    <div className={className}>
       <div className={styles.buttonWrapper}>
         <IconButton
           className={styles.icon}

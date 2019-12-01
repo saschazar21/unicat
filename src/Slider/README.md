@@ -14,5 +14,20 @@ import Picture from '../Picture';
     src="https://source.unsplash.com/random/320x240"
     key="slider-image-2"
   />
+  <Picture
+    alt="a random image from unsplash.com"
+    src="https://source.unsplash.com/random/320x240"
+    key="slider-image-3"
+  />
+  <Picture
+    alt="a random image from unsplash.com"
+    src="https://source.unsplash.com/random/320x240"
+    key="slider-image-4"
+  />
+  <Picture
+    alt="a random image from unsplash.com"
+    src="https://source.unsplash.com/random/320x240"
+    key="slider-image-5"
+  />
 </Slider>;
 ```
