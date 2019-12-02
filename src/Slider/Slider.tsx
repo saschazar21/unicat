@@ -1,5 +1,6 @@
 import React, {
   ReactNode,
+  KeyboardEvent,
   SyntheticEvent,
   useEffect,
   useRef,
@@ -106,8 +107,22 @@ export default function Slider(props: SliderProps): JSX.Element {
     setAuto(false);
   };
 
+  const handleKeyUp = (event: KeyboardEvent): void => {
+    event && preventDefault(event);
+    const { key } = event;
+
+    if (key) {
+      switch (key) {
+        case 'ArrowRight':
+          return slideForward(event);
+        case 'ArrowLeft':
+          return slideBack(event);
+      }
+    }
+  };
+
   return (
-    <div className={className}>
+    <div className={className} tabIndex={0} onKeyUp={handleKeyUp}>
       <div className={styles.buttonWrapper}>
         <IconButton
           className={styles.icon}

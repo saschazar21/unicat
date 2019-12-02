@@ -6,6 +6,10 @@
   border-radius: borderRadius();
   max-width: 100%;
   overflow: hidden;
+
+  &:focus {
+    @include focus();
+  }
 }
 
 .viewport {
