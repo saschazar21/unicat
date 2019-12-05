@@ -1,0 +1,29 @@
+@import '../../../__styles__/variables';
+
+.wrapper {
+  display: inline-flex;
+  border-radius: borderRadius();
+  padding: spacing(xs) spacing(m);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  svg:not(:last-child) {
+    margin-right: spacing(xs);
+  }
+
+  &:hover {
+    background-color: RGBA(color(grey, false, $systemColors, true), 0.3);
+  }
+
+  &:active,
+  &:focus {
+    @include focus();
+  }
+
+  &:not(:last-child) {
+    margin-right: spacing();
+  }
+}
