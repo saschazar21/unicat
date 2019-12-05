@@ -1,14 +1,11 @@
 @import '../../../__styles__/variables';
 
 .wrapper {
+  transition: transition(background-color);
   display: inline-flex;
   border-radius: borderRadius();
   padding: spacing(xs) spacing(m);
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  white-space: inherit;
 
   svg:not(:last-child) {
     margin-right: spacing(xs);
@@ -25,5 +22,14 @@
 
   &:not(:last-child) {
     margin-right: spacing();
+  }
+}
+
+a.wrapper {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
   }
 }

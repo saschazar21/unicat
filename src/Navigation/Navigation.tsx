@@ -36,7 +36,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
 
   useEffect(() => {
     const { current } = ref as React.RefObject<HTMLElement>;
-    if (current && current.getBoundingClientRect) {
+    if (childRect && current && current.getBoundingClientRect) {
       const {
         x: rootX,
         width: rootWidth,

@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 
+import { noop } from '../../../__tools__/helpers';
+
 import styles from './NavigationItem.scss';
 
 export interface NavigationItemProps {
@@ -17,7 +19,7 @@ export interface NavigationItemProps {
   /** a link target */
   href?: string;
   /** onFocus event handler */
-  onFocus: (event: SyntheticEvent, rect: DOMRect) => void;
+  onFocus?: (event: SyntheticEvent, rect: DOMRect) => void;
   /** a custom prefix */
   prefix?: ReactNode;
   /** a custom suffix */
@@ -33,11 +35,13 @@ export default function NavigationItem(
     className: customClassName,
     disabled,
     href,
-    onFocus,
+    onFocus: rawOnFocus,
     prefix,
     suffix,
     text,
   } = props;
+
+  const onFocus = rawOnFocus || noop;
 
   const [rect, setRect] = useState<DOMRect>();
   const ref = useRef<HTMLAnchorElement | HTMLSpanElement>(null);
@@ -47,7 +51,7 @@ export default function NavigationItem(
     if (current && current.getBoundingClientRect) {
       setRect(current.getBoundingClientRect() as DOMRect);
     }
-  }, [ref]);
+  }, []);
 
   const className = classnames(styles.wrapper, customClassName, {
     [styles.disabled]: disabled,
@@ -64,6 +68,7 @@ export default function NavigationItem(
     {
       className,
       onFocus: handleFocus,
+      onClick: handleFocus,
       ref,
     },
     [prefix, text, suffix]
