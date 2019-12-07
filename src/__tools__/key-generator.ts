@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 export default class KeyGenerator {
   private _iteration: number;
   private _prefix: string;
@@ -14,3 +16,22 @@ export default class KeyGenerator {
     return `${this._prefix}-${num}`;
   }
 }
+
+export const useKeyGenerator = (
+  prefix: string,
+  amount = 1,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  watch?: any
+): string[] => {
+  const keygen = new KeyGenerator(prefix);
+
+  const [keys, setKeys] = useState(
+    new Array(amount).fill(amount).map(() => keygen.next())
+  );
+
+  useEffect(() => {
+    setKeys(keys => keys.map(() => keygen.next()));
+  }, [watch]);
+
+  return keys;
+};

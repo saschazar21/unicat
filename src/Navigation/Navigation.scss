@@ -1,6 +1,9 @@
 @import '../__styles__/variables';
 
 .wrapper {
+  --color-gradient: #{color(default, true, $systemColors)};
+
+  position: relative;
   transition: transition(box-shadow);
   border-radius: borderRadius();
   max-width: 100%;
@@ -8,6 +11,31 @@
 
   &:hover {
     box-shadow: boxShadow(s, true);
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(
+      90deg,
+      var(--color-gradient) 0%,
+      var(--color-gradient) 33.333%,
+      transparent 100%
+    );
+    width: spacing(xl);
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+    transform: rotateY(180deg);
   }
 }
 

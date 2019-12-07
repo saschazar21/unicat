@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import NavigationItem from './components/NavigationItem';
 import { NavigationItemProps } from './components/NavigationItem/NavigationItem';
 
-import KeyGenerator from '../__tools__/key-generator';
+import { useKeyGenerator } from '../__tools__/key-generator';
 import { preventDefault } from '../__tools__/helpers';
 
 import styles from './Navigation.scss';
@@ -27,11 +27,11 @@ export default function Navigation(props: NavigationProps): JSX.Element {
     responsive,
     vertical,
   } = props;
-  const keygen = new KeyGenerator('Navigation');
   const items = Array.isArray(rawItems) ? rawItems : [rawItems];
 
   const [transform, setTransform] = useState('translate3d(0, 0, 0)');
   const [childRect, setChildRect] = useState<DOMRect>();
+  const keys = useKeyGenerator('Navigation', items.length);
   const ref = useRef<HTMLElement>();
 
   useEffect(() => {
@@ -63,8 +63,8 @@ export default function Navigation(props: NavigationProps): JSX.Element {
   return (
     <nav className={className} ref={ref as React.RefObject<HTMLElement>}>
       <ul className={styles.viewport} style={{ transform }}>
-        {items.map(item => (
-          <li key={keygen.next()}>
+        {items.map((item, i) => (
+          <li key={keys[i]}>
             <NavigationItem onFocus={onFocus} {...item} />
           </li>
         ))}
