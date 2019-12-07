@@ -64,9 +64,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
     <nav className={className} ref={ref as React.RefObject<HTMLElement>}>
       <ul className={styles.viewport} style={{ transform }}>
         {items.map((item, i) => (
-          <li key={keys[i]}>
-            <NavigationItem onFocus={onFocus} {...item} />
-          </li>
+          <NavigationItem key={keys[i]} onFocus={onFocus} {...item} />
         ))}
       </ul>
     </nav>

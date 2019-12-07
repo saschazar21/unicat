@@ -31,7 +31,7 @@ export const useKeyGenerator = (
 
   useEffect(() => {
     setKeys(keys => keys.map(() => keygen.next()));
-  }, [watch]);
+  }, [amount, watch]);
 
   return keys;
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Navigation from './Navigation';
 import { NavigationItemProps } from './components/NavigationItem/NavigationItem';
@@ -19,7 +19,7 @@ const items: NavigationItemProps[] = [
 
 describe('Navigation', () => {
   it('renders', () => {
-    const wrapper = shallow(<Navigation items={items} />);
+    const wrapper = mount(<Navigation items={items} />);
 
     expect(wrapper.find('li')).toHaveLength(items.length);
   });

@@ -1,5 +1,6 @@
 import React, {
   ReactNode,
+  KeyboardEvent,
   SyntheticEvent,
   useEffect,
   useRef,
@@ -7,7 +8,7 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 
-import { noop } from '../../../__tools__/helpers';
+import { noop, preventDefault } from '../../../__tools__/helpers';
 
 import styles from './NavigationItem.scss';
 
@@ -53,24 +54,59 @@ export default function NavigationItem(
     }
   }, []);
 
-  const className = classnames(styles.wrapper, customClassName, {
+  const className = classnames(styles.item, customClassName, {
     [styles.disabled]: disabled,
   });
 
   const handleFocus = (event: SyntheticEvent): void => {
-    if (rect) {
+    if (rect && ref.current) {
       onFocus(event, rect);
     }
   };
 
-  return React.createElement(
+  const handleKeyUp = (event: KeyboardEvent): void => {
+    const { currentTarget, keyCode } = event;
+
+    preventDefault(event);
+
+    if (ref && ref.current) {
+      switch (keyCode) {
+        case 13: // Enter
+          ref.current.click();
+          break;
+        case 9: // Tab
+          ref.current.focus();
+          break;
+        case 37: // ArrowLeft
+          const prev = currentTarget.previousElementSibling as HTMLElement;
+          prev && prev.focus();
+          break;
+        case 39: // ArrowRight
+          const next = currentTarget.nextElementSibling as HTMLElement;
+          next && next.focus();
+          break;
+      }
+    }
+  };
+
+  const item = React.createElement(
     !disabled && href ? 'a' : 'span',
     {
       className,
-      onFocus: handleFocus,
-      onClick: handleFocus,
       ref,
     },
     [prefix, text, suffix]
+  );
+
+  return (
+    <li
+      className={styles.wrapper}
+      tabIndex={0}
+      onClick={handleFocus}
+      onFocus={handleFocus}
+      onKeyUp={handleKeyUp}
+    >
+      {item}
+    </li>
   );
 }

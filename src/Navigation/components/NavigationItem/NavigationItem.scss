@@ -1,6 +1,17 @@
 @import '../../../__styles__/variables';
 
 .wrapper {
+  &:active,
+  &:focus {
+    @include focus();
+  }
+
+  &:not(:last-child) {
+    margin-right: spacing();
+  }
+}
+
+.item {
   transition: transition(background-color);
   display: inline-flex;
   border-radius: borderRadius();
@@ -14,18 +25,9 @@
   &:hover {
     background-color: RGBA(color(grey, false, $systemColors, true), 0.3);
   }
-
-  &:active,
-  &:focus {
-    @include focus();
-  }
-
-  &:not(:last-child) {
-    margin-right: spacing();
-  }
 }
 
-a.wrapper {
+a.item {
   color: inherit;
   text-decoration: none;
 
