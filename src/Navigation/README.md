@@ -13,5 +13,5 @@ const items = [
   { disabled: true, href: '#', text: 'NavigationItem 9' },
 ];
 
-<Navigation items={items} />;
+<Navigation items={items} active={3} />;
 ```

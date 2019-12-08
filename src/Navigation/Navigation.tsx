@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState, SyntheticEvent } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 
 import NavigationItem from './components/NavigationItem';
 import { NavigationItemProps } from './components/NavigationItem/NavigationItem';
 
 import { useKeyGenerator } from '../__tools__/key-generator';
-import { preventDefault } from '../__tools__/helpers';
 
 import styles from './Navigation.scss';
 
 export interface NavigationProps {
+  /** set active element */
+  active?: number;
   /** custom class name */
   className?: string;
   /** the navigation items */
@@ -22,6 +23,7 @@ export interface NavigationProps {
 
 export default function Navigation(props: NavigationProps): JSX.Element {
   const {
+    active,
     className: customClassName,
     items: rawItems,
     responsive,
@@ -31,6 +33,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
 
   const [transform, setTransform] = useState('translate3d(0, 0, 0)');
   const [childRect, setChildRect] = useState<DOMRect>();
+  const [index, setIndex] = useState(active || 0);
   const keys = useKeyGenerator('Navigation', items.length);
   const ref = useRef<HTMLElement>();
 
@@ -55,16 +58,22 @@ export default function Navigation(props: NavigationProps): JSX.Element {
     [styles.vertical]: vertical,
   });
 
-  const onFocus = (event: SyntheticEvent, rect: DOMRect): void => {
-    preventDefault(event);
+  const onFocus = (rect: DOMRect, i?: number): void => {
     setChildRect(rect);
+    i !== undefined && setIndex(i);
   };
 
   return (
     <nav className={className} ref={ref as React.RefObject<HTMLElement>}>
       <ul className={styles.viewport} style={{ transform }}>
         {items.map((item, i) => (
-          <NavigationItem key={keys[i]} onFocus={onFocus} {...item} />
+          <NavigationItem
+            active={i === index}
+            index={i}
+            key={keys[i]}
+            onFocus={onFocus}
+            {...item}
+          />
         ))}
       </ul>
     </nav>

@@ -4,14 +4,10 @@
   --color-gradient: #{color(default, true, $systemColors)};
 
   position: relative;
-  transition: transition(box-shadow);
   border-radius: borderRadius();
+  border: border();
   max-width: 100%;
   overflow: hidden;
-
-  &:hover {
-    box-shadow: boxShadow(s, true);
-  }
 
   &:before,
   &:after {

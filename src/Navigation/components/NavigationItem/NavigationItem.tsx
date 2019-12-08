@@ -13,14 +13,18 @@ import { noop, preventDefault } from '../../../__tools__/helpers';
 import styles from './NavigationItem.scss';
 
 export interface NavigationItemProps {
+  /** set element active */
+  active?: boolean;
   /** custom class name */
   className?: string;
   /** set as disabled */
   disabled?: boolean;
   /** a link target */
   href?: string;
+  /** index of the item */
+  index?: number;
   /** onFocus event handler */
-  onFocus?: (event: SyntheticEvent, rect: DOMRect) => void;
+  onFocus?: (rect: DOMRect, index?: number) => void;
   /** a custom prefix */
   prefix?: ReactNode;
   /** a custom suffix */
@@ -33,9 +37,11 @@ export default function NavigationItem(
   props: NavigationItemProps
 ): JSX.Element {
   const {
+    active,
     className: customClassName,
     disabled,
     href,
+    index,
     onFocus: rawOnFocus,
     prefix,
     suffix,
@@ -50,17 +56,21 @@ export default function NavigationItem(
   useEffect(() => {
     const { current } = ref;
     if (current && current.getBoundingClientRect) {
-      setRect(current.getBoundingClientRect() as DOMRect);
+      const boundingClientRect = current.getBoundingClientRect() as DOMRect;
+      setRect(boundingClientRect);
+      active && onFocus(boundingClientRect);
     }
   }, []);
 
   const className = classnames(styles.item, customClassName, {
+    [styles.active]: active,
     [styles.disabled]: disabled,
   });
 
-  const handleFocus = (event: SyntheticEvent): void => {
+  const handleFocus = (event: SyntheticEvent, setActive: boolean): void => {
+    preventDefault(event);
     if (rect && ref.current) {
-      onFocus(event, rect);
+      onFocus(rect, setActive ? index : undefined);
     }
   };
 
@@ -102,8 +112,8 @@ export default function NavigationItem(
     <li
       className={styles.wrapper}
       tabIndex={0}
-      onClick={handleFocus}
-      onFocus={handleFocus}
+      onClick={event => handleFocus(event, true)}
+      onFocus={event => handleFocus(event, false)}
       onKeyUp={handleKeyUp}
     >
       {item}
