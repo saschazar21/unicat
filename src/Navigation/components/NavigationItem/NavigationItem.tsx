@@ -1,7 +1,6 @@
 import React, {
   ReactNode,
   KeyboardEvent,
-  SyntheticEvent,
   useEffect,
   useRef,
   useState,
@@ -67,8 +66,7 @@ export default function NavigationItem(
     [styles.disabled]: disabled,
   });
 
-  const handleFocus = (event: SyntheticEvent, setActive: boolean): void => {
-    preventDefault(event);
+  const handleFocus = (setActive: boolean): void => {
     if (rect && ref.current) {
       onFocus(rect, setActive ? index : undefined);
     }
@@ -99,12 +97,15 @@ export default function NavigationItem(
     }
   };
 
+  const itemProps = Object.assign(
+    {},
+    { className, ref },
+    !disabled && href ? { href } : null
+  );
+
   const item = React.createElement(
     !disabled && href ? 'a' : 'span',
-    {
-      className,
-      ref,
-    },
+    itemProps,
     [prefix, text, suffix]
   );
 
@@ -112,8 +113,8 @@ export default function NavigationItem(
     <li
       className={styles.wrapper}
       tabIndex={0}
-      onClick={event => handleFocus(event, true)}
-      onFocus={event => handleFocus(event, false)}
+      onClick={() => handleFocus(true)}
+      onFocus={() => handleFocus(false)}
       onKeyUp={handleKeyUp}
     >
       {item}

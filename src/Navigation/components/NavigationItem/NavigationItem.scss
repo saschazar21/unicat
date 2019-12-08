@@ -1,13 +1,16 @@
 @import '../../../__styles__/variables';
 
 .wrapper {
+  &:not(:last-child) {
+    margin-right: spacing();
+  }
+}
+
+.wrapper,
+a.item {
   &:active,
   &:focus {
     @include focus();
-  }
-
-  &:not(:last-child) {
-    margin-right: spacing();
   }
 }
 

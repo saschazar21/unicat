@@ -2,7 +2,7 @@ renders a horizontally scrollable navigation ribbon:
 
 ```jsx
 const items = [
-  { href: '#', text: 'NavigationItem 1' },
+  { href: 'https://ddg.gg', text: 'NavigationItem 1' },
   { text: 'NavigationItem 2' },
   { disabled: true, href: '#', text: 'NavigationItem 3' },
   { href: '#', text: 'NavigationItem 4' },
