@@ -34,6 +34,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
   const [transform, setTransform] = useState('translate3d(0, 0, 0)');
   const [childRect, setChildRect] = useState<DOMRect>();
   const [index, setIndex] = useState(active || 0);
+  const [overflow, setOverflow] = useState(false);
   const keys = useKeyGenerator('Navigation', items.length);
   const ref = useRef<HTMLElement>();
   const viewportRef = useRef<HTMLUListElement>();
@@ -61,28 +62,32 @@ export default function Navigation(props: NavigationProps): JSX.Element {
       const marginLeft = parseInt(mLeft || '0', 10);
       const marginRight = parseInt(mRight || '0', 10);
 
-      const childCenter = childX + childWidth * 0.5;
-      const rootCenter = rootX + rootWidth * 0.5;
+      setOverflow(viewportCurrent.scrollWidth > rootWidth);
 
-      const maxOffset =
-        rootWidth -
-        (marginLeft + viewportCurrent.scrollWidth + marginRight) -
-        marginRight;
-      const currentTransform = rootCenter - childCenter;
+      if (overflow) {
+        const childCenter = childX + childWidth * 0.5;
+        const rootCenter = rootX + rootWidth * 0.5;
 
-      const newTransform =
-        currentTransform < maxOffset ? maxOffset : currentTransform;
+        const maxOffset =
+          rootWidth -
+          (marginLeft + viewportCurrent.scrollWidth + marginRight) -
+          marginRight;
+        const currentTransform = rootCenter - childCenter;
 
-      setTransform(
-        `translate3d(${newTransform > 0 ? marginLeft : newTransform}px, 0, 0)`
-      );
-      console.log(transform);
+        const newTransform =
+          currentTransform < maxOffset ? maxOffset : currentTransform;
+
+        setTransform(
+          `translate3d(${newTransform > 0 ? marginLeft : newTransform}px, 0, 0)`
+        );
+      }
     }
   }, [childRect, window.innerWidth]);
 
   const className = classnames(styles.wrapper, customClassName, {
     [styles.responsive]: responsive,
     [styles.vertical]: vertical,
+    [styles.overflow]: overflow,
   });
 
   const onFocus = (rect: DOMRect, i?: number): void => {

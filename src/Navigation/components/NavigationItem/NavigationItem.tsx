@@ -63,7 +63,7 @@ export default function NavigationItem(
 
   const className = classnames(styles.item, customClassName, {
     [styles.active]: active,
-    [styles.disabled]: disabled,
+    [styles.disabled]: disabled || !href,
   });
 
   const handleFocus = (setActive: boolean): void => {
@@ -112,7 +112,7 @@ export default function NavigationItem(
   return (
     <li
       className={styles.wrapper}
-      tabIndex={0}
+      tabIndex={-1}
       onClick={() => handleFocus(true)}
       onFocus={() => handleFocus(false)}
       onKeyUp={handleKeyUp}

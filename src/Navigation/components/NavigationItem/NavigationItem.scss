@@ -1,16 +1,13 @@
 @import '../../../__styles__/variables';
 
 .wrapper {
-  &:not(:last-child) {
-    margin-right: spacing();
-  }
-}
-
-.wrapper,
-a.item {
   &:active,
   &:focus {
-    @include focus();
+    outline: none;
+  }
+
+  &:not(:last-child) {
+    margin-right: spacing();
   }
 }
 
@@ -27,6 +24,12 @@ a.item {
   svg:not(:last-child) {
     margin-right: spacing(xs);
   }
+
+  .wrapper:active &,
+  .wrapper:focus &,
+  &:focus {
+    @include focus();
+  }
 }
 
 a.item {
@@ -34,6 +37,7 @@ a.item {
   position: relative;
   color: inherit;
   text-decoration: none;
+  font-weight: bold;
 
   &:hover {
     cursor: pointer;
@@ -57,7 +61,12 @@ a.item {
   }
 
   .wrapper:focus &,
-  .wrapper:hover & {
+  .wrapper:hover &,
+  &:focus {
     background-color: RGBA(color(grey, false, $systemColors, true), 0.3);
   }
+}
+
+.disabled {
+  color: color(grey, false, $systemColors);
 }

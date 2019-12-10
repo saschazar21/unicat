@@ -1,13 +1,17 @@
 @import '../__styles__/variables';
 
 .wrapper {
+  border: border(transparent);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.overflow {
   --color-gradient: #{color(default, true, $systemColors)};
 
   position: relative;
   border-radius: borderRadius();
   border: border();
-  max-width: 100%;
-  overflow: hidden;
 
   &:before,
   &:after {
