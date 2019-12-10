@@ -36,20 +36,47 @@ export default function Navigation(props: NavigationProps): JSX.Element {
   const [index, setIndex] = useState(active || 0);
   const keys = useKeyGenerator('Navigation', items.length);
   const ref = useRef<HTMLElement>();
+  const viewportRef = useRef<HTMLUListElement>();
 
   useEffect(() => {
     const { current } = ref as React.RefObject<HTMLElement>;
-    if (childRect && current && current.getBoundingClientRect) {
+    const { current: viewportCurrent } = viewportRef as React.RefObject<
+      HTMLUListElement
+    >;
+
+    if (
+      viewportCurrent &&
+      childRect &&
+      current &&
+      current.getBoundingClientRect
+    ) {
       const {
         x: rootX,
         width: rootWidth,
       } = current.getBoundingClientRect() as DOMRect;
       const { x: childX, width: childWidth } = childRect as DOMRect;
+      const { marginLeft: mLeft, marginRight: mRight } = getComputedStyle(
+        viewportCurrent
+      );
+      const marginLeft = parseInt(mLeft || '0', 10);
+      const marginRight = parseInt(mRight || '0', 10);
 
       const childCenter = childX + childWidth * 0.5;
       const rootCenter = rootX + rootWidth * 0.5;
 
-      setTransform(`translate3d(${rootCenter - childCenter}px, 0, 0)`);
+      const maxOffset =
+        rootWidth -
+        (marginLeft + viewportCurrent.scrollWidth + marginRight) -
+        marginRight;
+      const currentTransform = rootCenter - childCenter;
+
+      const newTransform =
+        currentTransform < maxOffset ? maxOffset : currentTransform;
+
+      setTransform(
+        `translate3d(${newTransform > 0 ? marginLeft : newTransform}px, 0, 0)`
+      );
+      console.log(transform);
     }
   }, [childRect, window.innerWidth]);
 
@@ -65,7 +92,11 @@ export default function Navigation(props: NavigationProps): JSX.Element {
 
   return (
     <nav className={className} ref={ref as React.RefObject<HTMLElement>}>
-      <ul className={styles.viewport} style={{ transform }}>
+      <ul
+        className={styles.viewport}
+        ref={viewportRef as React.RefObject<HTMLUListElement>}
+        style={{ transform }}
+      >
         {items.map((item, i) => (
           <NavigationItem
             active={i === index}

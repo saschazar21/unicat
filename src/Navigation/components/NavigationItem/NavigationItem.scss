@@ -20,6 +20,10 @@ a.item {
   padding: spacing(xs) spacing(m);
   white-space: inherit;
 
+  svg:not(:first-child) {
+    margin-left: spacing(xs);
+  }
+
   svg:not(:last-child) {
     margin-right: spacing(xs);
   }
@@ -52,7 +56,8 @@ a.item {
     opacity: 1;
   }
 
-  .wrapper:focus & {
+  .wrapper:focus &,
+  .wrapper:hover & {
     background-color: RGBA(color(grey, false, $systemColors, true), 0.3);
   }
 }
