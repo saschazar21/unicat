@@ -18,6 +18,6 @@ $borderWidth: 0.5px, 2px;
 }
 
 @mixin focus() {
-  outline: borderWidth(2) solid color(warning);
+  outline: borderWidth(2) dotted color(warning);
   cursor: pointer;
 }

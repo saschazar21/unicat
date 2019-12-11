@@ -52,8 +52,20 @@ export default function Switch(props: SwitchProps): JSX.Element {
 
   const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>): void => {
     preventDefault(event);
-    if (event.key === ' ' || event.key === 'Enter') {
-      handleClick(event);
+    switch (event.key) {
+      case 'ArrowLeft':
+        if (checked) {
+          handleClick(event);
+        }
+        break;
+      case 'ArrowRight':
+        if (!checked) {
+          handleClick(event);
+        }
+        break;
+      case ' ':
+      case 'Enter':
+        handleClick(event);
     }
   };
 
@@ -65,9 +77,11 @@ export default function Switch(props: SwitchProps): JSX.Element {
       data-suffix={suffix}
     >
       <input
+        readOnly
         className={styles.input}
         type="checkbox"
         name={name}
+        checked={checked}
         defaultChecked={checked}
         onClick={handleClick}
         onKeyUp={handleKeyUp}

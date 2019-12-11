@@ -78,7 +78,7 @@ export default function Navigation(props: NavigationProps): JSX.Element {
           currentTransform < maxOffset ? maxOffset : currentTransform;
 
         setTransform(
-          `translate3d(${newTransform > 0 ? marginLeft : newTransform}px, 0, 0)`
+          `translate3d(${newTransform > 0 ? 0 : newTransform}px, 0, 0)`
         );
       }
     }
