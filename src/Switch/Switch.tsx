@@ -17,7 +17,7 @@ export interface SwitchProps {
   /* set a name */
   name: string;
   /* onClick handler */
-  onClick?: (event: SyntheticEvent) => void;
+  onChange?: (event: SyntheticEvent) => void;
   /* custom prefix */
   prefix?: string;
   /* custom suffix */
@@ -30,7 +30,7 @@ export default function Switch(props: SwitchProps): JSX.Element {
     className: customClassName,
     large,
     name,
-    onClick,
+    onChange,
     prefix,
     suffix,
   } = props;
@@ -45,8 +45,8 @@ export default function Switch(props: SwitchProps): JSX.Element {
   const handleClick = (event: SyntheticEvent): void => {
     setChecked(prevState => !prevState);
 
-    if (onClick) {
-      onClick(event);
+    if (onChange) {
+      onChange(event);
     }
   };
 
@@ -77,14 +77,13 @@ export default function Switch(props: SwitchProps): JSX.Element {
       data-suffix={suffix}
     >
       <input
-        readOnly
         className={styles.input}
         type="checkbox"
         name={name}
         checked={checked}
-        defaultChecked={checked}
-        onClick={handleClick}
+        onChange={handleClick}
         onKeyUp={handleKeyUp}
+        value={checked ? 'on' : 'off'}
       />
       <div
         className={classnames({ [styles.large]: large }, styles.container)}

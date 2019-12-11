@@ -8,12 +8,11 @@ exports[`Switch renders 1`] = `
   <input
     checked={false}
     className="input"
-    defaultChecked={false}
     name="test"
-    onClick={[Function]}
+    onChange={[Function]}
     onKeyUp={[Function]}
-    readOnly={true}
     type="checkbox"
+    value="off"
   />
   <div
     aria-hidden="true"
@@ -46,12 +45,11 @@ exports[`Switch renders a checked variant 1`] = `
   <input
     checked={true}
     className="input"
-    defaultChecked={true}
     name="test"
-    onClick={[Function]}
+    onChange={[Function]}
     onKeyUp={[Function]}
-    readOnly={true}
     type="checkbox"
+    value="on"
   />
   <div
     aria-hidden="true"
@@ -84,12 +82,11 @@ exports[`Switch renders a large variant 1`] = `
   <input
     checked={false}
     className="input"
-    defaultChecked={false}
     name="test"
-    onClick={[Function]}
+    onChange={[Function]}
     onKeyUp={[Function]}
-    readOnly={true}
     type="checkbox"
+    value="off"
   />
   <div
     aria-hidden="true"

@@ -16,11 +16,11 @@ describe('Switch', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
 
-    expect(wrapper.find('[defaultChecked="false"]')).toHaveLength(0);
+    expect(wrapper.find('[checked="false"]')).toHaveLength(0);
 
-    wrapper.find('input').simulate('click');
+    wrapper.find('input').simulate('change', { target: { checked: true } });
 
-    expect(wrapper.find('[defaultChecked=true]')).toHaveLength(1);
+    expect(wrapper.find('[checked=true]')).toHaveLength(1);
   });
 
   it('renders a checked variant', () => {
@@ -38,26 +38,26 @@ describe('Switch', () => {
   });
 
   it('handles click', () => {
-    const onClick = jest.fn();
+    const onChange = jest.fn();
 
-    const wrapper = shallow(<Switch name="test" onClick={onClick} />);
+    const wrapper = shallow(<Switch name="test" onChange={onChange} />);
 
-    expect(onClick).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
 
-    wrapper.find('input').simulate('click');
+    wrapper.find('input').simulate('change', { target: { checked: true } });
 
-    expect(onClick).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('handles key up', () => {
-    const onClick = jest.fn();
+    const onChange = jest.fn();
 
-    const wrapper = shallow(<Switch name="test" onClick={onClick} />);
+    const wrapper = shallow(<Switch name="test" onChange={onChange} />);
 
-    expect(onClick).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
 
     wrapper.find('input').simulate('keyup', { key: ' ' });
 
-    expect(onClick).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalled();
   });
 });
